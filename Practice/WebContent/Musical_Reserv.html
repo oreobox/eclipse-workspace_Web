@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Musical_Reservation</title>
+</head>
+<body>
+
+		<h3><a href="#">예약하기</a></h3>
+	<form>
+		<p>
+			<label>예약자</label>
+			<input type="text" name="userName" />
+		</p>
+		
+		<p>
+			<label>핸드폰번호(번호만 입력)</label>
+			<input type="tel" name="userPhone" />
+		</p>
+		
+		<p>
+			<label>이메일</label>
+			<input type="text" name="userEmail" />
+			<select name="userEmail">
+				<option>---선택---</option>
+				<option value="네이버">naver.com</option>
+				<option value="다음">daum.net</option>
+				<option value="한메일">hanmail.net</option>
+				<option value="네이트">nate.com</option>
+				<option value="구글">google.com</option>
+			</select>
+		</p>
+		
+		<p>
+			<label>공연 날짜 선택</label>
+			<input type="date" name="musicalDate" />
+		
+		</p>
+		
+		<p>
+			<label>공연 시간선택</label>
+			<input type="radio" name="musicalTime" />14:30
+			<input type="radio" name="musicalTime" />17:00
+			<input type="radio" name="musicalTime" />19:30
+		
+		</p>
+		
+		<p>
+			<fieldset style="width:30%">
+			<label>좌석 선택</label> <br>
+			<input type="radio" name="musicalSeats" />VIP석(160,000원) <br>
+			<input type="radio" name="musicalSeats" />R석(130,000원) <br>
+			<input type="radio" name="musicalSeats" />S석(110,000원) <br>
+			<input type="radio" name="musicalSeats" />A석(90,000원) <br>
+			<input type="radio" name="musicalSeats" />B석(60,000원)
+			</fieldset>
+		</p>
+		
+		<p>
+			<label>인원 선택(1인 최대 4매 가능)</label>
+			<input type="number" name="musicalPeople" />
+		</p>
+		
+		<p>
+			<fieldset style="width:30%">
+			<label>티켓수령방법 선택</label> <br>
+			<input type="radio" name="getTickets" /> 현장수령 <br>
+			<input type="radio" name="getTickets" /> 배송(2800)
+			</fieldset>
+		</p>
+		
+		<p>
+			<fieldset style="width:30%">
+			<label>결제 수단</label> <br>
+			<input type="radio" name="payment" /> 현금결제 <br>
+			<input type="radio" name="payment" /> 카드결제 <br>
+			<input type="radio" name="payment" /> 무통장입금
+			</fieldset>
+		</p>
+		
+		<p>
+			<fieldset>
+			<label>옵션</label> <br>
+			<input name="userOption" type="checkbox" value="오페라글라스 대여 신청" /> 오페라글라스 대여 신청 여부
+			<input name="userOption" type="checkbox" value="결제수단 저장" /> 결제수단 저장
+			<input name="userOption" type="checkbox" value="티켓수령방법 저장" /> 티켓 수령방법 저장
+			</fieldset>
+		</p>
+		
+		<p>
+			<a href="./ManOfLaMancha.html">
+			<input type="button" value="이전페이지" />
+			</a>
+			<input type="submit" value="예약완료" />
+			<input type="reset" value="예약취소" />		
+		</p>
+		
+	</form>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+/* @charset "EUC-KR"; - 있어도되고 없어도됨 */
+
+body{
+	background-color: #000;
+	margin-top : 50px;
+	
+}
+
+h1{
+	color:#fff;
+	font-size: 35px;
+	text-align: center /* 맨마지막줄은 ; 안해도됨 */
+	
+}
+
+
+/* margin-top : 위쪽 여백 주기 */

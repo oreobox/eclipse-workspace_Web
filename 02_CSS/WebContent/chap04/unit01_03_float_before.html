@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>CSS</title>
+<meta charset="utf-8">
+<style type="text/css">
+
+</style>
+<body>
+	<div class="box">
+		<p class="floatLeft">float left 정렬</p>
+		<p class="floatRight">float right 정렬</p>
+		<p class="clearRight">우측 box의 크기가 좌측 박스 보다 작을때 우측의 빈공간에서 부터 텍스트를
+			채워나가게 하려면 clear:right 속성을 사용하면 우측의 빈공간 부터 채워져 나갑니다. 다만, 좌측의 크기가 동일한
+			경우 또는 촤측의 박스가 작은 경우에는 속성의 값이 적용되지 않는것 처럼 보입니다.</p>
+	</div>
+	<br />
+	<div class="box">
+		<p class="floatLeft2">float left 정렬</p>
+		<p class="floatRight2">float right 정렬</p>
+		<p class="clearLeft">좌측 box의 크기가 우측 박스 보다 작을때 좌측의 빈공간에서 부터 텍스트를
+			채워나가게 하려면 clear:left속성을 사용하면 좌측의 빈공간 부터 채워져 나갑니다. 다만, 우측의 크기가 동일한 경우
+			또는 우측의 박스가 작은 경우에는 속성의 값이 적용되지 않는것 처럼 보입니다.</p>
+	</div>
+	<br />
+	<div class="box">
+		<p class="floatLeft2">float left 정렬</p>
+		<p class="floatRight2">float right 정렬</p>
+		<p class="clearBoth">좌,우측 박스의 크기와 상관없이 clear:both의 속성은 한단 아래로 배치되어
+			정렬해 줍니다.</p>
+	</div>
+	<br />
+	<div id="container">
+		<h1>clear 하지 않았을때</h1>
+		<p class="floatLeft2">float left 정렬</p>
+		<p class="floatRight2">float right 정렬</p>
+	</div>
+</body>
+</html>

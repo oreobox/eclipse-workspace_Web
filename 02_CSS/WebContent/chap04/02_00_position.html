@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>02_00_position</title>
+	<style type="text/css">
+		div{
+			width: 250px;
+			height: 250px;
+		}
+		.box1 {
+			border: 3px solid red;
+			position: fixed;
+			/* static(default): 차례대로 나옴, relative: 원래 있어야하는 자리에서 상대적으로 px 크기 만큼 꼭지점(0.0) 이동
+			absolute: 꼭지점(0.0)을 항상 기준으로 놓고 px 크기 만큼 이동, fixed: 고정 */
+			left: 20px;
+			top: 30px;
+			
+		}
+		.box2 {
+			border: 3px solid blue;
+			position: fixed;
+			left: 100px;
+			top:100px;
+			
+		}
+		.box3 {
+			border: 3px solid green;
+			position: fixed;
+			left: 200px;
+			top:200px;
+			
+		}
+	</style>
+
+</head>
+<body>
+
+	<div class="box1"></div>
+	<div class="box2"></div>
+	<div class="box3"></div>
+	
+	<hr color="orange">
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex04_audio_video</title>
+</head>
+<body>
+	<h1>audio 요소 삽입</h1>
+	<audio controls>
+	<!-- controls ="controls" 이므로 속성과 값이 같으면 값 생략가능 -->
+		<source src="media/music.ogg"/> <!-- firefox,opera -->
+		<source src="media/music.mp3"/> <!-- 인터넷 익스플로러,safari,chrome -->
+	</audio>
+	
+	<h1>video 요소 삽입</h1>
+	<video controls autoplay loop muted preload="auto">
+		<source src="media/myMovie.ogv"/>
+		<source src="media/myMovie.mp4"/>
+	</video>
+	
+	<!--
+	autoplay: 동영상을 자동으로 재생
+	controls: 재생, 정지 등 조작 메뉴를 보여줌
+	loop: 동영상을 반복 재생
+	muted: 음소거
+	poster: 동영상 재생 전에 보여줄 이미지
+	preload: 페이지를 열 때 무엇을 로드할지 정함
+		auto: 동영상, 메타데이타 모두 로드
+		metadata: 메타데이타만 로드
+		none: 로드하지 않음
+	source
+		src: 동영상 위치를 입력. 웹브라우저가 가장 많이 지원하는 형식은 MP4
+		type: 동영상 타입을 알려줌. 만약 MP4 파일이라면 video/mp4라고 적는다.
+		zzz: 웹브라우저가 video 태그를 지원하지 않을 때 출력될 텍스트
+	-->
+</body>
+</html>

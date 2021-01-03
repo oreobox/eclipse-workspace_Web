@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title> 모서리가 둥근 테두리 만들기 </title>
+		<meta charset="UTF-8" />
+		<style type="text/css">
+			div {
+				background: #6d6d6d;
+				border: 10px solid #f00;
+			}
+			p{
+				background-color: #fff;
+				line-height: 200%; /* 줄간격 */
+				margin: 40px;
+				padding: 15px;
+			}
+			.round1{
+				border: 10px solid #ff9933;
+				/* border-radius: 40px; */ /* 숫자가 클 수록 테두리 둥글게 설정 */
+				/* border-radius: 70px 20px 10px 3px; */ /* 왼쪽상단 부분을 첫 시작으로 시계 방향 순으로 설정  */
+				border-radius: 70px 20px; /* 70px 20px 70px 20px 와 같다고 보면됨 */
+				
+			}
+			.round2{
+				border: 10px solid yellow;
+				border-radius: 20px 70px;
+			
+			}
+		</style>
+	</head>
+
+	<body>
+		<div>
+			<p class="round1">
+				Whenever you are asked if you can do a job, tell <br />
+				&quot;Certainly I can!&quot; Then get busy	and find out how to do it. <br />
+				(Theodore Roosevelt)  
+			</p>
+			<p class="round2">
+				당신이 어떤 일을 해낼 수 있는지 누군가가 물어보면 대답해라. <br />
+				&quot;물론이죠!&quot; 그 다음 어떻게 그 일을 해낼 수 있을지 부지런히 고민하라. <br />
+				(시어도어 루스벨트) 
+			</p>
+		</div>
+	</body>
+</html>
