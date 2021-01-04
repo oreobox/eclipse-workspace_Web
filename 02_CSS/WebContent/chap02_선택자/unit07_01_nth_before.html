@@ -8,6 +8,7 @@
 			li:first-child{
 				color:lime;
 				background-color: brown;
+				width: 100px;
 			}
 		/* 마지막 li 태그 적용 */
 			li:last-child{
@@ -43,3 +44,15 @@
 		</ul>
 	</body>
 </html>
+
+<!-- ●순서 관련 가상 선택자: 
+:first-child /* 첫 번째 자식 요소를 찾음  */
+	li:first-child { color:lime; background-color: brown; }
+:last-child /* 마지막 자식 요소를  찾음  */
+	li:last-child { color:blue; }
+:nth-child /* 맨 앞에서부터 특정 자식 요소를 찾음  */
+	li:nth-child(even) : 짝수
+	li:nth-child(odd) : 홀수
+	li:nth-child(n) : n 번째
+:first-letter /* 첫 번째 글자를 찾음  */
+:first-line /* 첫 번째 행을 찾음  */ -->

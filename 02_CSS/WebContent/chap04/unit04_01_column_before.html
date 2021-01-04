@@ -42,14 +42,32 @@
 				text-align:right;
 				}
 			/* Layout */
+			#bookPart{
+				width:850px;
+				margin-left: 50px;
+				margin-bottom: 50;
+				column-count: 6; /* 6칸으로 단이 나뉨 */
+				column-rule: 1px dashed #666; /* 단과 단 사이 구분선 넣고 싶을 때 */
+				column-gap: 40px; /* 칼럼과 칼럼 사이에 간격 설정 */
+				text-align:justify; /* 문단 양쪽 정렬 */
+				
+				/* <벤더 프리픽스>-안되는 기능 있을 때
+				-webkit-: 크롬, Safari 에서 실행할때 사용
+				-moz-: Firefox
+				-ms-: IE(인터넷익스플로어) */
+				
+				-webkit-column-count: 6;
+				-moz-column-count: 6;
+				-ms-column-count: 6;
+			}
 			
 		</style>
 	</head>
 
 	<body>
-		<h1>눈으로 보고 손으로 길들이는 포토샵 CS5</h2>
+		<h1>눈으로 보고 손으로 길들이는 포토샵 CS5</h1>
 		<div id="bookImg">
-			<img src="images/photoshop_book_eye.png" width="292" height="363" alt="눈으로 보고 손으로 길들이는 포토샵 CS5" />
+			<img src="./../images/photoshop_book_eye.png" width="292" height="363" alt="눈으로 보고 손으로 길들이는 포토샵 CS5" />
 		</div>
 		<h2>장별 요약</h2>
 		<div id="bookPart">	

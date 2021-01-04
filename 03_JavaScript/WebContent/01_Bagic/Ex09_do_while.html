@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+	count = 0; // 몇번만에 stop 입력했는지 확인하기
+
+	do{
+		count++;
+		str = prompt("입력하세요","") //undefined 나올경우 ,뒤에 "" 빈칸 넣기
+		document.write("<h3>입력한값: " + str + "</h3>"); // document는  흰 출력문 나타내는 내장객체 
+		if(str == "stop") // 문자열 비교도 == 로 작성
+			break;
+	}while(true); // 내가 입력한게 stop이 아닐 경우 계속 반복
+	/* }while(str != "stop"); // 내가 입력한게 stop이 아닐 경우 계속 반복 */
+	
+	document.write("여기는 do~while 밖이다. <br>" + count + "번만에 빠져나왔습니다.");
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

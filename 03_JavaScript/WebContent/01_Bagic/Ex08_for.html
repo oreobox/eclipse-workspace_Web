@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	for(i=1;i<10;i++){
+		document.write(i + "<br>")
+	}
+	
+	/* <h6>h6사이즈 글자입니다.</h6>
+	~
+	<h1>h1사이즈 글자입니다.</h1> */
+	for(i=6;i>=1;i--){
+		document.write("<h"+i+"> h"+i+"사이즈 글자입니다. </h" +i+">");
+	}
+	
+	/* 1~100사이의 수 중 짝수의 합 구하기 */
+	total = 0;
+	for(i=1;i<=100;i++){
+		if(i % 2 == 0) {
+			total += i;
+		}
+	}
+		document.write("짝수의 합: " + total + "<br>");
+	
+	/* 이중포문 */
+	for(i=1;i<3;i++){
+		for(j=5;j<=7;j++){
+			document.write(i +"," + j + "<br>")
+		}
+	}
+	
+	
+	
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

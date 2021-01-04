@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex06.html</title>
+<script type="text/javascript">
+	document.write("나이0: " + age + "<br>");
+
+	var age = 30; // 전역변수(var는 생략가능)
+	document.write("나이1: " + age + "<br>");
+	
+	function test(){ // 함수 정의
+		//var가 있으면 새로 변수가 만들어지는것이고, var가 없으면 값 그대로 다음것 호출
+		//(함수 안에서는 var의 유무에 따라 값 달라짐)
+		age = 40; // 지역변수(함수 안에서만 사용가능)
+		document.write("나이2: " + age + "<br>");
+	}
+	
+	test(); // 함수 호출
+	
+	document.write("나이3: " + age + "<br>");
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

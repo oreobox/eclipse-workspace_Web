@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex04.html</title>
+<script type="text/javascript">
+	function isWinter(choice) {
+		// document.write(choice);
+		alert(choice); // true 확인버튼
+		if(choice == true){
+			alert("올해 겨울은 춥습니다.");
+		}
+		else{
+			alert("올해 겨울은 춥지 않습니다.");
+		}
+	}
+</script>
+</head>
+<body>
+	<h3>올해 겨울은 춥습니까?</h3>
+	<form>
+		<input type="button" value="예" onClick="isWinter(true)"> <!-- 함수, 메서드 호출: () -->
+		<input type="button" value="아니오" onClick="isWinter(false)">
+	</form>
+</body>
+</html>

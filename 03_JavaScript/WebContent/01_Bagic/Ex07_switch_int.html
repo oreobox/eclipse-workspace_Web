@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var favorite = prompt("어느계절을 좋아하세요? (1:봄, 2:여름, 3:가을, 4:겨울)", "1");
+	// alert("favorite"+favorite);
+	// alert(typeof(favorete)); // 내가 입력한 모든것은 문자열 처리가 된다. - case 숫자에 "" 문자열처리★ 녹음 다시듣기 14:41
+	
+	switch(parseInt(favorite)) { // 내가 입력한 문자열을 숫자로 바꿔준다.
+	case 1 :
+		document.write("<h2>봄을 좋아하시는군요..</h2>");
+		document.write("<img src='../images/images/spring.png' width='100px'");
+		break;
+		
+	case 2 :
+		document.write("<h2>여름을 좋아하시는군요..</h2>");
+		document.write("<img src='../images/images/summer.png' width='100px'");
+		break;
+		
+	case 3 :
+		document.write("<h2>가을을 좋아하시는군요..</h2>");
+		document.write("<img src='../images/images/fall.png' width='100px'");
+		break;
+		
+	case 4 :
+		document.write("<h2>겨울을 좋아하시는군요..</h2>");
+		document.write("<img src='../images/images/winter.png' width='100px'");
+		break;
+		
+	default : 
+		alert("1~4만 입력 가능");
+	
+	}
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

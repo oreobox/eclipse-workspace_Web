@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>과제2</title>
+		<style type="text/css">
+			table{
+				border: 2px solid gray;
+				border-collapse: collapse;
+				width: 1000pt;
+				text-align: center;
+			}
+			th{
+				height: 40pt;
+				border: 2px solid gray;
+				font-size: 25pt;
+				background-color: #99bbff;
+				
+			}
+			td{
+				border: 2px solid gray;
+				
+				height: 20pt;
+			}
+		</style>
+	</head>
+	<body>
+		<h2> 2. 구구단을 테이블에 넣어 출력해 주는 프로그램 </h2>
+		<script type="text/javascript">
+			document.write("<table>");
+			for(var i = 1; i <= 9; i++){
+				document.write("<th>");
+				document.write(i + "단");
+				document.write("</th>");
+			}
+			for(var i = 1; i <= 9; i++){
+				document.write("<tr>");
+				for(var j = 1; j <= 9; j++){
+					document.write("<td>");
+					document.write(j + " * " + i + " = " + i*j);
+					document.write("</td>");
+				}
+				document.write("</tr>");
+			}
+			document.write("</table>");
+		</script>
+		<table>
+			
+		</table>
+		
+	</body>
+</html>

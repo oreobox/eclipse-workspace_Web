@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Array</title>
+<script type="text/javascript">
+/* 	자바 배열 3가지
+	int[] arr1 = {1,2,3};
+	int[] arr2 = new int[] {1,2,3,4,5};
+	int[] arr3 = new int[3];
+		arr3[0] = 1;
+		arr3[1] = 2;
+		arr3[2] = 3; */
+var a = Array(4);
+document.write(a.length +"<br>")
+
+for(var i=0;i<a.length;i++){ // 3번방 까지 보겠다
+	document.write(a[i] + " "); // 변수에 값 없어서 undefined 4번 출력됨 (방4개)
+}
+document.write("<br>");
+
+var arr = new Array('one', 'two' ,'three'); // array로 관리하는 방 3개
+document.write(arr.length +"<br>")
+
+for(var i=0;i<arr.length;i++){ // 3번방 까지 보겠다
+	document.write(arr[i] + " "); // 변수에 값 없어서 undefined 4번 출력됨 (방4개)
+}
+document.write("<br>");
+
+var arr2 = new Array();
+document.write(arr2.length +"<br>")
+arr2[0] = 'spring';
+arr2[1] = 'summer'; // 주석 달아도 방의갯수는 동일하게 4개
+arr2[2] = 'fall';
+arr2[3] = 'winter';
+document.write(arr2.length +"<br>")
+document.write(arr2 +"<br>"); // 참조변수(arr2) 출력 : 자동으로 쉼표로 연결되어나옴
+document.write(arr2.toString() +"<br>"); // 자바에서는 참조변수 뒤 toString() 있음
+
+var arr3 = ['rose', 'tulip', 'lily'];
+document.write(arr3.length + "<br>");
+
+/* for in문 = 확장 for문 */
+for( ele in arr3 ) {
+	document.write(ele +" " + arr3[ele] + "<br>");
+}
+
+/* java와 다르게 서로 자료형을 가지고 있어도 배열을 만들 수 있음. */
+var arr4 = [1,0.987,"abc",true];
+for(pos in arr4){
+	document.write(pos + arr4[pos] + "<br>");
+}
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>
+
+<!-- 
+내가 만든 객체 멤버변수에 값을 ~~~접근★
+class Person{
+ String name;
+}
+
+Person p = new Person();
+p.name = "길동";
+
+ArrayList<String> list = new ArrayList<String>();
+list.add("아이유") // .을 찍었다는 것은 매서드나 변수에 접근하겠다는 뜻
+
+-->

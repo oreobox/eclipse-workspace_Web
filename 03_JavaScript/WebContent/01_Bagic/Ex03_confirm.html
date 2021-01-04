@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex03.html</title>
+
+<!-- 대화상자:
+	prompt,
+	confirm: (보통 두가지 선택지 있을 때 사용)
+		확인 버튼: answer:true
+		취소 버튼: answer:false
+		
+		조건 ? 참 : 거짓
+	alert: 확인버튼 하나만 있는 대화상자(경고창 비슷)
+-->
+<script type="text/javascript">
+	var answer = confirm("게임 한판 하시겠습니까?");
+	document.write("answer:"+answer+"<br>");
+	
+	var result = answer ? "yes" : "no";
+	document.write(result);
+	
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

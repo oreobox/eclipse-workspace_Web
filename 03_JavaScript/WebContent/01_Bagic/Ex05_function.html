@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex05.html</title>
+<style type="text/css">
+	#result{
+		width: 100px;
+		height: 100px;
+		border: 1px solid black;
+	}
+</style>
+
+<script>
+	function SumofTwo(a,b){ //변수만 쓰면됨. 자바처럼 int a, int b 안써도됨
+		//alert(a); // 버튼 누를때마다 1 출력되는 경고창 뜸
+		//alert(b); // undefined 출력됨
+		
+		myarea = document.getElementById("result") // id가 result인 영역에 대한 정보를 가져와라
+		if(a==null){ // 2번째 버튼 클릭 했다는 뜻
+			alert('2번째 버튼 클릭');
+			myarea.innerHTML = "변수 a가 초기화 되지 않았습니다.<br> 변수 b의 값은 " + b + "입니다."
+			// body 안에 써놓은 모든것 : html 코드
+		}else if(typeof b == "undefined") { // 3번째 버튼 클릭 했다는 뜻
+			alert('3번째 버튼 클릭');
+			myarea.innerHTML = "변수 b에는 아무 값도 들어오지 않습니다.";
+		}else{ // 1번재 버튼 클릭 했다는 듯
+			alert('1번재 버튼 클릭');
+			myarea.innerHTML = "a+b의 값은 " + (a+b)+"입니다."; // JavaScript; 생략가능
+		}
+		
+	}
+</script>
+
+</head>
+<body>
+
+	<form>
+		<input type="button" value="a=3,b=10" onclick="SumofTwo(3,10,1)"> <!-- sum of Two 호출 -->
+		<input type="button" value="b=8" onclick="SumofTwo(null,8)"> <!-- sum of Two 호출 -->
+		<input type="button" value="a=3" onclick="SumofTwo(3)"> <!-- sum of Two 호출 -->
+	</form>
+	
+	<div id="result">
+	
+	</div>
+
+</body>
+</html>
