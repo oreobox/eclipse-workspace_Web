@@ -46,7 +46,7 @@ function firstChange() {
 	var s_sel = document.myform.second;
 	
 	//기존에 있던 것 지우고 시작하기 - options자리를 null로 만들어야함
-	for(i>0; i<s_sel.length-1;  i++) {
+	for(i=s_sel.length-1; i>0; i++) {
 		s_sel.options[i] = null;
 	}
 	
@@ -62,9 +62,9 @@ function firstChange() {
 function secondChange() {
 	//alert(3);
 	
-	findex = document.myform.first.selectedIndex; // first라는 id를 가지고 있는 select
+	findex = document.myform.first.selectedIndex; // first라는 id를 가지고 있는 select / 선택된 항목의 번호가 뭐냐? - findex 변수에 넣기
 	//alert(index);
-	ftext = document.myform.first.options[findex].text;
+	ftext = document.myform.first.options[findex].text; // []번째 옵션을 가져와라
 	
 	sindex = document.myform.second.selectedImg;
 	simg = document.myform.second.options[simg].value;
