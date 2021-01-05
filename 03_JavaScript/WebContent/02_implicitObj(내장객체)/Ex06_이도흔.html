@@ -46,7 +46,7 @@ function firstChange() {
 	var s_sel = document.myform.second;
 	
 	//기존에 있던 것 지우고 시작하기 - options자리를 null로 만들어야함
-	for(i<s_sel.length-1; i>0; i++) {
+	for(i>0; i<s_sel.length-1;  i++) {
 		s_sel.options[i] = null;
 	}
 	

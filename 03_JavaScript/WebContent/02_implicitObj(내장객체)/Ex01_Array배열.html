@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <title>Array</title>
 <script type="text/javascript">
-/* 	자바 배열 3가지
+/*배열(같은 자료형을 갖는 데이터 여러개를 한 묶음으로 묶어놓은 것)을 만들 수 있는 Array 객체
+ 	자바 배열 3가지
 	int[] arr1 = {1,2,3};
 	int[] arr2 = new int[] {1,2,3,4,5};
 	int[] arr3 = new int[3];
@@ -12,44 +13,58 @@
 		arr3[1] = 2;
 		arr3[2] = 3; */
 		
+/* 방법① */	
 var a = Array(4);
-document.write(a.length +"<br>")
+document.write(a.length +"<br>") // 배열의 방의 갯수 조회
 
-for(var i=0;i<a.length;i++){ // 3번방 까지 보겠다
-	document.write(a[i] + " "); // 변수에 값 없어서 undefined 4번 출력됨 (방4개)
+for(var i=0;i<a.length;i++){ // 0~3번방 까지 각 방에 들어있는 값을 구해라
+	document.write(a[i] + " "); // 변수에 값 없어서 undefined 4개 출력됨 (방4개)
 }
 document.write("<br>");
+document.write("<br>");
 
+/* 방법② */
 var arr = new Array('one', 'two' ,'three'); // array로 관리하는 방 3개
-document.write(arr.length +"<br>")
+document.write("arr 갯수: " + arr.length +"<br>")
 
-for(var i=0;i<arr.length;i++){ // 3번방 까지 보겠다
+for(var i=0;i<arr.length;i++){ // for문 돌려가며 3번방 까지 하나씩 출력해서 보겠다
 	document.write(arr[i] + " "); // 변수에 값 없어서 undefined 4번 출력됨 (방4개)
 }
 document.write("<br>");
+document.write("<br>");
 
-var arr2 = new Array();
-document.write(arr2.length +"<br>")
-arr2[0] = 'spring';
-arr2[1] = 'summer'; // 주석 달아도 방의갯수는 동일하게 4개
+/* 방법③ */
+var arr2 = new Array(); // ()괄호 안에 array 갯수는 쓰지않음
+document.write("arr2 갯수: " + arr2.length +"<br>") // 배열 값 없기 때문에 0개방 출력됨
+arr2[0] = 'spring'; // 문자열은 작은따옴표(''), 큰따옴표("") 상관없음
+arr2[1] = "summer"; // 주석 달아도 방의 갯수는 동일하게 4개 / , 사이 빈칸으로라도 표시됨
 arr2[2] = 'fall';
 arr2[3] = 'winter';
-document.write(arr2.length +"<br>")
-document.write(arr2 +"<br>"); // 참조변수(arr2) 출력 : 자동으로 쉼표로 연결되어나옴
-document.write(arr2.toString() +"<br>"); // 자바에서는 참조변수 뒤 toString() 있음
+document.write("arr2 갯수: " + arr2.length +"<br>")
+document.write(arr2 +"<br>"); // 참조변수(arr2) 출력 : 자동으로 쉼표로 연결되어 출력됨
+document.write(arr2.toString() +"<br>"); // 자바에서는 참조변수 뒤 .toString() 함수 붙어있음
 
+document.write("<br>");
+
+/* 방법④ */
 var arr3 = ['rose', 'tulip', 'lily'];
-document.write(arr3.length + "<br>");
+document.write("arr3 갯수: " + arr3.length + "<br>");
+
+document.write("<br>");
 
 /* for in문 = 확장 for문 */
-for( ele in arr3 ) {
-	document.write(ele +" " + arr3[ele] + "<br>");
+for( ele in arr3 ) { //for(요소 in 작업대상) {} / ele : 0~2번방에 각각 접근(방 번호가 들어감)
+	document.write(ele +" → " + arr3[ele] + "<br>");
 }
 
-/* java와 다르게 서로 자료형을 가지고 있어도 배열을 만들 수 있음. */
+document.write("<br>");
+
+/* 배열: 같은 자료형을 갖는 데이터 여러개를 한 묶음으로 묶어놓은 것
+ * 각기 다른 자료형으로 배열 만들기 - java와 다르게 다양한 데이터를 한 묶음으로 배열을 만들 수 있음 */
 var arr4 = [1,0.987,"abc",true];
+document.write("arr4 갯수: " + arr4.length + "<br>");
 for(pos in arr4){
-	document.write(pos + arr4[pos] + "<br>");
+	document.write(pos + " → " + arr4[pos] + "<br>");
 }
 
 </script>
@@ -60,16 +75,41 @@ for(pos in arr4){
 </body>
 </html>
 
+<!--
+◎출력문
+4
+undefined undefined undefined undefined 
+
+arr 갯수: 3
+one two three 
+
+arr2 갯수: 0
+arr2 갯수: 4
+spring,summer,fall,winter
+spring,summer,fall,winter
+
+arr3 갯수: 3
+
+0 rose
+1 tulip
+2 lily
+
+arr4 갯수: 4
+01
+10.987
+2abc
+3true
+-->
+
 <!-- 
-내가 만든 객체 멤버변수에 값을 ~~~접근★
-class Person{
- String name;
+class Person{ // 내가만든 클래스
+	String name;
 }
+Person p = new Person(); // Person class 객체 생성 / 내가 만든 객체
+p.name = "길동"; // p라는 참조변수로 name이라는 멤버변수에 접근(값 넣음)
 
-Person p = new Person();
-p.name = "길동";
-
-ArrayList<String> list = new ArrayList<String>();
-list.add("아이유") // .을 찍었다는 것은 매서드나 변수에 접근하겠다는 뜻
-
+ArrayList<String> list = new ArrayList<String>(); // 자바 개발자들이 만들어놓은 내장 객체
+list.add("아이유")
+// 참조변수에 .을 찍었다는 것은 내가 만든 클래스나, 이미 만들어져있는 클래스에 객체를 생성한 후 어떤 매서드나 변수에 접근하겠다는 뜻
+/* 내장객체: 대표적으로 document / 내가 new 사용해서 쓰지 않아도 자동으로 만들어져 있는 객체 */
 -->

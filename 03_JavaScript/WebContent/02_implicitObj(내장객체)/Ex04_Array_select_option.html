@@ -9,57 +9,63 @@
 		height: 100px;
 		border: 1px solid black;
 	}
-
 </style>
 
 <script type="text/javascript">
 	function init() { // 함수 정의 - 시작하자마자 옵션 출력
-		// alert("1"); //잘호출되나 확인 후 주석달기
-		/* ★ 녹음확인 document에 ~가 있고,   */
-		// 태그 안쓰고 자바스크립트로 표현하기
-		document.myform.sel.options[0] = new Option("apple","사과"); // 옵션 3개 만들어서 (이미 만들어져있는 배열) ~~
-		document.myform.sel.options[1] = new Option("banana"); // 앞에것이 text고 뒤에것이 value다, text=value면 하나만 써도됨
-		document.myform.sel.options[2] = new Option("orange");
+		//alert("1"); //잘 호출되나 확인 후 주석달기
 		
-		document.myform.sel.options[1].selected = true;
+		// ● HTML 태그 안쓰고 JavaScript로 옵션 생성 방법
+		// options[]: JavaScript안에 이미 만들어져 있는 배열. ↓ 옵션 3개 생성
+		//myform의 id가 sel인 곳으로 가서 options으로 넣어라
+		document.myform.sel.options[0] = new Option("apple","사과"); // "apple"이 text, "사과"가 value(화면의 보이는 것이 text값)
+		document.myform.sel.options[1] = new Option("banana"); // 바나나는 1번 방에 의해 관리됨
+		document.myform.sel.options[2] = new Option("orange"); // text값=value값이 같으면 하나만 써도됨
+		
+		document.myform.sel.options[1].selected = true; // 바나나가 기본으로 선택이됨
 	} // init()
 	
 	function Change(mf) { // 변화가 생겼을 때 아래 내용이 입력되도록 해주기
 		//alert("2");
 		
-		//var index = document.myform.sel.selectedIndex; // 선택한 항목의 번호가 뭔지 나타내줌
-			// apple 누르면 0, banana 누르면 1, orange 누르면 2로 alert창 뜸
-		var index = mf.sel.selectedIndex;
-		alert(index);
-		
-		//stext = document.myform.sel.options[index].text; //옵션 [1]번방 text를 가져와라
+		//var index = document.myform.sel.selectedIndex; // 선택한 항목의 번호가 몇번인지 index 변수에 넣고 alert으로 출력해봄
+		var index = mf.sel.selectedIndex; // mf 에는 myform에 대한 정보가 들어가있음 (▶코드 짧게 줄여주는 방법)
+		alert(index); // apple 누르면 0, banana 누르면 1, orange 누르면 2로 alert창 뜸
+			
+		//stext = document.myform.sel.options[index].text; // index에 0이 들어가면 0번째 text 가져와라 / stext: select 옵션에서 선택한 text
 		stext = mf.sel.options[index].text;
 		svalue = document.myform.sel.options[index].value;
 		
 		alert(stext + "," + svalue); // 내가 선택한 항목 가져오기
 		
-		myarea = document.getElementByid("result"); //
-		myarea.innerHTML = stext + "," + svalue;
-		
+		myarea = document.getElementById("result"); // id가 result인 영역의 정보를 가져와서 myarea 변수에 넣어라
+		myarea.innerHTML = stext + "," + svalue; // myarea에 HTML코드(alert에 출력한 stext + "," + svalue) 넣어라
 		
 	} // change()
-
+	
 </script>
 
 </head>
-<body onLoad="init()"> <!-- init()함수 호출 : body영역 로드 되자마자(흰배경 나타나자마자) init 함수 호출하겠다는 뜻 -->
-	<form name="myform">
-		<select id="sel" onChange="Change(myform)"> <!-- select 옵션이 바꼈을때 change()함수 불러서 alert 출력 -->
-			<!-- 보통 효과 설정할때는 id 속성을 많이 쓴다 -->
-			<!--
-			<option value="apple">apple</option> value="apple"은 생략가능, jsp에서 중요
-			<option value="banana">banana</option> 중간 banana: text
+<body onLoad="init()"> <!-- onLoad="init()": body영역 로드 되자마자(흰배경 나타나자마자) init 함수 호출하겠다는 뜻 -->
+	<form name="myform"> <!-- form 이름 지정 -->
+		<select id="sel" onChange="Change(myform)"> 
+		<!--보통 효과 설정할때는 id 속성을 많이 쓴다.-->
+		<!-- select 옵션에 변화가 생겼을 때 change()함수 불러서 호출(alert(2) 출력) -->
+		<!-- ▶ Change()함수 호출할 때 myform 넣어서 넘겨줌 → function Change()에서 넘어오는 것 받음 → 
+			function Change(mf)로 변수이름 아무거나 넣어줌 → myform에 대한 정보가 mf로 가있음  --> 
+			
+			<!-- ●HTML 태그로 옵션 생성 방법
+			<option value="apple">apple</option> // value="apple"은 생략가능, jsp에서 중요
+			<option value="banana">banana</option>  // <> 중간 banana: text (화면에는 text 값이 출력된다)
 			<option value="orange" selected="selected">orange</option>
-			기본적으로 default값: 맨 위에 쓴것, selected: 기본값으로 선택됨, 속성=값이면 값만  써도됨
+			기본적으로 default값: 맨 위에 쓴것, selected: 기본값으로 선택됨, 속성=값이면 속성만  써도됨
+			→원래 default 값으로 맨 위에있는 apple이 선택되어 나오지만, selected 해준 orange가 기본값으로 설정됨
 			-->
 		</select>
 	</form>
 
-	<div id="result"></div>
+	<div id="result">
+		<!-- 결과 나오는 자리(선택한 메뉴가 무엇인지 출력하는 곳) -->
+	</div>
 </body>
 </html>

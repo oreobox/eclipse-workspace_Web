@@ -971,7 +971,7 @@ webkit-column-count: 6;
 @media only screen and (min-width: 1025px){ - 해당 픽셀 이상이면 아래 설정 적용
 
 
------------------------------- 03_JavaScript ------------------------------
+------------------------------ 03_JavaScript_01_Bagic ------------------------------
 ▶Ex01
 document.write(typeof('abc') + "<br>"); // typeof: 데이터 타입이 뭔지 알 수 있는 함수
 
@@ -990,15 +990,196 @@ alert: 확인 버튼 하나만 있는 대화상자(경고창 비슷)
 	예시) var result = answer ? "yes" : "no" ;
 	
 ▶Ex05_function
-▶
-▶
-▶
-▶
-▶
-▶
-▶
-▶
-▶
-▶
-▶
-▶
+▶Ex06_function
+▶Ex07_switch_int
+▶Ex08_for
+▶Ex09_do_while
+
+------------------------------ 03_JavaScript_02_implicitObj(내장객체) ------------------------------
+<!-- 
+class Person{ // 내가만든 클래스
+	String name;
+}
+Person p = new Person(); // Person class 객체 생성 / 내가 만든 객체
+p.name = "길동"; // p라는 참조변수로 name이라는 멤버변수에 접근(값 넣음)
+
+ArrayList<String> list = new ArrayList<String>(); // 자바 개발자들이 만들어놓은 내장 객체
+list.add("아이유")
+// 참조변수에 .을 찍었다는 것은 내가 만든 클래스나, 이미 만들어져있는 클래스에 객체를 생성한 후 어떤 매서드나 변수에 접근하겠다는 뜻
+/* 내장객체: 대표적으로 document / 내가 new 사용해서 쓰지 않아도 자동으로 만들어져 있는 객체 */
+-->
+
+▶Ex01_Array배열
+→ 방법①		
+var a = Array(4);
+document.write(a.length +"<br>") // 배열의 방의 갯수 조회
+
+for(var i=0;i<a.length;i++){ // 0~3번방 까지 각 방에 들어있는 값을 구해라
+	document.write(a[i] + " "); // 변수에 값 없어서 undefined 4개 출력됨 (방4개)
+}
+
+→ 방법②
+var arr = new Array('one', 'two' ,'three'); // array로 관리하는 방 3개
+document.write("arr 갯수: " + arr.length +"<br>")
+
+for(var i=0;i<arr.length;i++){ // for문 돌려가며 3번방 까지 하나씩 출력해서 보겠다
+	document.write(arr[i] + " "); // 변수에 값 없어서 undefined 4번 출력됨 (방4개)
+}
+
+→ 방법③
+var arr2 = new Array(); // ()괄호 안에 array 갯수는 쓰지않음
+document.write("arr2 갯수: " + arr2.length +"<br>") // 배열 값 없기 때문에 0개방 출력됨
+arr2[0] = 'spring'; // 문자열은 작은따옴표(''), 큰따옴표("") 상관없음
+arr2[1] = "summer"; // 주석 달아도 방의 갯수는 동일하게 4개 / , 사이 빈칸으로라도 표시됨
+arr2[2] = 'fall';
+arr2[3] = 'winter';
+document.write("arr2 갯수: " + arr2.length +"<br>")
+document.write(arr2 +"<br>"); // 참조변수(arr2) 출력 : 자동으로 쉼표로 연결되어 출력됨
+document.write(arr2.toString() +"<br>"); // 자바에서는 참조변수 뒤 .toString() 함수 붙어있음
+
+→ 방법④
+var arr3 = ['rose', 'tulip', 'lily'];
+document.write("arr3 갯수: " + arr3.length + "<br>");
+
+●for in문 = 확장 for문
+for( ele in arr3 ) { //for(요소 in 작업대상) {} / ele : 0~2번방에 각각 접근(방 번호가 들어감)
+	document.write(ele +" → " + arr3[ele] + "<br>");
+}
+
+ 
+/* 배열: 같은 자료형을 갖는 데이터 여러개를 한 묶음으로 묶어놓은 것 */
+● 각기 다른 자료형으로 배열 만들기 - java와 다르게 종류가 다른 자료형을 묶음으로 배열을 만들 수 있음
+var arr4 = [1,0.987,"abc",true];
+document.write("arr4 갯수: " + arr4.length + "<br>");
+for(pos in arr4){
+	document.write(pos + " → " + arr4[pos] + "<br>");
+}
+
+◎출력문
+4
+undefined undefined undefined undefined 
+
+arr 갯수: 3
+one two three 
+
+arr2 갯수: 0
+arr2 갯수: 4
+spring,summer,fall,winter
+spring,summer,fall,winter
+
+arr3 갯수: 3
+
+0 → rose
+1 → tulip
+2 → lily
+
+arr4 갯수: 4
+0 → 1
+1 → 0.987
+2 → abc
+3 → true
+
+▶Ex02_Array_2차원배열
+/* 2줄짜리로 구성된 2차원 배열 */
+→ 2차원 배열 방법①
+var arr = [
+			['rose','tulip','lily'],
+			['윤아','태연','서현','효연','티파니']
+		];
+
+document.write("행의 길이: " + arr.length + "<br>"); // 행의 갯수
+document.write("0행의 갯수: " + arr[0].length + "<br>"); // 각 행마다 열이 몇 개 있는지 출력
+document.write("1행의 갯수: " + arr[1].length + "<br>");
+
+●이중 for문 이용해서 각 방에 들어있는 값들 출력
+for(i=0; i<arr.length; i++){ // 행에 접근
+	for(j=0; j<arr[i].length; j++) { // 열에 접근: 각 행의 갯수만큼 반복해라(i가 0 or 1이면 0 or 1행의 갯수만큼 반복)
+		document.write(arr[i][j] + " "); // i행 j열에있는 값 출력
+	}
+	document.write("<br>")
+}
+
+●for in 문
+for(i in arr) { // i에 행 번호 들어옴(0,1)
+	//document.write(i+","+j+" ");
+	for(j in arr[i]) { // j에 0행에 들어간 열 번호(0,1,2), 1행에 들어간 열 번호(0,1,2,3,4) 들어옴
+		document.write(arr[i][j] + " ");
+	}
+	document.write("<br>")
+}
+
+→ 2차원 배열 방법②
+var arr2 = new Array(2); // Array: 객체 / 방 2개있다고 지정 안해도 자동으로 방 2개가 생김
+arr2[0] = ['rose','tulip','lily'];
+arr2[1] = ['윤아','태연','서현','효연','티파니'];
+
+for(i=0; i<arr2.length; i++){ // 행에 접근
+	for(j=0; j<arr2[i].length; j++) { // 열에 접근
+		document.write(arr2[i][j] + " ");
+	}
+	document.write("<br>")
+}
+
+◎출력문
+행의 길이: 2
+0행의 갯수: 3
+1행의 갯수: 5
+
+rose tulip lily 
+윤아 태연 서현 효연 티파니 
+
+rose tulip lily 
+윤아 태연 서현 효연 티파니 
+
+rose tulip lily 
+윤아 태연 서현 효연 티파니
+
+
+▶Ex03_Array_Date
+<!-- java에서는 date라는 클래스를 사용해서 오늘 날짜를 가지고 올 수 있다. -->
+
+<script type="text/javascript">
+	var now = new Date(); // 객체 생성
+	document.write("now1: " + now + "<br>"); // 프로그램을 사용한 현재 시간(시분초)
+	document.write("now2: " + now.toString() + "<br>"); // 참조 변수 뒤에는 .toString() 있음
+	document.write("now3: " + now.toDateString() + "<br>"); // 날짜만 조회
+	document.write("now4: " + now.toTimeString() + "<br>"); // 시간만 조회
+	
+	document.write("오늘은");
+	document.write(now.getYear() + 1900 + "년" + "<br>"); //1900+212 = 올해 년도 출력  → 2021년
+	//document.write(now.getYear()); //→ 121 출력됨
+	//1900을 더한이유: 1900년 기준으로 121년이 흘렀다는 뜻이기 때문에 더해줌
+	document.write(now.getUTCFullYear() + "년"); //올해 년도 출력→ 2021년
+	document.write(now.getMonth() + 1 + "월"); // +1 한 이유: 월이 0부터 시작하기 때문
+	document.write(now.getDate() + "일<br>"); // 날짜는 잘 나옴
+	
+	document.write("현재 시간은");
+	document.write(now.getHours() + "시");
+	document.write(now.getMinutes() + "분");
+	document.write(now.getSeconds() + "초<br>");
+	
+	var day = now.getDay(); // 요일 숫자로 표시됨(일요일: 0 ~ 토요일: 6)
+	document.write("day: " + day + "<br>");
+	
+	/* 배열로 요일 사진 가져오기 */
+	var yoil = new Array(); // 여기까지만 쓰면 아직 방이 없다.
+	yoil[0] = "./../images/sun.gif";
+	yoil[1] = "./../images/mon.gif";
+	yoil[2] = "./../images/tue.gif";
+	yoil[3] = "./../images/wed.gif";
+	yoil[4] = "./../images/thu.gif";
+	yoil[5] = "./../images/fri.gif";
+	yoil[6] = "./../images/sat.gif";
+	
+	document.write("오늘은 <img src='" + yoil[day] + "'/> 요일 입니다.");
+	// 실행하는 요일(day)에 따라 이미지 달라짐
+	
+</script>
+
+▶Ex05_Array_select_option
+
+▶Ex07_Math함수
+
+▶Ex08_문자열함수
+
+▶Ex09
