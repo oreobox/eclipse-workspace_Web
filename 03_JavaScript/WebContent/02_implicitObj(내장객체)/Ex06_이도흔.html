@@ -26,7 +26,7 @@ s_selboxText[2] = new Array('오렌지원피스', '분홍원피스', '남자아�
 
 var s_selboxImage = new Array();
 s_selboxImage[0] = new Array('woman1.jpg', 'woman2.jpg', 'woman3.jpg');
-s_selboxImage[1] = new Array('man1.jpg', '남성코트.jpg', 'man3.jpg','셔츠.jpg');
+s_selboxImage[1] = new Array('man1.jpg', 'man2.jpg', 'man3.jpg','man4.jpg');
 s_selboxImage[2] = new Array('child1.jpg', 'child2.jpg', 'child3.jpg');
 
 function init(){
@@ -43,11 +43,11 @@ function init(){
 function firstChange() {
 	//alert(2);
 	
-	var s_sel = document.myform.second;
+	var s_selbox = document.myform.second;
 	
 	//기존에 있던 것 지우고 시작하기 - options자리를 null로 만들어야함
-	for(i=s_sel.length-1; i>0; i++) {
-		s_sel.options[i] = null;
+	for(i=s_selbox.length-1; i>0; i--) {
+		s_selbox.options[i] = null;
 	}
 	
 	findex = document.myform.first.selectedIndex;
@@ -58,25 +58,20 @@ function firstChange() {
 	
 } // firstChange()
 
-
 function secondChange() {
 	//alert(3);
 	
 	findex = document.myform.first.selectedIndex; // first라는 id를 가지고 있는 select / 선택된 항목의 번호가 뭐냐? - findex 변수에 넣기
-	//alert(index);
-	ftext = document.myform.first.options[findex].text; // []번째 옵션을 가져와라
+	sindex = document.myform.second.selectedIndex;
 	
-	sindex = document.myform.second.selectedImg;
-	simg = document.myform.second.options[simg].value;
+	myarea = document.getElementById("result"); // 네모칸 result 영역을 myarea로 관리
+	myarea.innerHTML = "선택한 상품은<br> <img src= './../images/" + s_selboxImage[findex-1][sindex-1] +
+						"' width='160px' height='160px'/>"; // myarea가 관리하는 곳에 HTML 코드 넣어라
 	
-	alert(findex+","+ftext+","+ sindex+","+ simg);
 	
-	myImg = document.getElementById("result");
-	myImg.innerHTML = findex+","+ftext+","+ sindex+","+ simg;
+	
 	
 } // secondChange()
-
-
 
 </script>
 </head>
