@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex03.html</title>
+<script type="text/javascript">
+	var now = new Date();
+	document.write("now1: " + now + "<br>"); // 프로그램 시작한 시분초
+	document.write("now2: " + now.toString() + "<br>"); // 참조 변수 뒤에는 .toString() 있음
+	document.write("now3: " + now.toDateString() + "<br>"); // 참조 변수 뒤에는 .toString() 있음
+	document.write("now4: " + now.toTimeString() + "<br>"); // 참조 변수 뒤에는 .toString() 있음
+	
+	document.write("오늘은");
+	document.write(now.getYear() + 1900 + "년" + "<br>"); //→121 
+	//1900을 더한이유: 1900년 기준으로 121년이 흘렀다는 뜻이기 때문에 더해줌
+	document.write(now.getUTCFullYear() + "년");
+	document.write(now.getMonth() + 1 + "월"); // +1 한 이유: 월이 0부터 시작하기 때문
+	document.write(now.getDate() + "일<br>"); // 날짜는 잘 나옴
+	
+	document.write("현재 시간은");
+	document.write(now.getHours() + "시");
+	document.write(now.getMinutes() + "분");
+	document.write(now.getSeconds() + "초<br>");
+	
+	var day = now.getDay(); // 일: 0
+	document.write("day: " + day + "<br>");
+	
+	/* 배열로 요일 사진 가져오기 */
+	var yoil = new Array();
+	yoil[0] = "./../images/sun.gif";
+	yoil[1] = "./../images/mon.gif";
+	yoil[2] = "./../images/tue.gif";
+	yoil[3] = "./../images/wed.gif";
+	yoil[4] = "./../images/thu.gif";
+	yoil[5] = "./../images/fri.gif";
+	yoil[6] = "./../images/sat.gif";
+	
+	document.write("오늘은 <img src='" + yoil[day] + "'/> 요일 입니다.");
+	
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

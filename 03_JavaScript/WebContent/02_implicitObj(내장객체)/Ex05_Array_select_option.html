@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">	
+	div{
+		background-color: yellow;
+		width: 200px;
+		height: 150px;
+		border: 1px solid black;
+	}
+	
+</style>
+
+<script type="text/javascript">
+	var f_selarr = new Array('한식','중식','일식','양식'); <!-- 첫번째 select 박스에 들어갈 배열 -->
+	
+	/*방법1
+	var s_selarr = new Array(); // ↓ 이차원 배열 만들기
+	s_selarr[0] = new Array('김치찌개','된장찌개','불고기','설렁탕','뼈해장국'); // 5개
+	s_selarr[1] = new Array('짜장면','탕수육','팔보채','깐풍기'); // 4개
+	s_selarr[2] = new Array('초밥','돈부리','문어구이','스시','우동'); // 5개
+	s_selarr[3] = new Array('스테이크','캐비어','푸아그라','파스타','피자'); // 5개 */
+	
+	/* 방법2 */
+	s_selarr = [
+		['김치찌개','된장찌개','불고기','설렁탕','뼈해장국'],
+		['짜장면','탕수육','팔보채','깐풍기'],
+		['초밥','돈부리','문어구이','스시','우동'],
+		['스테이크','캐비어','푸아그라','파스타','피자']
+	];
+	
+	// f_selarr 0번방 선택(한식) 시 s_selarr 0번방 배열 출력
+	
+	function init(){
+		//alert(1);
+		document.myform.first.options[0] = new Option("선택"); // 첫번째 선택창, 0번째에 선택 들어가게 하기
+		document.myform.second.options[0] = new Option("선택"); // 두번째 선택창, 0번째에 선택 들어가게 하기
+		
+		for(var i=0;i<f_selarr.length;i++){
+			document.myform.first.options[i+1] = new Option(f_selarr[i]); // new Option('한식','한식');을 나타내는데 속성=값 같아서 한번만 써줌
+		}
+		
+	} // init()
+	
+	function firstChange() {
+		//alert(2);
+		
+		var s_sel = document.myform.second; // 두번째 select option 변수로 넣어줌
+		
+		//기존에 있던 것 지우고 시작하기 - options자리를 null로 만들어야함
+		for(i<s_sel.length-1; i>0; i++) {
+			s_sel.options[i] = null;
+		}
+		
+		findex = document.myform.first.selectedIndex; // 내가 선택한 번호의 ~~★
+		//alert(findex); // 중식: 2 - 2지만 1행의 길이만큼 하나 뺀 값으로 출력해야함
+		
+		for(var i=0;i<s_selarr[findex-1].length; i++){
+			document.myform.second.options[i+1] = new Option(s_selarr[findex-1][i]); // option()에 값=속성 같아서 한번만 씀
+			}
+		
+	} // firstChange()
+	
+	function secondChange() {
+		//alert(3);
+		
+		findex = document.myform.first.selectedIndex; // first라는 id를 가지고 있는 select
+		//alert(index); // 첫번째 항목 선택된 것 뭔지 출력해보기
+		ftext = document.myform.first.options[findex].text; // text를 가지고 오든 value를 가지고 오든 똑같음
+		
+		sindex = document.myform.second.selectedIndex; // second라는 id를 가지고 있는 select
+		svalue = document.myform.second.options[sindex].value; // text를 가지고 오든 value를 가지고 오든 똑같음
+		
+		alert(findex+","+ftext+","+ sindex+","+ svalue);
+		
+		myarea = document.getElementById("result"); // result 영역을 myarea로 관리
+		myarea.innerHTML = findex+","+ftext+","+ sindex+","+ svalue; // myarea에 넣기
+		/* 2. 중식 1. 짜장면 이런식으로 출력되도록 */
+	} // secondChange()
+
+</script>
+
+</head>
+<body onLoad="init()">
+	<form name="myform">
+		<select id="first" style="width:70px" onChange="firstChange()">
+		
+		</select>
+		
+		<select id="second" style="width:80px" onChange="secondChange()">
+		
+		</select>
+	</form>
+	
+	<div id="result">
+	
+	</div>
+</body>
+</html>

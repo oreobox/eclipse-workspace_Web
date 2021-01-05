@@ -4,35 +4,31 @@
 <meta charset="UTF-8">
 <title>Ex11_이도흔.html</title>
 <style type="text/css">
-	#table {
-		border: 1px solid black;
-		border-collapse: collapse;
-		empty-cells: hide;
-		border-spacing: 0px;
-		text-align: center;
+	table {
+		width: 800px;
+		text-align: center; /* 텍스트 가운데 정렬 */
+		border-collapse: collapse; 
 	}
-	#table th {
-		border: 1px solid black;
-		background-color: pink;
+	tr:nth-child(1) {
+		background: pink;
 	}
-	#table td{
-		border: 1px solid black;
-	}
-
 </style>
 
 <script type="text/javascript">
-	document.write("<table id='table'>");
+	 
+	document.write("<table border='1'>");
 	document.write("<tr>")
-	for(var i=2;i<=9; i++){
-		document.write("<th>" + i + "단" + "</th>");
-		document.write("</tr>");
-		
-		document.write("<tr>");
-		for(var j=1; j<=9; j++){
-			document.write("<td>" + i + "x" + j + "=" + (i*j) + "</td>");
-			document.write("</tr>");
+	for(var dan=2; dan<=9; dan++){
+		document.write("<td>" + dan + "단</td>");
+	}
+	document.write("</tr>");
+	
+	for(var su=1;su<=9; su++){
+		document.write("<tr>")
+		for(var dan=2;dan<=9;dan++){
+			document.write("<td>" + dan + "X" + su + "=" + (dan*su) + "</td>");
 		}
+		document.write("</tr>");
 	}
 	document.write("</table>");
 </script>

@@ -3,9 +3,64 @@
 <head>
 <meta charset="UTF-8">
 <title>Ex10_이도흔.html</title>
-<script>
-
-
+<script type="text/javascript">
+	var kor = prompt("국어 점수를 입력하세요", ""); // undefined 안나오게 기본값이나 "" 입력해놔야함
+	var eng = prompt("영어 점수를 입력하세요", "");
+	var math = Number(prompt("수학 점수를 입력하세요", "")); // Number("77") 문자열을 숫자로 바꿔줌
+	
+	document.write("국어: " + kor +"<br>"); // .document : 객체 - 매서드에 접근하는 방법
+	document.write("영어: " + eng +"<br>");
+	document.write("수학: " + math +"<br>");
+	document.write("<br>");
+	
+	var total = parseInt(kor)+parseInt(eng)+parseInt(math); //paseInt: 소수점 없이 정수만 출력
+	// var total = +kor+Number(eng)+eval(math); 숫자로 바꿔줌
+	var avg = total/3;
+	document.write("합계: " + total + "<br>");
+	document.write("평균: " + avg + "<br>");
+	document.write("평균2: " + Math.round(avg) + "<br>"); // 소수점 첫번째 자리  보고 반올림 할지말지 결정해서★ 
+	document.write("평균3: " + avg.tofixed(2) + "<br>"); // 소수 세번째 자리 보고 반올림 할지말지 결정해서 두번째 자리까지 나옴
+	document.write("<br>");
+	
+	/* Math.floor() : 소수점 이하를 버림한다.
+	Math.ceil() : 소수점 이하를 올림한다.
+	Math.round() : 소수점 이하를 반올림한다.
+	round의 사전적 의미.
+	1. (숫자를) 반올림하다. (끝수를) 사사오입하다.
+	2. 주어진 수를 가장 가까운 정수로 반올림하다. Convenient for rounding other numbers to.
+	*/
+	
+	//if~else
+	/* if(avg >=90 && avg <=100) {
+		document.write("A학점");
+	}else if(avg >=80 && avg <90) {
+		document.write("B학점");
+	}else if(avg >=70 && avg <80) {
+		document.write("C학점");
+	}else if(avg >=60 && avg <70) {
+		document.write("D학점");
+	}else if(avg <60 && avg>=0);
+		document.write("F학점"); */
+		
+	//switch case
+	avg = parseInt(avg/10);
+	switch(avg){
+	case 10:
+		document.write("A학점");
+		break;
+	case 9: 
+		document.write("B학점");
+		break;
+	case 8: 
+		document.write("C학점");
+		break;
+	case 7: 
+		document.write("D학점");
+		break;
+	default:
+		document.write("F학점");	
+	}
+	
 </script>
 
 </head>
@@ -14,5 +69,17 @@
 </body>
 </html>
 
-<!-- 국영수 입력받아 합계 평균 구하고
-학점 if, switch -->
+<!-- 
+국영수 입력받아 합계 평균구하고
+학점 if, switch~case로 구하기
+국어:77
+영어:89
+수학:100
+
+합계:266
+평균:88.66666666666667
+
+B학점
+B학점
+ -->
+ 

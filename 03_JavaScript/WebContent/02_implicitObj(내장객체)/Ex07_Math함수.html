@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex07_Math함수.html</title>
+<script type="text/javascript">
+	var maxNum = Math.max(30,70,2,123); // java는 2개만 쓸수있지만, javaScript는 인자 여러개 넣을 수 있음
+	document.write("maxNum:" + maxNum + "<br>") // 대/소문자 구분함
+	
+	var minNum = Math.min(30,70,2,123); // java는 2개만 쓸수있지만, javaScript는 인자 여러개 넣을 수 있음
+	document.write("minNum:" + minNum + "<br>") // 대/소문자 구분함
+	
+	var roundNum = Math.round(3.5); // 소수점 아래 첫번째 자리를 보고 반올림 결정함
+	document.write("roundNum:" + roundNum + "<br>")
+	
+	var ceilNum = Math.ceil(3.1); // 무조건 올림하는 함수
+	document.write("ceilNum:" + ceilNum + "<br>");
+	
+	var floorNum = Math.floor(3.7); // 무조건 소수점 버리는 함수
+	document.write("floorNum:" + floorNum + "<br>");
+	
+	var parseIntNum = parseInt(3.7); // 소수점 밑에 무조건 버리는 함수 (Math. 붙이지 않음)
+	document.write("parseIntNum:" + parseIntNum + "<br>");
+	
+	var randomNum = Math.random(); // 난수 발생시키는 함수 // 0<=x<1, 난수의 범위 지정 가능
+	document.write("randomNum:" + randomNum + "<br>");
+	
+	// 4이상~7미만(4,5,6)의  정수 난수 1개 발생시키기
+	var randomNum2 = Math.floor((Math.random()*3)+4); // 4부터 시작이니까 +4, 맨 뒷 숫자에서 첫번째 숫자 빼고 +1 한것 *뒤에쓰기
+	document.write('randomNum2: ' + randomNum2 + "<br>");
+	
+	// 0~2정수 난수 이미지 불러오기
+	var image = new Array('./../images/pic1.jpg','./../images/pic2.jpg',
+			'./../images/pic3.jpg'); // 이미지 0,1,2번방에 들어옴
+	num = parseInt(Math.random()*3);
+	document.write("<img src='" + image[num] + "'/>");
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

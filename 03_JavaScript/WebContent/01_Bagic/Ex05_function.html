@@ -11,21 +11,26 @@
 	}
 </style>
 
+
 <script>
 	function SumofTwo(a,b){ //변수만 쓰면됨. 자바처럼 int a, int b 안써도됨
-		//alert(a); // 버튼 누를때마다 1 출력되는 경고창 뜸
+		//alert(1);
+		//alert(a); // 버튼 누를때마다 1 출력되는 경고창 뜸 (잘 호출되는지 확인하고 주석처리)
 		//alert(b); // undefined 출력됨
 		
-		myarea = document.getElementById("result") // id가 result인 영역에 대한 정보를 가져와라
-		if(a==null){ // 2번째 버튼 클릭 했다는 뜻
+		myarea = document.getElementById("result") // document 영역: 출력되는 흰색 창 모두 
+				// .getElementById("result"): id가 result인 영역에 대한 정보를 가져와라
+				// myarea 영역 : 정사각형 박스
+		if(a==null){ // 2번째 버튼 클릭 했다는 뜻 - if문 : 어떤 버튼을 클릭했는지 구분해서 나타냄
 			alert('2번째 버튼 클릭');
 			myarea.innerHTML = "변수 a가 초기화 되지 않았습니다.<br> 변수 b의 값은 " + b + "입니다."
-			// body 안에 써놓은 모든것 : html 코드
-		}else if(typeof b == "undefined") { // 3번째 버튼 클릭 했다는 뜻
+			// body 안에 써놓은 모든것 : html 코드(태그 있으나 없으나 똑같음)
+			//myarea.innerHTML: myarea 영역에 html 코드로 생각하고 넣어라
+		}else if(typeof b == "undefined") { // 3번째 버튼 클릭 했다는 뜻(3번째 버튼에는 2번째 자리 값(b자리)이 아예 없기 때문에)
 			alert('3번째 버튼 클릭');
 			myarea.innerHTML = "변수 b에는 아무 값도 들어오지 않습니다.";
 		}else{ // 1번재 버튼 클릭 했다는 듯
-			alert('1번재 버튼 클릭');
+			alert('1번째 버튼 클릭');
 			myarea.innerHTML = "a+b의 값은 " + (a+b)+"입니다."; // JavaScript; 생략가능
 		}
 		
@@ -36,13 +41,15 @@
 <body>
 
 	<form>
+		<!-- 자바에서는 넘기는 갯수만큼 똑같이 받아줘야하는데 javascript는 변수 값 몇개(최대값) 넣었는지에 따라 넣어도되고 안넣어도됨 -->
 		<input type="button" value="a=3,b=10" onclick="SumofTwo(3,10,1)"> <!-- sum of Two 호출 -->
-		<input type="button" value="b=8" onclick="SumofTwo(null,8)"> <!-- sum of Two 호출 -->
+		<input type="button" value="b=8" onclick="SumofTwo(null,8)"> <!-- sum of Two 호출, 하나만 넘김 -->
 		<input type="button" value="a=3" onclick="SumofTwo(3)"> <!-- sum of Two 호출 -->
+		<!-- 버튼 누를 때마다 alert 창이 뜸 - 잘 호출이 된다는 뜻 -->
 	</form>
 	
 	<div id="result">
-	
+	  <!-- div에 값 넣지 않았기 때문에 아무것도 보이지않음 -->
 	</div>
 
 </body>

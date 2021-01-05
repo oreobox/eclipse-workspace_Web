@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex06_내이름.html</title>
+<style type="text/css">
+	div{
+		width: 200px;
+		height: 200px;
+		border: 1px solid black;
+	}
+
+
+</style>
+
+
+<script type="text/javascript">
+var f_selbox = new Array('여성복','남성복','아동복');
+
+
+var s_selboxText = new Array();
+s_selboxText[0] = new Array('회색바지', '검정바지', '반팔');
+s_selboxText[1] = new Array('점퍼', '코트', '양복','셔츠');
+s_selboxText[2] = new Array('오렌지원피스', '분홍원피스', '남자아동복');
+
+
+var s_selboxImage = new Array();
+s_selboxImage[0] = new Array('woman1.jpg', 'woman2.jpg', 'woman3.jpg');
+s_selboxImage[1] = new Array('man1.jpg', '남성코트.jpg', 'man3.jpg','셔츠.jpg');
+s_selboxImage[2] = new Array('child1.jpg', 'child2.jpg', 'child3.jpg');
+
+function init(){
+	//alert(1);
+	document.myform.first.options[0] = new Option("선택"); // 첫번째 선택창, 0번째에 선택 들어가게 하기
+	document.myform.second.options[0] = new Option("선택"); // 두번째 선택창
+
+	for(var i=0; i<f_selbox.length; i++){
+		document.myform.first.options[i+1] = new Option(f_selbox[i]);
+	}
+
+} // init()
+
+function firstChange() {
+	//alert(2);
+	
+	var s_sel = document.myform.second;
+	
+	//기존에 있던 것 지우고 시작하기 - options자리를 null로 만들어야함
+	for(i<s_sel.length-1; i>0; i++) {
+		s_sel.options[i] = null;
+	}
+	
+	findex = document.myform.first.selectedIndex;
+	
+	for(var i=0;i<s_selboxText[findex-1].length; i++) {
+		document.myform.second.options[i+1] = new Option(s_selboxText[findex-1][i]);
+	}
+	
+} // firstChange()
+
+
+function secondChange() {
+	//alert(3);
+	
+	findex = document.myform.first.selectedIndex; // first라는 id를 가지고 있는 select
+	//alert(index);
+	ftext = document.myform.first.options[findex].text;
+	
+	sindex = document.myform.second.selectedImg;
+	simg = document.myform.second.options[simg].value;
+	
+	alert(findex+","+ftext+","+ sindex+","+ simg);
+	
+	myImg = document.getElementById("result");
+	myImg.innerHTML = findex+","+ftext+","+ sindex+","+ simg;
+	
+} // secondChange()
+
+
+
+</script>
+</head>
+<body onLoad="init()">
+	<form name = "myform">
+		<select id="first" style="width:70px" onChange="firstChange()">
+		
+		</select>
+		
+		<select id="second" style="width:100px" onChange="secondChange()">
+		
+		</select>
+	
+	</form>
+	
+	<div id="result">
+	
+	</div>
+
+</body>
+</html>

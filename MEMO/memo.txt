@@ -323,38 +323,7 @@ type 속성값: input type="유형"
 
 
 ------------------------------ ※용어※ ------------------------------
-style="" - 영역에 디자인 넣고 싶을 때 사용
-	font-size:12px; - 글자 크기
-	color:#FF00DD; - 글자 색
-	line-height:150%; - 줄간격
-	background-color:green; - 배경색
 
-text-align: center|left(default값)|right|justify(양쪽정렬) - 글자 정렬
-
-width: 50%; /* 너비 */
-line-height: 150%; /* 상하 문자열 간의 줄 간격 */
-list-style: none; /* 리스트 스타일 지정X, square(사각형),circle(흰원),disc(검은원) */
-text-decoration: none; /* 하이퍼링크 기본으로 들어가는 글자에 밑줄 없애고 싶을 때 */
-	unerline(글자에 밑줄), overline(글자에 윗줄), line-through(글자에 줄긋기), blink(문자열 깜빡임)
-
-border: 1px solid #000; /* 테두리 굵기, 테두리종류(solid 실선), 테두리 색깔 */
-	border-bottom: dotted; /* 테두리 종류dotted(점선 밑줄) */
-	border-bottom-color: red; /* 테두리 색 설정 */
-	border-radius: 40px; /* 숫자가 클 수록 테두리 둥글게 설정 */
-	border-radius: 70px 20px 10px 3px; /* 왼쪽상단 부분을 첫 시작으로 시계 방향 순으로 설정  */
-	border-radius: 70px 20px; /* 70px 20px 70px 20px 와 같다고 보면됨 */
-padding:30px; /* 30px만큼 안쪽 여백 설정 */
-	padding-top: 10px;
-	padding-right: 10px;
-	padding: 10px 20px 50px 100px; /* top right bottom left(시계방향순으로 작성) */
-	padding: 10px 30px; /* (10px 자리 : top,bottom / 30px자리: right,left) */
-margin: 20px; /* 바깥쪽 여백 설정-줄간격*/
-	margin-top|bottom|left|right
-	margin: 10px 5px 10px 20px; /*top right bottom left (시계방향순으로 작성) */
-
-font-weight:bold; /* 글자 굵게 */
-font-family: "맑은 고딕", 궁서; /* 폰트 설정(처음쓴 글꼴이없으면 , 다음 폰트로 넘어감 - 글자에 공백있으면 ""로 묶기) */
-float: right; /* 이미지가 오른쪽 비어있는 공간으로  띄어오르게하기 */
 
 
 ------------------------------ 02_CSS/chap01 ------------------------------
@@ -915,56 +884,121 @@ letter-spacing:
 			}
 			/* ★ */
 			
-*****20210104
-▶다단에 구분선 표시하기(4-1)
-			#bookPart{
-				width:850px;
-				margin-left: 50px;
-				margin-bottom: 50;
-				column-count: 6; /* 6칸으로 단이 나뉨 */
-				column-rule: 1px dashed #666; /* 단과 단 사이 구분선 넣고 싶을 때 */
-				column-gap: 40px; /* 칼럼과 칼럼 사이에 간격 설정 */
-				text-align:justify; /* 문단 양쪽 정렬 */
-				
-				/* <벤더 프리픽스>-안되는 기능 있을 때
-				-webkit-: 크롬, Safari 에서 실행할때 사용
-				-moz-: Firefox
-				-ms-: IE(인터넷익스플로어) */
-				
-				-webkit-column-count: 6;
-				-moz-column-count: 6;
-				-ms-column-count: 6;
-			}
+*****210104
+▶다단 나누고 구분선 표시하기(4-1)
+		#bookPart{
+			width:850px;
+			margin-left: 50px;
+			margin-bottom: 50;
+			column-count: 6; /* 6칸으로 단이 나뉨 */
+			column-rule: 1px dashed #666; /* 단과 단 사이 구분선 넣고 싶을 때 */
+			column-gap: 40px; /* 칼럼과 칼럼 사이에 간격 설정 */
+			text-align:justify; /* 문단 양쪽 정렬 */
+			
+→ 벤더 프리픽스(Vendor Prefix):
+	어떤 속성, 스타일들의 기능이 가끔 실행 안될 경우 맨 앞에 붙여서 사용
+	회사별로 붙여주는 접두어
+-webkit-: 크롬, Safari 에서 실행할때 사용
+-moz-: Firefox
+-ms-: IE(인터넷익스플로어)
+		↓
+webkit-column-count: 6;
+-moz-column-count: 6;
+-ms-column-count: 6;
+}
 
-▶transform(05_00_transform)
-★
+▶transform (05_00_transform)
+      .trans01{
+         background-color: rgb(205,205,205);  /* 색표시 방법은 3가지 */  
+      
+      }
+      .trans02{
+         background-color: rgb(205,205,205);   
+         transform: rotate(20deg);
+			/* 네모칸 가운데 중심 기준으로 20도만큼 기울이기(degree), 음수도 가능 */
+		}
+		.trans03{
+			background-color: rgb(205,205,205); 
+			transform: rotate(20deg); /* (-20deg) 음수 넣으면 반대반향(반시계뱡향으로) 모양 돌아감 */
+			transform-origin: 0% 0%; /* 0.0 좌표 중심 기준으로 고정하고 기울이기 */
+		}
+		.trans04{
+			background-color: rgb(205,205,205);
+			transform: skewX(20deg); /* 사다리꼴 모양으로 기울인 형태(찌그러진 효과)-skewX, skewY */
+			transform-origin: 0% 100%; /* 왼쪽 하단을 중심으로 고정하고 거기를 기준으로 기울임 */
+			/* 0,0 → 좌측 상단, 0,100 → 좌측 하단, 100,0 → 우측 상단 , 100,100 → 우측 하단   */ 
+		}		
 
 ▶transform 속성으로 요소 변경하기(5-1)
-			/* Transform */	
-				#book1 {
-				background:url(../images/snow_book1.png) no-repeat;
-				width:300px;
-				height:193px;
-				transform:rotate(25deg);
-				transform-origin: 20% 40%; /* (default값: 50% 50%) */
-				/* margin: 20px; */
-				}	
+		/* 이미지 Transform */	
+			#book1 {
+			background:url(../images/snow_book1.png) no-repeat;
+			width:300px;
+			height:193px;
+			transform:rotate(25deg);
+			transform-origin: 20% 40%; /* (default값: 50% 50%) */
+			/* margin: 20px; */
+			}
 
-▶display(03_00_display.html)
+▶display (03_00_display.html)
 <style type="text/css">
 	img{
-		display: block; /* 원래의 속성 특징을 바꾸고 싶을 때 display 사용-블럭요소의 특징을 가져서 한칸씩 띄어짐 */
-			/* none: 아무 속성도 갖지 않겠다는 뜻
-			   inline: 인라인 요소로 바꿈 */
+		display: block; /* 블록 요소로 형식을 변경, 블럭요소의 특징을 가져서 한칸씩 띄어짐 */
+			/* display: 원래의 속성 특징을 바꾸고 싶을 때 display 사용 (img, table 태그에서 주로 사용)
+				none: 아무 속성도 갖지 않겠다는 뜻 (해당 요소를 화면에 표시하지 않음,보이지않게함)
+				inline: 인라인 요소로 형식을 바꿈 (default값)
+				block: 블록 요소로 형식을 변경, 블럭요소의 특징을 가져서 한칸씩 띄어짐 */
 	}
 </style>
 
 
 ------------------------------ 02_CSS/chap05 ------------------------------
 ▶해상도 크기에 따라 디자인 다르게 설정하기(7-1)
+/* Media Query */
+@media only screen and (min-width: 320px) and (max-width: 799px){ - min~max 사이 픽셀일 경우 적용
+	h1{
+		background: url(../images/1.png) no-repeat center top;
+		height: 295px;
+	}
+	.btn{
+		border-radius:5px;
+		padding: 5px 10px;
+		font-size:1.1em;
+	}
+}
+@media only screen and (min-width: 800px) and (max-width: 1024px){
+
+@media only screen and (min-width: 1025px){ - 해당 픽셀 이상이면 아래 설정 적용
 
 
 ------------------------------ 03_JavaScript ------------------------------
-▶(1-1)
-▶(1-1)
-▶(1-1)
+▶Ex01
+document.write(typeof('abc') + "<br>"); // typeof: 데이터 타입이 뭔지 알 수 있는 함수
+
+▶Ex02_prompt, ▶Ex03_confirm, ▶Ex04_alert
+●대화상자:
+prompt: 입력 받을 수 있는 창
+	확인 버튼 : 내가 입력한 것이 출력됨
+	취소 버튼: null (내가 입력한 것 무시됨)
+confirm: 확인/취소 버튼있는 창 생성(보통 두가지 선택지[boolean형태] 있을 때 사용)
+	확인 버튼: answer:true
+	취소 버튼: answer:false
+alert: 확인 버튼 하나만 있는 대화상자(경고창 비슷)
+		
+●조건(삼항) 연산자
+	조건 ? 참(일때수행할식) : 거짓(일때수행할식)
+	예시) var result = answer ? "yes" : "no" ;
+	
+▶Ex05_function
+▶
+▶
+▶
+▶
+▶
+▶
+▶
+▶
+▶
+▶
+▶
+▶

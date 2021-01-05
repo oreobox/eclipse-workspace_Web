@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex04.html</title>
+<style type="text/css">
+	div{
+		width: 100px;
+		height: 100px;
+		border: 1px solid black;
+	}
+
+</style>
+
+<script type="text/javascript">
+	function init() { // 함수 정의 - 시작하자마자 옵션 출력
+		// alert("1"); //잘호출되나 확인 후 주석달기
+		/* ★ 녹음확인 document에 ~가 있고,   */
+		// 태그 안쓰고 자바스크립트로 표현하기
+		document.myform.sel.options[0] = new Option("apple","사과"); // 옵션 3개 만들어서 (이미 만들어져있는 배열) ~~
+		document.myform.sel.options[1] = new Option("banana"); // 앞에것이 text고 뒤에것이 value다, text=value면 하나만 써도됨
+		document.myform.sel.options[2] = new Option("orange");
+		
+		document.myform.sel.options[1].selected = true;
+	} // init()
+	
+	function Change(mf) { // 변화가 생겼을 때 아래 내용이 입력되도록 해주기
+		//alert("2");
+		
+		//var index = document.myform.sel.selectedIndex; // 선택한 항목의 번호가 뭔지 나타내줌
+			// apple 누르면 0, banana 누르면 1, orange 누르면 2로 alert창 뜸
+		var index = mf.sel.selectedIndex;
+		alert(index);
+		
+		//stext = document.myform.sel.options[index].text; //옵션 [1]번방 text를 가져와라
+		stext = mf.sel.options[index].text;
+		svalue = document.myform.sel.options[index].value;
+		
+		alert(stext + "," + svalue); // 내가 선택한 항목 가져오기
+		
+		myarea = document.getElementByid("result"); //
+		myarea.innerHTML = stext + "," + svalue;
+		
+		
+	} // change()
+
+</script>
+
+</head>
+<body onLoad="init()"> <!-- init()함수 호출 : body영역 로드 되자마자(흰배경 나타나자마자) init 함수 호출하겠다는 뜻 -->
+	<form name="myform">
+		<select id="sel" onChange="Change(myform)"> <!-- select 옵션이 바꼈을때 change()함수 불러서 alert 출력 -->
+			<!-- 보통 효과 설정할때는 id 속성을 많이 쓴다 -->
+			<!--
+			<option value="apple">apple</option> value="apple"은 생략가능, jsp에서 중요
+			<option value="banana">banana</option> 중간 banana: text
+			<option value="orange" selected="selected">orange</option>
+			기본적으로 default값: 맨 위에 쓴것, selected: 기본값으로 선택됨, 속성=값이면 값만  써도됨
+			-->
+		</select>
+	</form>
+
+	<div id="result"></div>
+</body>
+</html>

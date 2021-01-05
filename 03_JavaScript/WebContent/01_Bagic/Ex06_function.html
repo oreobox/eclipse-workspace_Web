@@ -6,13 +6,13 @@
 <script type="text/javascript">
 	document.write("나이0: " + age + "<br>");
 
-	var age = 30; // 전역변수(var는 생략가능)
+	var age = 30; // 전역변수-선언한 이후에만 사용 가능(var는 생략가능)
 	document.write("나이1: " + age + "<br>");
 	
 	function test(){ // 함수 정의
-		//var가 있으면 새로 변수가 만들어지는것이고, var가 없으면 값 그대로 다음것 호출
-		//(함수 안에서는 var의 유무에 따라 값 달라짐)
-		age = 40; // 지역변수(함수 안에서만 사용가능)
+		//var가 있으면 새로 변수가 만들어지는것이고, var가 없으면 기존에 만든 값 그대로 다음에 호출
+		//(함수 안에서는 var의 유무에 따라 값 달라짐-전역변수가 될 수도있고, 지역변수가 될 수도있다.)
+		var age = 40; // 지역변수(var를 붙이면 함수 안에서만 사용가능)
 		document.write("나이2: " + age + "<br>");
 	}
 	

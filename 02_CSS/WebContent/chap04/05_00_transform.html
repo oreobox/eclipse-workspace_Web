@@ -5,52 +5,56 @@
 <title>05_00_transform.html</title>
 </head>
 	<!-- trans1에 150,50으로 칸 만들기 -->
-	<style type="text/css">
-      	.wrapper{
-	         width:150px;
-	         height:50px;
-	         border:1px dashed #bbb;
-	         margin: 60px; /* 사방 여백설정 */
-		}
-		.trans01, .trans02, .trans03, .trans04{
-			width: 150px;
-			height: 50px;
-		}
-		.trans01{
-			background-color: rgb(205,205,205); /* 색표시 방법은 3가지 */  
-		}
-		.trans02{
-			background-color: rgb(205,205,205);
-			transform: rotate(20deg); /* 네모칸 중심 기준으로 20도만큼 기울이기(degree) / 음수도 가능 */
+   <style type="text/css">
+      .wrapper{
+         width:150px;
+         height:50px;
+         border:1px dashed #bbb;
+         margin: 60px;
+      }
+      
+      .trans01,.trans02,.trans03,.trans04{
+         width:150px;
+         height:50px;
+       }
+      .trans01{
+         background-color: rgb(205,205,205);  /* 색표시 방법은 3가지 */  
+      
+      }
+      .trans02{
+         background-color: rgb(205,205,205);   
+         transform: rotate(20deg);
+			/* 네모칸 가운데 중심 기준으로 20도만큼 기울이기(degree), 음수도 가능 */
 		}
 		.trans03{
-			background-color: rgb(205,205,205);
-			transform: rotate(-20deg); /* 음수 넣으면 반대로 됨 */
-			transform-origin: 0% 0%; /* 0.0좌표 중심 기준으로 고정하고 기울이기 */
+			background-color: rgb(205,205,205); 
+			transform: rotate(20deg); /* (-20deg) 음수 넣으면 반대반향(반시계뱡향으로) 모양 돌아감 */
+			transform-origin: 0% 0%; /* 0.0 좌표 중심 기준으로 고정하고 기울이기 */
 		}
 		.trans04{
 			background-color: rgb(205,205,205);
-			transform: skewX(20deg); /* 기울인 형태(찌그러진 효과) */ /* skewY */
-			transform-origin: 0% 100%;
+			transform: skewX(20deg); /* 사다리꼴 모양으로 기울인 형태(찌그러진 효과)-skewX, skewY */
+			transform-origin: 0% 100%; /* 왼쪽 하단을 중심으로 고정하고 거기를 기준으로 기울임 */
+			/* 0,0 → 좌측 상단, 0,100 → 좌측 하단, 100,0 → 우측 상단 , 100,100 → 우측 하단   */ 
 		}		
-	</style>
-
+   </style>
+   
 <body>
-	<div class="wrapper">
-		<div class="trans01"></div>
-	</div>
-	
-	<div class="wrapper">
-		<div class="trans01"></div>
-	</div>
-	
-	<div class="wrapper">
-		<div class="trans01"></div>
-	</div>
-	
-	<div class="wrapper">
-		<div class="trans01"></div>
-	</div>
+   <div class="wrapper"> 
+      <div class="trans01"></div>
+   </div>
+   
+    <div class="wrapper"> 
+      <div class="trans02"></div>
+   </div>
+   
+    <div class="wrapper"> 
+      <div class="trans03"></div>
+   </div>
+   
+    <div class="wrapper"> 
+      <div class="trans04"></div>
+   </div>
 
 </body>
 </html>

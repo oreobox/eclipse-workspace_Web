@@ -7,16 +7,17 @@
 			body{
 				background:url(../images/pattern.png)
 			}
-			h1 span{
-				display: none; /* 보이지 않게 하고 싶을 때 none */
+			h1 span{ /* What is Responsive Web Design? 글자 보이지 않게하지 */
+				display: none; /* 보이지 않게 하고 싶을 때 */
 			}
-			.btn{
+			.btn{ /* 버튼 속성 설정 */
 				background: #000;
 				color: #fff;
 				border: none;
 			}
 			
 			/* Media Query */
+			/* min~max 픽셀 사이 사이즈일 경우 1.png 사진 불러오기 */
 			@media only screen and (min-width: 320px) and (max-width: 799px){
 				h1{
 					background: url(../images/1.png) no-repeat center top;
@@ -29,7 +30,7 @@
 				}
 			
 			}
-			
+			/* min~max 픽셀 사이 사이즈일 경우 2.png 사진 불러오기 */
 			@media only screen and (min-width: 800px) and (max-width: 1024px){
 				h1{
 					background: url(../images/2.png) no-repeat center top;
@@ -42,7 +43,7 @@
 				}
 			
 			}
-			
+			/* 최소 min 픽셀 이상의 사이즈일 경우 3.png 사진 불러오기 */
 			@media only screen and (min-width: 1025px){
 				h1{
 					background: url(../images/3.png) no-repeat center top;

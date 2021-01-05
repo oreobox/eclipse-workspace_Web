@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>문자열 관련 함수</title>
+<script type="text/javascript">
+
+	var str = "태양처럼 뜨거운, 바람처럼 자유로운 영혼";
+	document.write("str: " + str + "<br>"); // str 뒤에 .toString() 생략가능
+	document.write(str.length + "<br>"); // 글자 갯수 구할 때 length() 사용 X
+	
+	ch = str.charAt(3); // 0부터 시작해 3번째 위치에 있는 글자 확인하는 함수
+	document.write("ch: " + ch + "<br>");
+	document.write(str.indexOf('처럼') + "<br>"); // (첫번째 해당되는)글자 위치 찾고 싶을 때 사용하는 함수-있으면 0보다 큰 숫자나옴
+	document.write(str.indexOf('가나다') + "<br>"); // 값을 못찾으면 '-1'로 출력됨
+	document.write(str.slice(10,13) + "<br>"); // 10번째 ~ 13번째 앞에 것 까지만 출력 (13번째는 안가져옴)
+	document.write(str.slice(10) + "<br>"); // 10번째 ~ 끝까지 다 가져옴
+	document.write(str.slice(10,-4) + "<br>"); // 10번째~ 뒤에서부터 4칸 앞에있는 곳 앞에까지 출력
+	document.write("<br>");
+	document.write(str.substring(10,13) + "<br>"); // 10번째 ~ 13번째 앞에 것 까지만 출력 (13번째는 안가져옴)
+	document.write(str.substring(10) + "<br>"); // 10번째 ~ 끝까지 다 가져옴
+	//document.write(str.substring(10,-4) + "<br>"); // substring에는 음수가 들어갈 수 없음
+	document.write("<br>");
+	document.write(str.substr(10,3) + "<br>"); // 10번째 부터 3개 문자 가져와라
+	
+	document.write("<br>");
+	
+	document.write(str.replace('처','★') + "<br>"); // 처음 나온(만난) '처'를 뒤에 문자(★)로 바꿔라
+	document.write("<br>");
+	document.write(str + "<br>");
+	document.write(str.replace(/처/g,'★') + "<br>"); // 모든 '처' 다 바꾸고 싶을 때 '' 안써줌
+	
+	word = "I Can Do It!";
+	document.write(word.toUpperCase() + "<br>");
+	document.write(word.toLowerCase() + "<br>");
+	
+	document.write("<a href='https://www.daum.net'>네이버</a><br>"); // 문자에 하이퍼링크 쓰기
+	document.write("다음".link("https://www.daum.net") + "<br>"); //문자열에 링크함수 사용
+
+	info = "하니 70 80 90";
+	
+	arr = info.split(" "); // array의 방의 갯수는 몇개냐?
+	document.write(arr.length+ "<br>");
+	sum=0;
+	for(i=1; i<arr.length; i++){
+		//sum += arr[i]; // "70" 숫자로 나열됨
+		sum += +arr[i]; // 문자열을 숫자로 바꿈 (+, Number, eval 사용 가능)
+	
+	}
+	document.write("sum: " + sum + "<br>");
+	
+	document.write(eval("12") + 3 + "<br>");
+	document.write(Number("12") + 3 + "<br>");
+	
+	document.write("15+3*2" + 3 + "<br>"); // 연산 안됨
+	document.write(eval("15+3*2") + 3 + "<br>"); // eval: 연산을 한다
+	document.write(Number("15+3*2") + 3 + "<br>"); // Number: 숫자 이외의 것들(수식)을 넣으면 인식 못하고 에러(NaN)
+	document.write(+("15+3*2") + 3 + "<br>"); // +: 수식 인식 못하고 에러남
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

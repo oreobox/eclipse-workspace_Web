@@ -4,22 +4,12 @@
 <meta charset="UTF-8">
 <title>Ex03.html</title>
 
-<!-- 대화상자:
-	prompt,
-	confirm: (보통 두가지 선택지 있을 때 사용)
-		확인 버튼: answer:true
-		취소 버튼: answer:false
-		
-		조건 ? 참 : 거짓
-	alert: 확인버튼 하나만 있는 대화상자(경고창 비슷)
--->
 <script type="text/javascript">
 	var answer = confirm("게임 한판 하시겠습니까?");
 	document.write("answer:"+answer+"<br>");
 	
-	var result = answer ? "yes" : "no";
+	var result = answer ? "yes" : "no" ;
 	document.write(result);
-	
 </script>
 
 </head>
@@ -27,3 +17,18 @@
 
 </body>
 </html>
+
+<!--
+●대화상자:
+prompt: 입력 받을 수 있는 창
+	확인 버튼 : 내가 입력한 것이 출력됨
+	취소 버튼: null (내가 입력한 것 무시됨)
+confirm: 확인/취소 버튼있는 창 생성(보통 두가지 선택지[boolean형태] 있을 때 사용)
+	확인 버튼: answer:true
+	취소 버튼: answer:false
+alert: 확인 버튼 하나만 있는 대화상자(경고창 비슷)
+	
+●조건(삼항) 연산자
+	조건 ? 참(일때수행할식) : 거짓(일때수행할식)
+	예시) var result = answer ? "yes" : "no" ;
+-->
