@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex04_start_이도흔.html</title>
+
+<script type="text/javascript">
+	function openWin(fileName) { //onclick 에서 openWin() 호출한 것 불러옴
+		
+		var wName="popupCal";
+		var winW = 1000;
+		var winH = 650;
+		
+		//팝업창 화면 정 중앙에 띄우기
+		var winLeft = (screen.width - winW)/2;
+		var winTop = (screen.height - winH)/2;
+		
+		var options = "width=" + winW +
+						",height=" + winH +
+						",left=" + winLeft +
+						",top=" + winTop;
+		
+		window.open(fileName,wName,options);
+	}
+
+</script>
+
+</head>
+<body>
+
+	<h3>열기 버튼을 클릭하세요(start.html)</h3>
+	<form name="myform">
+		결과:
+		<input type="number" name="calResult"> <br><br>
+		<input type="button" value="열기" onclick="openWin('Ex04_end_이도흔.html')">
+	</form>
+	
+</body>
+</html>

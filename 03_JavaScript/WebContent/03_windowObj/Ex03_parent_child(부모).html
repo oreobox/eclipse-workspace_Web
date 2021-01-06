@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex03_parent_child(부모).html</title>
+<style type="text/css">
+	body{
+		text-align: center;
+	}
+</style>
+
+<script type="text/javascript">
+	function openWin(fileName){
+		
+		var wName = "popup"; //창 이름 설정
+		var winW = 600;
+		var winH = 450; //팝업창 높이
+		
+		//팝업창 화면 정 중앙에 띄우기 (가로에서 얼마 떨어진자리, 세로에서 얼마 떨어진 자리에 배치할지 정하기)★
+		var winLeft = (screen.width - winW)/2; // winLeft: 왼쪽에서 얼만큼 떨어진 자리인지 지정
+		var winTop = (screen.height - winH)/2; // winTop: 위에서 얼만큼 떨어진 자리인지 지정
+		
+		var options = "width=" +winW +
+						",height="+winH +
+						",left="+winLeft +
+						",top="+winTop; //가로,세로,왼쪽,위쪽 옵션설정
+		
+		window.open(fileName,wName,options);
+			//fileName 내용으로 채울꺼다, 창이름: popup, 속성: options 변수 있는 곳으로
+	}
+	</script>
+	</head>
+	<body>
+		<form name="myform">
+			<input type="text" name="id"> <br><!-- id:kim -->
+			<input type="text" name="password"> <br><!-- password:1234 -->
+		
+			<input type="button" value="팝업창열기" onclick="openWin('Ex03_popup(자식).html')">
+		</form>
+	</body>
+	</html>

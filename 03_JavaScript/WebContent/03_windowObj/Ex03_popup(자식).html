@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex03_popup(자식).html</title>
+<style type="text/css">
+	body{
+		text-align: center;
+	}
+	input{ /* input 태그 선택자 설정 */
+		border: 1px solid brown;
+		background: yellow;
+		color: brown;
+	}
+	img{
+		width: 300px;
+		height: 200px;
+	}
+</style>
+
+<script type="text/javascript">
+	function receiver(){
+		//alert(1);
+		
+		/* 부모창(Ex03_parent_child.html)에서 id 입력한 값을 자식창(현재창:Ex03_popup.html)에서 팝업으로 뜨게하기 */
+		window.document.myform.child_id.value = window.opener.document.myform.id.value;
+		// myform child_id에 값(value)으로 넣어라 → window.opener: 부모창(정의되있음)
+		// window.opener가 있으면 부모쪽, 없으면 자식쪽(현재창)
+		// window: 전체가 윈도우창 / document: 흰색 출력되는 창
+		// myform: input으로 선택창에 입력한 값들이 들어감. 부모와 자식의 form 이름이 같아도되고 달라도됨
+		// 부모창 myform에 있는 id에 입력한 값을 자식창 child_id에  값(value)으로 넣어봐라
+		
+		/* 부모창(Ex03_parent_child.html)에서 password 입력한 값을 (현재창:Ex03_popup.html)에서 팝업으로 뜨게하기 */
+		window.document.myform.child_password.value = window.opener.document.myform.password.value;
+		
+	} // receiver()
+	
+	function meClose(){
+		/* 닫기버튼 누르면, 자식창에 입력한 것을 부모창에 입력하도록 하기(↑위랑 반대로 하면됨) */
+		opener.myform.id.value = document.myform.child_id.value; // window, document객체 생략가능
+		opener.myform.password.value = document.myform.child_password.value;
+		
+		//window.close(); //현재 윈도우창 닫기 버튼 눌러 닫기
+		self.close(); //현재 창(팝업창) 닫기 버튼으로 닫기
+		//close(); //close()로만 써도 잘 실행됨
+	}
+</script>
+</head>
+<body onLoad="receiver()"> <!-- 자식 팝업창이 뜨자마자(로드) 하고싶은 작업 -->
+	<img src='./../images/pop1.jpg'/>
+	<br>
+	
+	<form name="myform">
+		<input type="text" name="child_id"> <br>
+		<input type="text" name="child_password"> <br> <!-- type="password": 비밀번호 가리기 효과 -->
+		
+		<input type="button" value="닫기" onclick="meClose()">
+	</form>
+</body>
+</html>

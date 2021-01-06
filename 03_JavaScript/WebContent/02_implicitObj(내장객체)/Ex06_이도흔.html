@@ -7,88 +7,90 @@
 	div{
 		width: 200px;
 		height: 200px;
-		border: 1px solid black;
+		/* border: 1px solid black; */
 	}
-
-
 </style>
-
 
 <script type="text/javascript">
 var f_selbox = new Array('여성복','남성복','아동복');
-
 
 var s_selboxText = new Array();
 s_selboxText[0] = new Array('회색바지', '검정바지', '반팔');
 s_selboxText[1] = new Array('점퍼', '코트', '양복','셔츠');
 s_selboxText[2] = new Array('오렌지원피스', '분홍원피스', '남자아동복');
 
-
 var s_selboxImage = new Array();
 s_selboxImage[0] = new Array('woman1.jpg', 'woman2.jpg', 'woman3.jpg');
 s_selboxImage[1] = new Array('man1.jpg', 'man2.jpg', 'man3.jpg','man4.jpg');
 s_selboxImage[2] = new Array('child1.jpg', 'child2.jpg', 'child3.jpg');
 
-function init(){
-	//alert(1);
-	document.myform.first.options[0] = new Option("선택"); // 첫번째 선택창, 0번째에 선택 들어가게 하기
-	document.myform.second.options[0] = new Option("선택"); // 두번째 선택창
 
-	for(var i=0; i<f_selbox.length; i++){
-		document.myform.first.options[i+1] = new Option(f_selbox[i]);
+/* init()에서 할 일: 첫번째 select 박스에 옵션 넣기  */
+function init(f){ //myform에 대한 정보 넘어오는 것을 f변수로 받기 (f = myform)
+	//alert(1);
+	//document.는 항상 생략이되어있다. 생략가능
+	//document.myform.first.options[0] = new Option("선택"); // 첫번째 선택창, 0번째에 선택 들어가게 하기
+		//↓ init함수에 f를 넣어 줄여쓰기
+	f.first.options[0] = new Option("선택"); // 첫번째 선택창의 0번째 옵션으로 선택창에 "선택" 넣기 
+	f.second.options[0] = new Option("선택"); // 두번째 선택창
+
+	for(var i=0;i<f_selbox.length;i++){
+		f.first.options[i+1] = new Option(f_selbox[i]); // (f_selbox[i],f_selbox[i]) → text=value이기 때문에 생략
+		// f_selbox[i]번째 방, 0번째 방에 "선택"이 들어가 있기 때문에 i+1번째 옵션으로 넣어라 →'여성복'을 1번 옵션부터 넣음
 	}
 
 } // init()
 
-function firstChange() {
+function firstChange(f) { // 첫번째 select 박스에서 선택한 옵션이 뭔지 가져오기
 	//alert(2);
 	
-	var s_selbox = document.myform.second;
+	//findex = document.myform.first.selectedIndex; // 첫번째 select 박스에서 선택한 항목의 index가 뭔지?
+	findex = f.first.selectedIndex; // 여성복: 1번째
+	fvalue = f.first[findex].value; // id가 first인 곳에 1번째 옵션으로 들어가있는것 값(value)이 뭔지 ?
 	
-	//기존에 있던 것 지우고 시작하기 - options자리를 null로 만들어야함
-	for(i=s_selbox.length-1; i>0; i--) {
-		s_selbox.options[i] = null;
+	//alert(findex + "," + fvalue); // 출력값: 1,여성복 2,남성복 3,아동복이 alert 창으로 뜸
+	
+	//배열 갯수가 각기 다르면 select 창 선택했을 때 값이 중복되어 들어가기 때문에, 첫번째 옵션 선택했을 때 두번째 select에 있던 옵션 지우고 시작하기 - options자리를 null로 만들어야함
+	//여성복:1번째 = 0행에 있는것 가져오기 → length-1 해주기
+	for(var i=f.second.length-1; i>0 ; i--){ //select 박스 마지막 항목(뒤에것)에 있는 것부터 지워줘야 밀려 올라가지 않는다
+		f.second.options[i] = null;
 	}
-	
-	findex = document.myform.first.selectedIndex;
-	
-	for(var i=0;i<s_selboxText[findex-1].length; i++) {
-		document.myform.second.options[i+1] = new Option(s_selboxText[findex-1][i]);
-	}
+	// s_selboxText[findex-1].length: s_selboxText 옵션의 갯수가 몇개인지 길이 구하기
+	for(var i=0;i<s_selboxText[findex-1].length ;i++){ //findex-1한 행을 i번에 걸쳐 옵션만들기 반복작업
+		f.second.options[i+1] = new Option(s_selboxText[findex-1][i]);
+	} 
 	
 } // firstChange()
 
 function secondChange() {
 	//alert(3);
 	
-	findex = document.myform.first.selectedIndex; // first라는 id를 가지고 있는 select / 선택된 항목의 번호가 뭐냐? - findex 변수에 넣기
+	findex = document.myform.first.selectedIndex; // 선택된 항목의 번호(index)가 무엇이냐?
 	sindex = document.myform.second.selectedIndex;
 	
-	myarea = document.getElementById("result"); // 네모칸 result 영역을 myarea로 관리
+	myarea = document.getElementById("result"); // id가 result인 영역의 정보를 가져와라 → result 영역을 myarea로 관리
 	myarea.innerHTML = "선택한 상품은<br> <img src= './../images/" + s_selboxImage[findex-1][sindex-1] +
 						"' width='160px' height='160px'/>"; // myarea가 관리하는 곳에 HTML 코드 넣어라
-	
-	
-	
 	
 } // secondChange()
 
 </script>
 </head>
-<body onLoad="init()">
+<body onLoad="init(myform)"> <!-- init 호출할 때 myform(<form>안에 있는것들)을 넘긴다 -->
 	<form name = "myform">
-		<select id="first" style="width:70px" onChange="firstChange()">
-		
+		<!-- 2개의 select를 구분하기 위해 id로 이름지정 -->
+		<select id="first" style="width:100px;" onChange="firstChange(myform)">
+			<!-- <option>선택</option> → 선택은 text임 // body 말고 init() function에서 옵션주는것 써도됨 -->
 		</select>
 		
-		<select id="second" style="width:100px" onChange="secondChange()">
-		
+		<select id="second" style="width:100px;" onChange="secondChange(myform)">
+			<!-- <option>선택</option> -->
 		</select>
 	
 	</form>
 	
 	<div id="result">
-	
+		<!-- 결과 나오는 자리(선택한 메뉴가 무엇인지 출력하는 곳): 이미지가 출력됨 -->
 	</div>
 
 </body>

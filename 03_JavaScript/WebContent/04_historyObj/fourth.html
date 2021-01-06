@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>fourth.html</title>
+<style type="text/css">
+	body{
+	 text-align: center;
+	}
+</style>
+</head>
+<body>
+	<h2>네번째 페이지입니다.</h2>
+	<a href="first.html"><img src="./../images/01_s.gif"></a>
+	<a href="second.html"><img src="./../images/02_s.gif"></a>
+	<a href="third.html"><img src="./../images/03_s.gif"></a>
+	
+	<img src="./../images/04.gif">
+	
+	<form>
+		<a href="#" onClick="javascript:history.go(-3)">
+			<input type="button" value="세 페이지 이전으로">
+		</a>
+		
+		<!-- 이전으로 갈때는 go(-1), 이전이전으로 갈때는 go(-2), 이전x3: -3 -->
+		
+	</form>
+</body>
+</html>

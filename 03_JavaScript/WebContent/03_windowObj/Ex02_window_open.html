@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex02_window_open.html</title>
+<script type="text/javascript">
+/* window.open('연결할 url','창이름','팝업창의 속성') */
+	window.open('Ex02_popup1.html','창이름','width=450 height=400'); // width=450 height=400 사이 공백이나 쉽표9(,)로 꼭 띄어주기(연달아 쓰지말기)
+
+function showCenter(url){ // 내가 호출한 showCenter(url) 함수를 통해서 팝업창을 가운데 띄우기
+	//alert(1);
+	
+	var winW = 600; // 띄우려는 팝업창의 크기를 변수 임의 지정해서 써줌
+	var winH = 400;
+	
+	//팝업창을 중앙으로 띄우기
+	document.write(screen.width + "," + screen.height+"<br>"); //screen 객체: 내가 사용하고 있는 모니터의 정보를 알 수 있는 객체 // 1920,1080	
+
+	var winLeft = (screen.width -  winW)/2; // (자기가 쓰고있는 스크린 가로 길이 - 모니터 넓이/길이)에서 나누기 2
+	var winTop = (screen.height - winH)/2; // (자기가 쓰고있는 스크린 세로 높이 - 모니터 높이)에서 나누기 2
+	
+	var options = "width=" +winW +",height="+winH +",left="+winLeft+",top="+winTop; // 위치에서 얼마나 떨어진 자리인지를 options 변수에넣음
+	
+	window.open(url,'mywindow',options); // 넘어온게 url에 들어있음, '창이름', options 변수에 있는 내용으로 옵션설정
+	// 위에 창에 
+	
+} // showCenter(url)
+	
+function openWindow(){
+	//alert(2);	
+	mywin  = window.open('Ex02_popup2.html','my','width=300 height=200'); // Ex02_popup2.html을 팝업으로 띄우는 창을 mywin 변수로 만듬
+	/* 별도의 창으로 열고 싶을 때는 창의 이름을 다른거로 써주고,
+	같은 창에 이어서 다른 팝업 내용 띄우고 싶을 때(덮어쓰기)는 창 이름을 똑같은거로 써준다.  → 'my'를 'mywindow'로 똑같이 썼을 경우 */
+}
+
+function closeWindow(){
+	//alert(2);	
+	mywin.close();	//mywin으로 관리하는 팝업창을 닫는다 → 창열기 버튼누르고 뜬 팝업을 창닫기 버튼으로 닫을 수 있다.	
+}
+</script>
+
+</head>
+<body>
+	<input type="button" value="이벤트" onClick="window.open('Ex02_popup2.html','popup','')" >
+	<!-- window.open: java에서 만든 함수 --> 
+	<!-- 너비높이 안쓴다고 오류는 아니지만 그래도 쓰는걸 권장 -->
+	
+	<input type="button" value="화면 중앙에 띄우기" onclick="showCenter('Ex02_popup3.html')"> <!-- 함수 호출 -->
+	
+	<input type="button" value="창열기" onclick="openWindow()"> <!--onclick: 버튼을 출력했을 때 호출하는 함수 -->
+	<input type="button" value="창닫기" onclick="closeWindow()">
+	
+</body>
+</html>

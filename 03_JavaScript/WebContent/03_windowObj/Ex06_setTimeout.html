@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex06_Ex06_setTimeout.html</title>
+<style type="text/css">
+	body{
+		text-align: center;
+	}
+</style>
+
+<script type="text/javascript">
+	window.onload = function(){
+		//alert(1);
+		
+		var time = setInterval(function () {
+			var now = new Date();
+			//document.write(now);
+			
+			hours = now.getHours();
+			//alert(hours);
+			if(hours>=12){
+				str = "오후" + (hours-12) + "시";
+			}
+			else{
+				str = "오전" + hours + "시";
+			}
+			
+			minutes = now.getMinutes();
+			//alert(minutes);
+			if(minutes < 10){
+				str += ":0" + minutes+"분"
+			}
+			else{
+				str += ":" + minutes+"분"
+			}
+			
+			seconds = now.getSeconds();
+			//alert(minutes);
+			if(seconds < 10){
+				str += ":0" + seconds+"초"
+			}
+			else{
+				str += ":" + seconds+"초"
+			}
+			
+			var area = document.getElementById("myarea");
+			area.innerHTML = str
+			
+		},1000);
+		
+		
+		
+		setTimeout(function(){
+			clearInterval(time);
+			var area = document.getElementById("myarea");
+			area.innerHTML = "중지합니다.";
+		},10000);
+		
+	}
+					
+					
+			/* var hour = now.getHours();
+			var ampm;
+			if(hour >= 12){
+				ampm="오후";
+				hour %= 12;
+			}else{
+				ampm = "오전";
+			}
+			
+			document.write(ampm + " " + hour + "시" +
+					now.getMinutes() + "분" +
+					now.getSeconds() + "초 입니다.<br>") */
+			
+			/* document.write("now4: " + now.toTimeString() + "<br>"); */
+			/* document.write(now.getHours() + "시");
+			document.write(now.getMinutes() + "분");
+			document.write(now.getSeconds() + "초 입니다.<br>"); */
+
+</script>
+</head>
+<body>
+	*setInterval 메소드*
+	<hr>
+	
+	<h3>현재 시간이 나타납니다.</h3>
+	<br>
+	<div id="myarea">    </div>
+</body>
+</html>
