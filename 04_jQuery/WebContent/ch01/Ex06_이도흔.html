@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.female{
+		background-color: orange;
+	}	
+	.male{
+		background-color: green;
+	}
+</style>
+
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		//$('td:nth-child(2)').css('background-color','red');
+		$('td:last-child').addClass('female');
+		$('td:(2)').removeClass('male');
+		//$('td:gt(4)').removeClass('bluePink');
+	});
+	
+	//$('tr:nth-child(2)').addClass('style2');
+	
+	
+	// 80점 이상 cyan , 30에서 80 사이 노란색  30점 이하 빨간색
+	// 총합:390
+	// 성별이 남자면 초록, 여자면 주황색
+	
+</script>
+
+	<!--  
+	//메서드 체이닝 (chaining): 작업대상 하나에 여러개 작업을 연달아서 쓸 수 있다. 
+	//$('p em').css('background-color','yellow'); // .css('속성','값')
+	$('p em').css('background-color','yellow')
+			 .css('border','3pt solid #f00')
+			 .each(function(){ // 각각 작업해줄 땐 each(function)-  처음만난 애는 p의 자손 em의 one, 다음엔 two, three 
+		 $('.result1').append($(this).text()); // result1 영역에 추가 하는 함수: .append() / 지금만난 그아이는 this
+			 });
+	-->
+
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<th width= "100">이름</th> <!-- th는 약간 진하게 글자나옴 -->
+			<th width= "100">점수</th>
+			<th width= "100">성별</th>
+		</tr>
+		
+		<tr>
+			<td>아이유</td>
+			<td>90</td>
+			<td>여</td>
+		</tr>
+		
+		<tr>
+			<td>백현</td>
+			<td>30</td>
+			<td>남</td>
+		</tr>
+		
+		<tr>
+			<td>정국</td>
+			<td>70</td>
+			<td>남</td>
+		</tr>
+		
+		<tr>
+			<td>웬디</td>
+			<td>60</td>
+			<td>여</td>
+		</tr>
+		
+		<tr>
+			<td>이승기</td>
+			<td>80</td>
+			<td>여</td>
+		</tr>
+		
+		<tr>
+			<td>태연</td>
+			<td>800</td>
+			<td>여</td>
+		</tr>
+		
+		<tr>
+			<td>수지</td>
+			<td>100</td>
+			<td>여</td>
+		</tr>
+		
+	</table>
+	
+	<div class="result"></div>
+</body>
+</html>

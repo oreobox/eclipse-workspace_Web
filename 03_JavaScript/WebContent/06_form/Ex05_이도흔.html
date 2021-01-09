@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원 가입하기</title>
+<script type ="text/javascript">
+	function clearText(myid) { // onFocus 했을 때 value 값 지워주기
+		//alert(1);
+		if(myid.defaultValue == myid.value){
+			myid.value=" ";
+		}
+	} // clearText()
+	
+	function idCheck(){ // abcd 입력할 경우 중복된 id 팝업창 띄우기
+		//alert(2);
+		//var id = document.getElementById("userId");
+		
+		if(document.myform.userId.value == "abcd"){
+			alert("중복된 ID 입니다."); // 왜 안나오는지?
+		}else if(document.myform.userId.value == "") {
+			alert("아이디를 입력해주세요.");
+		}else{
+			alert("사용 가능한 ID 입니다.");
+		}
+	} // idCheck()
+	
+	function join(){
+		//alert(3);
+		
+		if(document.myform.userPw.value == ""){
+			alert("비밀번호를 입력해주세요.");
+			return false;
+		}
+		
+		var pw = document.myform.userPw.value;
+		var pwCheck = document.myform.userPw_check.value;
+		if(pw != pwCheck){
+			alert("비밀번호 재확인을 해주세요");
+			return false;
+		}
+		
+		if(document.myform.userNumber.value == ""){
+			alert("전화번호를 입력 해주세요");
+			return false;
+		}
+		
+		if(document.myform.userPw_check.value == ""){
+			alert("비밀번호 재확인을 해주세요");
+			return false;
+		}
+	
+	}
+</script>
+</head>
+<body>
+	<form name="myform" action="abc.jsp">
+	<table border="1" width="550" height="700" cellspacing="0" cellpadding="5" text-align="center"> 
+		<tr>
+		<td><span>아이디</span></td>
+		<td><input type="text" name="userId" value="아이디 입력" onFocus="return clearText(myform.userId)">
+		<input type="button" name="checkId" value="중복 체크" onClick="idCheck()"></td>
+		</tr>
+		
+		<tr>
+		<td><span>비밀번호</span></td>
+		<td><input type="password" name="userPw"></td>
+		</tr>
+		
+		<tr>
+		<td><span>비밀번호 확인</span></td>
+		<td><input type="password" name="userPw_check"></td>
+		</tr>
+		
+		<tr>
+		<td><span>이름</span></td>
+		<td><input type="text" name="userName"></td>
+		</tr>
+		
+		<tr>
+		<td><span>전화번호</span></td>
+		<td><select>
+			<option>02</option>
+			<option>031</option>
+			<option>011</option>
+			<option>010</option>
+		</select>
+		&nbsp-&nbsp
+		<input type="number" name="userNumber" size="5">
+		&nbsp-&nbsp
+		<input type="number" name="userNumber" size="5"></td>
+		</tr>
+		
+		<tr>
+		<td><span>주소</span></td>
+		<td><input type="text" name="userAdress"></td>
+		</tr>
+		
+		<tr>
+		<td><span>세부 주소</span></td>
+		<td><input type="text" name="userAdress_detail"></td>
+		</tr>
+		
+		<tr>
+		<td><span>email</span></td>
+		<td><input type="email" name="userEmail" ></td>
+		</tr>
+		
+		<tr>
+		<td><span>사진 올리기</span></td>
+		<td><input type="file" name="fileload"></td>
+		</tr>
+		
+		<tr>
+		<td><span>좋아하는 가수</span></td>
+		<td><input type="checkbox" name="fsinger">
+		소녀시대
+		<input type="checkbox" name="fsinger">
+		방탄소년단
+		<input type="checkbox" name="fsinger">
+		레드벨벳
+		<input type="checkbox" name="fsinger">
+		동방신기</td>
+		</tr>
+		
+		<tr>
+		<td><span>성별</span></td>
+		<td><label>남</label>
+		<input type="radio" name="gender">
+		<rable>여</rable>
+		<input type="radio" name="gender" /></td>
+		</tr>
+		
+		<tr>
+		<td><span align="middle" width="30px">글쓰기</span></td>
+		<td><textarea name="userMessage" rows="7" cols="30"></textarea></td>
+		</tr>
+		
+		<td colspan="2" align="center">
+		<input type="submit" value="전송" return onClick="join()">&nbsp&nbsp&nbsp
+		<input type="reset"	value="초기화"></td>
+	
+	</table>
+	</form>
+</body>
+</html>

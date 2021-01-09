@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex01_location.html</title>
+<script type="text/javascript">
+	var now = new Date();
+	document.write("now: " + now + "<br>");
+	
+	function goNaver(){
+		location.href="http://www.naver.com";
+	}
+	/* &nbsp;: 띄어쓰기 */
+	document.write("<a href='http://www.melon.com'>멜론<a>&nbsp;&nbsp;"); // 멜론 글자 클릭해서 주소이동
+	document.write("줌".link("http://www.zoom.us"));
+</script>
+	
+
+</head>
+<body>
+	<form>
+		<input type="button" value="지금 시간은?" onClick="location.reload()"> <!-- reload: 새로고침 -->
+		<!-- 출력창에서 주소창 뒤에서 마우스 한번 클릭하고 엔터 치면 새로고침 -->
+		<br><br>
+		
+		<input type="button" value="다음" onClick="location.href='http://www.daum.net'"> <!-- 버튼누르면 주소 바꿔줌 -->
+		<br><br>
+		
+		<input type="button" value="네이버" onClick="goNaver()"> <!-- 함수 호출해서 주소 이동 -->
+	</form>
+</body>
+</html>

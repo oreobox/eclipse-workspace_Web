@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex01_form.html</title>
+
+</head>
+<body>
+	<form name="first_form">
+		<span>아이디</span>
+		<input type="text" name="id" value="kim">
+		<br><br>
+		<span>비밀번호</span>
+		<input type="password" name="pw" value="1234">
+	</form>
+	
+	<hr>
+	
+	<form name="second_form">
+		<input type="submit" value="로그인">
+		<input type="button" value="회원가입">
+	</form>
+	
+	<hr>
+	
+	<script type="text/javascript">
+	/*아직 정의된것이 없기 때문에 맨 위에 쓰지않고 body 닫기 직전에 써줌*/
+		document.write(document.first_form.name+"<br>"); //document 영역에 first_form인 곳에 name이 뭐냐?
+		document.write("폼의 갯수:" + document.forms.length +"<br>"); // form이라는 이름의 내장 객체가 있다.
+		document.write(document.forms[1].name +"<br><br>"); // forms라는 객체로 <form> 다룰 수 있다.[]배열의 위치로 몇번방인지 접근
+		//document.write(document.forms.first_form+"<br><br>") // <form>의 이름을 직접 지정해서 출력 
+		
+		
+		
+		// 0번째 form의 요소가 몇개있는지? - <form> 안에 input 태그 갯수만 가져옴
+		document.write("0번째 form의 요소의 갯수:" + document.forms[0].elements.length+"<br>" 
+		document.write(document.forms[0].elements.length[0].type +"<br>") // 0번째 요소의 타입이 뭔지?
+		document.write(document.forms[0].elements.length[1].type +"<br>") // 1번째 요소의 타입이 뭔지?
+				
+		document.write(document.forms[0].id.type +"<br>") // <form>의 이름을 직접 입력해서 출력
+		document.write(document.forms[0].pw.type +"<br>")
+		
+		document.write(document.forms[0].id.value +"<br>")
+	</script>
+
+
+</body>
+</html>

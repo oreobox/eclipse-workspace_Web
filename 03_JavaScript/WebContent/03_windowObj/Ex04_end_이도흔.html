@@ -12,7 +12,6 @@
 <script type="text/javascript">
 	function init() {
 		//alert(1);
-		
 		document.myform.cal.options[0] = new Option("더하기");
 		document.myform.cal.options[1] = new Option("빼기");
 		document.myform.cal.options[2] = new Option("곱하기");
@@ -26,8 +25,19 @@
 		//alert(index);
 		
 		// 자식창에 입력한 것을 부모창에 입력되도록 하기
-		var num1 = eval(document.myform.number1.value); // num1에 입력한 값
+		var num1 = eval(document.myform.number1.value); // num1에 입력한 값 숫자로 바꿔줌 "14" → 14
 		var num2 = +document.myform.number2.value; // num2에 입력한 값
+		
+		//cal = document.myform.cal.value; // "3" → 3 (문자열을 숫자로 바꿔도됨)
+		//alert(cal);
+		
+		/* switch(cal){
+		case "1": result = break;
+		case "2": break;
+		case "3": break;
+		case "4": break;
+			
+		} */
 		
 		if(index == 0){
 			window.opener.myform.calResult.value = num1+num2;
@@ -51,11 +61,16 @@
 <body onLoad="init()">
 
 	<form name="myform">
-		<input type="number" name="number1"> <!-- 첫번째 숫자입력 -->
+		<input type="number" name="number1" value="14" size="5"> <!-- 첫번째 숫자입력, value(기본값)도 넣어줌-->
 		
-		<select id="cal" style="width:100px;"></select>
+		<select id="cal" style="width:100px;">
+			<!-- <option value="1">더하기</option>
+			<option value="2">빼기</option>
+			<option value="3">곱하기</option>
+			<option value="4">나누기</option> -->
+		</select>
 		
-		<input type="number" name="number2"> <!-- 두번째 숫자입력 -->
+		<input type="number" name="number2" value="5" size="5"> <!-- 두번째 숫자입력 -->
 		
 		<br><br>
 		<input type="button" value="닫기" onClick="meClose()">

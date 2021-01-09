@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex01_element.html</title>
+<style type="text/css">
+	.spotlight{
+		background: #ff0;
+	}
+	
+	.redtext{
+		color : #f00;
+	}
+	
+	.bluetext{
+		color : blue;
+	}
+	
+	.largetext{
+		font-size : 30pt;
+	}
+	
+	.italictext{
+		font-style: italic;
+	}
+	
+	.under{
+		text-decoration: underline;
+	}
+	
+</style>
+
+<script src="./../js/jquery.js" type="text/javascript"></script> <!-- js 폴더안에 jquery.js 위치 지정 -->
+<script type="text/javascript"> // javascript 코드 실행하고 하기
+	//작성 기본틀
+	$(document).ready(function(){ // 함수 적용시키고 싶은 대상을 객체로 만듬 / 작업대상: 객체 ~~★
+		// document 영역이 준비됐을 때 하고싶은 일이있으면  function() 만듬 
+		// ready(): 함수에 대한 정의는 js 폴더 안에 들어가있음 - 위에서 위치 설정해주기 
+		
+		$('span[id]').addClass('spotlight'); //span 태그 있는 곳에서도 id속성 있는 곳에만 적용시켜라
+		$('span[id=simpletext1]').addClass('redtext');
+		$('span[id!=simpletext1]').addClass('bluetext');
+		$('span[id^="complex"]').addClass('italictext'); // id가 complex로 시작하는(^) 곳에 italictext 지정
+		$('span[id$="text1"]').addClass('largetext'); // id가 text1로 끝나는($)
+		$('span[id*="text"]').addClass('under');
+	}); 
+</script>
+</head>
+<body>
+	<span id="simpletext1">simple</span>
+	<span id="simpletext2">simple2</span>
+	<div class="simpletext1">jQuery</div>
+	<span id="complex">basic</span>
+	<div class="simple">example</div>
+</body>
+</html>

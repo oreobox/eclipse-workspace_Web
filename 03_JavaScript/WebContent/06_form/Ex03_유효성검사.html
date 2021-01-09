@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+		/* onFocus 했을 때 값 지워지게 해주기 */
+	function clearText(myid){ // myid: myform.id
+		//alert(1);
+		
+		//document.write(myid.defaultValue); // value 기본값(id의 value에 이미 들어 있던 값)을 출력해보기 (document.write: 새로운 창에서 출력됨)
+		//document.write(myid.value); // value에 입력되어있는 값
+		
+		if(myid.defaultValue == myid.value){ // value 기본값과 value에 입력되어있는 값이 같다면,
+			myid.value = ""; // onFocus 했을 때 value 값을 없애준다.
+		}
+		
+	} // clearText(myid)
+	
+	<!-- **radio 타입 유효성 검사** -->
+	function check(){
+		/* movie 유효성 검사 처리 - 하나라도 check되어있지않으면 jsp로 안넘어가도록 설정 */
+		str = "선택한 영화는: \n"; //★ 녹음 다시듣기
+		len = document.myform.movie.length;
+		//alert(len); // movie라는 이름을 가지고 있는 요소 갯수는 3개
+		
+		flag = false; // flag 초기상태
+		//movie의 0번,1번,2번방 중 하라나도 선택이 됐는지 확인하기
+		for(i=0; i<len; i++){ //len보다 작을 때 까지만 for문 돌려라
+			if(document.myform.movie[i].checked){ // [i]번방에 있는 movie check 상태가 어떤지 → 0,2번방:false, 1번방:true(checked 되어있음)
+				flag = true; // 어떤 방이든 check가 되어있는 방과 만나면 true
+				str += document.myform.movie[i].value; // str = str + document ~ / [i]번째 movie에 ~~~★ 누적시켜라
+				break; // radio는 하나만 선택이기 때문에 n번째에서 찾았으면 나머지 항목 안보고 빠져나가는것 설정해줌
+			}
+		}
+		
+		if(flag == false) {
+			alert("movie 하나는 꼭 선택해야 합니다.");
+			return false; // action으로 넘어가지 못하도록 해주기 → onClick="return check()" 라고 return 써주기
+		}
+		
+		//song 유효성 검사 처리 - 하나라도 check되어있지않으면 jsp로 안넘어가도록 설정
+		
+		str += "\n선택한 노래는: \n";
+		song_len = document.myform.song.length;
+		//alert(song_len);
+		
+		flag = false;
+		for(i=0; i<song_len; i++) {
+			if(document.myform.song[i].checked){ // document myform의 song[i]번방이 checked 되어있는지 확인
+				flag = true;
+				str += document.myform.song[i].value; // 두번째 방 선택하면 누적★ checked된 
+				break;
+			}
+		}
+		
+		if(flag == false){ // for문을 다 돌았는데 아직 false면 check된것 하나도 못만났다는 뜻
+			alert("song 하나는 꼭 선택해야 합니다.");
+			return false;
+		}
+		
+		//fruit 유효성 검사 처리 - 하나라도 check되어있지않으면 jsp로 안넘어가도록 설정
+		str += "\n선택한 과일은: \n";
+		fruit_len = document.myform.fruit.length;
+		//alert(fruit_len);
+		
+		flag = false;
+		for(i=0; i<fruit_len; i++){
+			if(document.myform.fruit[i].checked){
+				flag = true;
+				str += document.myform.fruit[i].value + " ";
+				//break; // checkbox에서는 break쓰면안되는 이유: 여러개 선택이기 때문에 break 사용하면 하나만 확인하고 빠져나가서 나머지 값 출력못함
+			}
+		}
+		
+		if(flag == false){ // for문을 다 돌았는데 아직 false면 check된것 하나도 못만났다는 뜻
+			alert("fruit 최소 한개는 꼭 선택해야 합니다.");
+			return false;
+		}
+		
+		alert(str); // 그동안 누적한것 출력
+		
+	} //check ()
+	
+</script>
+</head>
+<body>
+	<form name="myform" action="abc.jsp">
+		<span>아이디</span>
+		<input type="text" name="id" value="아이디를 입력하세요" onFocus="clearText(myform.id)">> <!-- myform.id: myform의 아이디 입력한 것을 받야겠다★ -->
+		<br><br>
+		
+		1. 가장 좋아하는 영화 한개만 선택하세요 <br>
+		<input type="radio" name="movie" value="해리포터">해리포터
+		<input type="radio" name="movie" value="나홀로집에">나홀로집에
+		<input type="radio" name="movie" value="반도">반도
+		
+		<hr>
+		
+		2. 가장 좋아하는 노래 한개만 선택하세요<br>
+		<input type="radio" name="song" value="세월이 가면">세월이 가면
+		<input type="radio" name="song" value="광화문연가">광화문연가
+		<input type="radio" name="song" value="희망사항">희망사항
+		<input type="radio" name="song" value="붉은 노을">붉은 노을
+		
+		<br><br>
+		
+		3. 좋아하는 과일 여러개 선택하세요<br>
+		<input type="checkbox" name="fruit" value="수박">수박
+		<input type="checkbox" name="fruit" value="딸기">딸기
+		<input type="checkbox" name="fruit" value="사과">사과
+		<input type="checkbox" name="fruit" value="포도">포도
+		
+		<br><br>
+		
+		<input type="submit" value="등록" onClick="return check()">
+		<input type="reset" value="취소">
+	</form>
+</body>
+</html>
+
+<!-- 이벤트 속성
+onFocus: 입력창에 마우스 포커스를 클릭했을 때(브라우저에 포커스를 얻을 때) 발생 -->
+
+<!-- submit과 action은 하나의 쌍임 -->

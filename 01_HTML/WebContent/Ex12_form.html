@@ -124,19 +124,20 @@ name: 서버로 전달되는 이름을 말함(사용자 임의지정), 컨트롤
 	<input type="text" name="userName" /> - 문자 입력
 	<input type="password" name="userPw" /> - 비밀번호처럼 입력한 것 가려짐
 	<input type="email" name="userEmail" /> - @이메일 형태로 작성하지 않으면 오류남
-	<input type="date" name="userDate" /> - 외부 브라우저에서 보면 달력으로 나타남
-	<input type="week" name="userDate" /> - 와 연도 선택 컨트롤 창 생성
+	<input type="date" name="userDate" /> - 날짜입력(외부 브라우저에서 보면 달력으로 나타남)
+	<input type="week" name="userDate" /> - 주와 연도 선택 컨트롤 창 생성(외부브라우저 확인)
 	<input type="number" name="userNumber" /> - 숫자만 입력하도록 지정해줌, 위 아래 버튼도 생성됨
 	<input type="radio" name="userRoom" /> - name 값이 같으면 하나만 선택 가능, name 값이 다르면 다중 선택가능
-	<input type="radio" name="gender" /> - 하나만 선택
 	
-	<input type="text" name="userEmail1" /> @
-			<select name="userEmail2">
-				<option>###선택###</option>
-				<option value="nate.com">nate.com</option>
-				<option value="다음">daum.net</option>
-				<option value="naver.com">naver.com</option>
-			</select>
+		<input type="radio" name="gender" /> - 하나만 선택
+		
+		<input type="text" name="userEmail1" /> @
+				<select name="userEmail2">
+					<option>###선택###</option>
+					<option value="nate.com">nate.com</option>
+					<option value="다음">daum.net</option>
+					<option value="naver.com">naver.com</option>
+				</select>
 	
 	<input type="range" name=userPoints" min="1" max="10" step="1" /> -- 한번 움직일때마다 1칸씩 움직임
 	<input type="checkbox" value="픽업서비스" /> 픽업서비스  - 체크박스 생성(여러개 선택가능)
@@ -149,7 +150,7 @@ name: 서버로 전달되는 이름을 말함(사용자 임의지정), 컨트롤
  
 <!--  
 button: 일반 버튼 생성(단순히 버튼 눌리는 기능)
-submit: 서버로 제출/전송하는 버튼 생성 (submit일 경우에만 jsp로 넘겨서 db작업 해줄 수 있음)
+submit: db에 입력한 내용을 서버로 제출/전송하는 버튼 생성 (action일 경우에만 jsp로 넘겨서 db작업 해줄 수 있음)★ 다시확인
 reset: 클릭과 동시에 입력한 내용 모두 초기화
 -->
 

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	
+	/* 적용할 스타일이 많다고 하면 미리 틀 만들고 시작 */
+	tr{
+		background-color: yellow;
+	}
+
+	.bluePink{
+		color:blue;
+		background-color: pink;
+		font-weight:bold;
+	}
+	
+	.orange{
+		background-color: orange;
+	}
+</style>
+
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('td').addClass('bluePink'); // .addClass: 클래스 설정해라
+		$('td:lt(2)').removeClass('bluePink'); // .removeClass: 클래스를 지워라
+		// lt(n): less then(n) n보다 작은 - 0부터 시작
+		
+		$('td:gt(4)').removeClass('bluePink'); // 4보다 큰 부분 핑크배경 지우기
+		// gt(n): greater then(n) n보다 큰 - 0부터시작
+		
+		$('td:gt(7)').addClass('orange');
+		
+	});
+</script>
+
+</head>
+<body>
+	<table border=1>
+		<tr>
+			<td>one</td>
+			<td>two</td>
+			<td>three</td>
+		</tr>
+		
+		<tr>
+			<td>four</td>
+			<td>five</td>
+			<td>six</td>
+		</tr>
+	</table>
+	
+	<br><br>
+	
+	<table border=1>
+		<tr>
+			<td>one</td>
+			<td>two</td>
+			<td>three</td>
+		</tr>
+		
+		<tr>
+			<td>four</td>
+			<td>five</td>
+			<td>six</td>
+		</tr>
+	</table>
+</body>
+</html>

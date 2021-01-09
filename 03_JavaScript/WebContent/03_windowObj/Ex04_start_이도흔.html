@@ -8,17 +8,15 @@
 	function openWin(fileName) { //onclick 에서 openWin() 호출한 것 불러옴
 		
 		var wName="popupCal";
-		var winW = 1000;
-		var winH = 650;
+		var winW = 500;
+		var winH = 300;
 		
 		//팝업창 화면 정 중앙에 띄우기
 		var winLeft = (screen.width - winW)/2;
 		var winTop = (screen.height - winH)/2;
 		
-		var options = "width=" + winW +
-						",height=" + winH +
-						",left=" + winLeft +
-						",top=" + winTop;
+		var options = "width=" + winW +	",height=" + winH +
+						//",left=" + winLeft + ",top=" + winTop; (생략해도됨)
 		
 		window.open(fileName,wName,options);
 	}

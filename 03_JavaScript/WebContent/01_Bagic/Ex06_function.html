@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Ex06.html</title>
+<title>Ex06_function.html</title>
 <script type="text/javascript">
 	document.write("나이0: " + age + "<br>");
 
@@ -10,7 +10,7 @@
 	document.write("나이1: " + age + "<br>");
 	
 	function test(){ // 함수 정의
-		//var가 있으면 새로 변수가 만들어지는것이고, var가 없으면 기존에 만든 값 그대로 다음에 호출
+		// var가 있으면 새로 변수가 만들어지는것이고(지역변수로 사용), var가 없으면 기존에 만든 값 그대로 다음에 호출
 		//(함수 안에서는 var의 유무에 따라 값 달라짐-전역변수가 될 수도있고, 지역변수가 될 수도있다.)
 		var age = 40; // 지역변수(var를 붙이면 함수 안에서만 사용가능)
 		document.write("나이2: " + age + "<br>");
@@ -19,7 +19,6 @@
 	test(); // 함수 호출
 	
 	document.write("나이3: " + age + "<br>");
-
 </script>
 
 </head>
@@ -27,3 +26,17 @@
 
 </body>
 </html>
+
+<!--
+→ 함수(function) 안 변수에 var를 붙였을 경우 출력값:
+나이0: undefined
+나이1: 30
+나이2: 40
+나이3: 30
+
+→ 함수(function) 안 변수에 var를 생략했을 경우 출력값:
+나이0: undefined
+나이1: 30
+나이2: 40
+나이3: 40
+-->

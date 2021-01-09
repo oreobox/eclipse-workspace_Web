@@ -2,11 +2,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Ex04.html</title>
+<title>Ex04_alert.html</title>
 <script type="text/javascript">
 	function isWinter(choice) { // 정의(function) - isWinter(true)를 호출하면 이쪽으로 넘어옴(true/false 가지고올 수 있음)
-		// document.write(choice);
-		alert(choice); 
+		// document.write(choice); // '예' 버튼 클릭하면 true 나오고, '아니오' 버튼 클릭하면 false 나옴
+		alert(choice); // 팝업창 띄움
 		if(choice == true){ // "예" 버튼 클릭할 때 출력
 			alert("올해 겨울은 춥습니다."); // choice에 들어온 값이 true일 경우 출력 (경고창 두번 출력됨-alert가 2개있기 때문)
 		}
@@ -19,18 +19,19 @@
 <body>
 	<h3>올해 겨울은 춥습니까?</h3>
 	<form> <!-- input태그는 form 사용 -->
-		<input type="button" value="예" onClick="isWinter(true)"> <!-- 함수, (java에서)메서드 호출하는 것: () -->
+		<input type="button" value="예" onClick="isWinter(true)"> <!-- 함수, (java에서)메서드 호출하는 것: (true)값 넘긴다 -->
 		<input type="button" value="아니오" onClick="isWinter(false)"> <!-- 버튼 클릭할때 마다 호출됨 -->
-		<!-- true나 false를 ''문자열로 출력해 넘길 경우 위에 function if문 에도 문자열 형태로 비교해줘야함   -->
+		<!-- true나 false를 ''문자열로 출력해 넘길 경우 위에 function if문 에도 true나 false를 문자열 형태로 비교해줘야함   -->
 	</form>
 </body>
 </html>
 
 <!--
 ●대화상자:
-prompt: 입력 받을 수 있는 창
+prompt: 입력 받을 수 있는 창(입력대화상자)
+	형식: prompt("윈도우창", "메세지 입력창");
 	확인 버튼 : 내가 입력한 것이 출력됨
-	취소 버튼: null (내가 입력한 것 무시됨)
+	취소 버튼: null값 반환 (내가 입력한 것 무시됨)
 confirm: 확인/취소 버튼있는 창 생성(보통 두가지 선택지[boolean형태] 있을 때 사용)
 	확인 버튼: answer:true
 	취소 버튼: answer:false

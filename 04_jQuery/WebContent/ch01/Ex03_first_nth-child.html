@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	table{
+		width: 70%;
+	}
+	.style1{
+		color:red;
+		font-size: 20pt;
+		background-color: pink;
+	}
+	.style2{
+		color:green;
+		font-size: 20pt;
+		background-color: yellow;
+	}
+
+</style>
+
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		//alert(1);
+		//$('tr:first').addClass('style1'); // 첫번째 tr에만 적용됨
+		//$('tr:first-child').addClass('style1'); // ↓아래랑 똑같음
+		//$('tr:nth-child(1)').addClass('style1'); // 첫번째 tr에 적용 -  nth-child : 1부터 시작
+		//$('tr:even').addClass('style1'); // even(짝수,홀수-숫자 0부터 카운팅): 0,2,4,6,8칸에 적용-4번째는 적용이됬는데 아래에서 style2 노란색이 덮음
+		// 첫번째 자식 요소에만 적용됨-tr의 부모 입장에서 모든 table에서 봤을 때 첫번째 tr에 적용
+		
+		$('tr:nth-child(3n+1)').addClass('style1'); // 2의 배수 자리에 스타일 적용 - tr:nth-child(2n) : 1부터 시작
+		
+		//$('tr:last').addClass('style2');
+		$('tr:last-child').addClass('style2');
+		
+		//$('tr:nth-child(2)').addClass('style2');
+		
+		$('td:eq(4)').css('backgroundColor','green');
+	});
+</script>
+
+	<!--
+	even,odd,eq,nth(n): 0부터 시작
+	nth-child: 1부터 시작
+	nth(n): 모든 span에서 n번째 시작 - 0부터 시작 
+	-->
+
+
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<td>one</td>
+			<td>one</td>
+			<td>one</td>
+			<td>one</td>
+			<td>one</td>
+			<td>one</td>
+		</tr>
+		<tr>
+			<td>two</td>
+			<td>two</td>
+			<td>two</td>
+			<td>two</td>
+			<td>two</td>
+			<td>two</td>
+		</tr>
+		<tr>
+			<td>three</td>
+			<td>three</td>
+			<td>three</td>
+			<td>three</td>
+			<td>three</td>
+			<td>three</td>
+		</tr>
+		<tr>
+			<td>four</td>
+			<td>four</td>
+			<td>four</td>
+			<td>four</td>
+			<td>four</td>
+			<td>four</td>
+		</tr>
+		<tr>
+			<td>five</td>
+			<td>five</td>
+			<td>five</td>
+			<td>five</td>
+			<td>five</td>
+			<td>five</td>
+		</tr>
+		<tr>
+			<td>six</td>
+			<td>six</td>
+			<td>six</td>
+			<td>six</td>
+			<td>six</td>
+			<td>six</td>
+		</tr>
+		<tr>
+			<td>seven</td>
+			<td>seven</td>
+			<td>seven</td>
+			<td>seven</td>
+			<td>seven</td>
+			<td>seven</td>
+		</tr>
+		<tr>
+			<td>eight</td>
+			<td>eight</td>
+			<td>eight</td>
+			<td>eight</td>
+			<td>eight</td>
+			<td>eight</td>
+		</tr>
+	
+	</table>
+	
+	<br><br>
+	
+	<table border="1">
+		<tr>
+			<td>one</td>
+			<td>one</td>
+			<td>one</td>
+			<td>one</td>
+			<td>one</td>
+			<td>one</td>
+		</tr>
+		<tr>
+			<td>two</td>
+			<td>two</td>
+			<td>two</td>
+			<td>two</td>
+			<td>two</td>
+			<td>two</td>
+		</tr>
+		<tr>
+			<td>three</td>
+			<td>three</td>
+			<td>three</td>
+			<td>three</td>
+			<td>three</td>
+			<td>three</td>
+		</tr>
+		<tr>
+			<td>four</td>
+			<td>four</td>
+			<td>four</td>
+			<td>four</td>
+			<td>four</td>
+			<td>four</td>
+		</tr>
+		<tr>
+			<td>five</td>
+			<td>five</td>
+			<td>five</td>
+			<td>five</td>
+			<td>five</td>
+			<td>five</td>
+		</tr>
+	
+	</table>
+
+</body>
+</html>
