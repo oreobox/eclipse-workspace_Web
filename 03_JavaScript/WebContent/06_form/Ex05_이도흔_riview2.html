@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex05_이도흔.html</title>
+<script type="text/javascript" src="test.js">
+
+</script>
+
+</head>
+<body>
+<form action="abc.jsp" name="myform"> 
+<table border=1>
+	<tr>
+		<td>아이디</td>
+		<td>
+			<input type="text" name="id" size="20" maxlength="10" value="아이디 입력" onFocus="go_focus(myform.id)">
+			<!-- <input type="text" name="id" size="20" maxlength="10" placeholder="아이디 입력")"> --> <!-- placeholder: 자동으로 지워짐★ -->
+			<input type="button" value="중복 체크" onClick="idCheck()">				
+		</td>
+	</tr>
+	<tr>
+		<td>비밀번호</td>
+		<td><input type="password" name="password" size="20" maxlength="10"></td>
+	</tr>
+	<tr>
+		<td>비밀번호 확인</td>
+		<td><input type="password" name="repassword" size="20" maxlength="10"></td>
+	</tr>
+	<tr>
+		<td>이름</td>
+		<td><input type="text" name="name" size="20" maxlength="10"></td>
+	</tr>
+	<tr>
+		<td>전화 번호</td>
+		<td>
+			<select name="areacode">
+				<option value="02">02</option>
+				<option value="031">031</option>
+				<option value="051">051</option>
+				<option value="043">043</option>
+				<option value="064">064</option>
+			</select>
+			&nbsp;-&nbsp;
+			<input type="text" name="phone1" size="4" maxlength="4">
+			&nbsp;-&nbsp;
+			<input type="text" name="phone2" size="4" maxlength="4">
+		</td>
+	</tr>	
+	<tr>
+		<td>주소</td>
+		<td>
+			<input type="text" name="address1" size="30" maxlength="30" >
+		</td>
+	</tr>
+	<tr>
+		<td>세부 주소</td>
+		<td><input type="text" name="address2" size="30" maxlength="30"></td>
+	</tr>
+	<tr>
+		<td>email</td>
+		<td><input type="text" name="email" size="30" maxlength="30"></td> 
+	</tr>	
+	<tr>
+		<td>사진 올리기</td>
+		<td><input type="file"></td>
+	</tr>	
+	<tr>
+		<td>좋아하는 가수</td>
+		<td>
+			<input type="checkbox" name="singer" value="소녀시대" >소녀시대
+			<input type="checkbox" name="singer" value="방탄" checked="checked">방탄
+			<input type="checkbox" name="singer" value="레드벨벳">레드벨벳
+			<input type="checkbox" name="singer" value="동방신기">동방신기
+		</td>
+	</tr>	
+	<tr>
+		<td>성별</td>
+		<td>
+			<input type="radio" name="gender" value="남">남
+			<input type="radio" name="gender" value="여">여
+		</td>
+	</tr>
+	<tr>
+		<td>글 쓰기</td>
+		<td>
+			<textarea rows="5" cols="30" name="ta"></textarea>
+		</td>
+	</tr>	
+	<tr>
+		<td colspan="2" align="center">
+			<input type="submit" value="전송합시다." onClick="return check()">
+			&nbsp;&nbsp;&nbsp;
+			<input type="reset" value="초기화">
+		</td>
+	</tr>	
+</table>
+</form>
+</body>
+</html>

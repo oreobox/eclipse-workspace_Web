@@ -2,65 +2,61 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<title>Insert title here</title>
+<title>Ex01_Attr(속성).html</title>
 <style type="text/css">
 	body{
 		text-align: center;
 	}
 	img{
-		padding:20px;
+		padding:20px; /* 사방 모두 여백 설정 */
 	}
-	
 	div{
 		color:blue;
 		font-size : 30px;
 	}
-
 </style>
+
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript">
-	$(document).ready(function(){ // 속성설정할 때 attr 함수사용, ~~ 할때 css 함수 사용
+	$(document).ready(function(){ // 속성설정할 때 attr() 함수사용, ~~ 할때 css 함수 사용
 		//$('img:first').attr("src","../images/im0.jpg") // <body><img> 태그에서 src="" 속성을 설정한 것과 같은 작업
 		$('img:eq(0)').attr("src","../images/im0.jpg") // first나 eq(0) 동일한 속성임
 						.attr('title','강아지1')
-					 	.attr('alt','puppy picture')
+					 	.attr('alt','puppy picture') // alt: 이미지가 없으면 출력됨
 						.css('border','3px solid red');
-		$('img:eq(1)').attr({ // 1번째 이미지를 대상으로 attr 속성 여러개 설정하고싶을 땐 {,}로 써줌  (,)쉼표로 여러개 연결
-						src : "../images/im1.jpg",
+		$('img:eq(1)').attr({ // 1번째 이미지를 대상으로 attr 속성 여러개 설정하고싶을 땐 {,}로 써줌(,쉼표로 여러개 연결)
+						src : "../images/im1.jpg", // 속성 넣고싶을 땐 : 사용
 						title : '강아지2',
 						width : '100px',
 						height : '80px'
 						})
-					.css({
+					  .css({ // css 한묶음으로 묶어서 사용
 						border : "2px solid blue",
 						background:"yellow"
-					}); 
+					  }); 
 		
-		$('#btn1').click(function(){ // 버튼을 클릭했을 때 하고싶은 일이뭐냐? function 안에다 작성
+		$('#btn1').click(function(){ // 버튼을 클릭했을 때 하고싶은 일이있으면 function 안에다 작성
 			//alert(2);
 		
-			$('img:eq(0)').removeAttr("title"); // 타이틀 속성 제거
+			$('img:eq(0)').removeAttr("title"); // 첫번째 이미지의 타이틀 속성 제거
 			$('img:eq(0)').css('border','6px dashed blue')
-							.css('background-color','cyan');
+						  .css('background-color','cyan'); // css 따로따로 사용
 		});
 		
-		//attr(속성, 값) : 속성에 값을 넣어라 
-		//attr(속성) : 이 속성으로 설정된 값을 가지고 와라 
+		//attr('속성', '값') : 속성에 값을 넣어라 
+		//attr('속성') : 이 속성으로 설정된 값을 가지고 와라 
 		
-		temp = $('img:eq(1)').attr('src'); // src 속성에 있는 걸 가져와라 - 원래 속성 , 2개	
+		temp = $('img:eq(1)').attr('src'); // 1번째 이미지 src 속성에 있는 걸 가져와라 - 원래 속성 , 2개
 		//alert(temp);
-	//	$('div span').append(		$('img:eq(1)').attr('src')});
 		
 		$('div span').append( temp ); // ↓ 같은 형식 : temp 변수에있는 것을 추가해라
-		// $('div span').append( $('img:eq(1)').attr('src') );
+		//$('div span').append( $('img:eq(1)' ).attr('src') ); // div span에 1번 이미지 src속성에 있는 것을 넣어라
 		
-		
-	}); // ready 함수
+	}); // ready() 함수
+	
 </script>
 </head>
 <body>
-
 	<!-- 첫번째 이미지만 작업대상으로 하고싶을 때 -->
 	<img /> <img />
 	
@@ -70,9 +66,5 @@
 	</div>
 	
 	<button id="btn1">어트리뷰트 값 제거하기</button> <!-- <input type="button"> 처럼 버튼 생성하기 -->
-	
-	
-
-
 </body>
 </html>

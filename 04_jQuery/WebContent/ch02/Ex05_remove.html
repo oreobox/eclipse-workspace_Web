@@ -27,7 +27,15 @@
 		
 		$("#removeClass").click(function(){ // 콜백함수: 클릭했을 때 자동으로 호출됨
 			$('p:even').removeClass('red under'); //짝수번째(0부터시작) p 영역 지우기
-		});		
+		
+		$('#changeClass').click(function(){
+			$('p:odd').removeClass('red under').addClass('highlight');
+		});
+			
+		});
+		$('#div1').click(function(){
+			$(this).remove(); // 작업영역을 싹 삭제
+		});
 	});
 </script>
 </head>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	div{
+		width:50px;
+		height:50px;
+		margin:10px;
+		border : 1px solid black;
+		float : left;
+	}
+	
+	p{
+		clear : left;
+	}
+	
+	.redBorder{
+		border: 2px solid red;
+	}
+	
+	.yellow{
+		background: yellow;
+	}
+</style>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript"> 
+	$(document).ready(function(){
+		$('button').click(function(){
+			$('div').addClass('redBorder').add('p').addClass('yellow'); // 원래 작업하던 div에 redBorder 하고 p까지 추가해서 
+			//$('div').addClass('redBorder yellow');
+			//$('p').addClass('yellow');
+		});
+	});
+</script>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<p>여기는 p영역</p>
+	
+	<button>클릭</button>
+</body>
+</html>

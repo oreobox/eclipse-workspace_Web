@@ -23,25 +23,25 @@
 
 <script src="./../js/jquery.js" type="text/javascript"></script> <!-- js 폴더안에 jquery.js 위치 지정 -->
 <script type="text/javascript"> // javascript 코드 실행하고 하기
-	//작성 기본틀
-	$(document).ready(function(){ // 함수 적용시키고 싶은 대상을 객체로 만듬 / 작업대상: 객체 ~~★ 어떤 함수로 적용시키는 것은 항상 객체
-		// document 영역이 준비됐을 때 하고싶은 일이있으면  function({ }); 안에 작업 
-		// ready(): ready() 함수에 대한 정의는 js 폴더 안에 들어가있음 - 위에서 위치 설정해주기 
-		
+//작성 기본틀
+	// document 영역이 준비됐을 때 하고싶은 일이있으면  function({ }); 안에 작업 
+	// ready(): ready() 함수에 대한 정의는 js 폴더 안에 들어가있음 - 위에서 위치 설정해주기 
+	$(document).ready(function(){ // 함수 적용시키고 싶은 대상을 객체로 만듬 / 어떤 함수를 적용시키는 것은 항상 객체를 대상으로 함		
 		//alert(1);
-		
-		$('span').addClass('redtext'); //작업대상(내가 만든 객체들)을 객체로 만들 때는 '',""따옴표 써줘야함 / addClass(): jQuery에서 만든 함수로 적용시켜봄
-		// ↑ span에다가 redtext라는 class 추가한다. class redtext를 사용하고 있는 효과를 줌
+		$('span').addClass('redtext'); //작업대상(내가 만든 객체들)을 객체로 만들 때는 '',""(따옴표) 써줘야함 / addClass(): jQuery에서 만든 함수로 적용시켜봄
+		// ↑ <span> 태그에 redtext라는 class 추가한다. <body>의 <span>태그에서 class="redtext"를 사용하고 있는 효과를 줌
+		// ↑ <span id=> 태그에 redtext라는 class 추가한다. class redtext를 사용하고 있는 효과를 줌
 		$('div').addClass('spotlight'); // div에 spotlight 적용
-		$('#simpletext1').addClass('largetext');
+		$('#simpletext1').addClass('largetext'); // id가 simpletext1인 곳에 largetext 적용시키겠다는 뜻
 		$('.simpletext1').addClass('italictext'); // class가 simpletext1인 곳에 italictext 적용
 		$('span').addClass('under');
-		$('#simpletext2').css('background-color',"green") // css함수를 적용 : (속성, 값) 입력
+		$('#simpletext2').css('background-color',"green") // css함수를 적용 : (속성, 값)을 한쌍으로 입력
 	}); 
 </script>
 </head>
 <body>
-	<span id="simpletext1" class="redtext">simple</span>
+	<!-- <span id="simpletext1" class="redtext">simple</span> addClass는 span에 class 써준 효과를 줌 -->
+	<span id="simpletext1">simple</span>
 	<div class="simpletext1">jQuery</div>
 	<span id="simpletext2">basic</span>
 	<div class="simpletext3">example</div>

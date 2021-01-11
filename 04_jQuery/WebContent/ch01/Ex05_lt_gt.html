@@ -9,13 +9,11 @@
 	tr{
 		background-color: yellow;
 	}
-
 	.bluePink{
 		color:blue;
 		background-color: pink;
 		font-weight:bold;
 	}
-	
 	.orange{
 		background-color: orange;
 	}
@@ -24,7 +22,7 @@
 <script src="./../js/jquery.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('td').addClass('bluePink'); // .addClass: 클래스 설정해라
+		$('td').addClass('bluePink'); // .addClass: 클래스 설정해라 / 모든 td에 bluePink 설정
 		$('td:lt(2)').removeClass('bluePink'); // .removeClass: 클래스를 지워라
 		// lt(n): less then(n) n보다 작은 - 0부터 시작
 		

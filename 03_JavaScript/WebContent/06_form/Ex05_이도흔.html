@@ -5,29 +5,29 @@
 <title>회원 가입하기</title>
 <script type ="text/javascript">
 
-
-	function clearText(myid) { // onFocus 했을 때 value 값 지워주기
+	duplicate = false;
+	function clearText(input_id) { // onFocus 했을 때 value 값 지워주기
 		//alert(1);
-		if(myid.defaultValue == myid.value){
-			myid.value=" ";
-		}
+		if(input_id.defaultValue == input_id.value)
+			input_id.value="";
 	} // clearText()
 	
 	function idCheck(){ // abcd 입력할 경우 중복된 id 팝업창 띄우기
 		//alert(2);
 		//var id = document.getElementById("userId");
+		duplicate = true;
 		
 		if(document.myform.userId.value == "abcd"){
-			alert("중복된 ID 입니다."); // 왜 안나오는지?
-		}else if(document.myform.userId.value == "") {
-			alert("아이디를 입력해주세요.");
-		}else{
+			alert("중복된 ID 입니다.");
+		}
+		else{
 			alert("사용 가능한 ID 입니다.");
 		}
 	} // idCheck()
 	
-	function join(){
-		//alert(3);
+	function check(){
+
+		str = "선택한 항목은 \n";
 		
 		if(document.myform.userPw.value == ""){
 			alert("비밀번호를 입력해주세요.");
@@ -59,7 +59,7 @@
 	<table border="1" width="550" height="700" cellspacing="0" cellpadding="5" text-align="center"> 
 		<tr>
 		<td><span>아이디</span></td>
-		<td><input type="text" name="userId" value="아이디 입력" onFocus="return clearText(myform.userId)">
+		<td><input type="text" name="userId" value="아이디 입력" onFocus="clearText(myform.userId)">
 		<input type="button" name="checkId" value="중복 체크" onClick="idCheck()"></td>
 		</tr>
 		
@@ -138,7 +138,7 @@
 		</tr>
 		
 		<td colspan="2" align="center">
-		<input type="submit" value="전송" return onClick="join()">&nbsp&nbsp&nbsp
+		<input type="submit" value="전송" return onClick="check()">&nbsp&nbsp&nbsp
 		<input type="reset"	value="초기화"></td>
 	
 	</table>
