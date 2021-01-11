@@ -20,7 +20,7 @@
 <body>
 	<form>
 		<input type="button" value="지금 시간은?" onClick="location.reload()"> <!-- reload: 새로고침 -->
-		<!-- 출력창에서 주소창 뒤에서 마우스 한번 클릭하고 엔터 치면 새로고침 -->
+		<!-- 출력창에서 주소창 뒤에 마우스 한번 클릭하고 엔터 치면 새로고침 -->
 		<br><br>
 		
 		<input type="button" value="다음" onClick="location.href='http://www.daum.net'"> <!-- 버튼누르면 주소 바꿔줌 -->
@@ -30,3 +30,12 @@
 	</form>
 </body>
 </html>
+
+<!-- 
+●location 객체: 브라우저의 주소 표시줄 쪽에 접근하는 객체
+→ location.reload(): 새로 고침(F5), 현재 문서를 다시 읽어 온다.
+	출력창에서 주소창 뒤에 마우스 한번 클릭하고 엔터 치면 새로고침
+	onClick="location.reload()">
+→ location.href: 다른 주소 링크 불러옴(문서의 URL 주소로 이동)
+	버튼 누르면 주소 바꿔줌: <input type="button" value="다음" onClick="location.href='http://www.daum.net'">
+-->

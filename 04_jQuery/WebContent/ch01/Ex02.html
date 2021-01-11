@@ -77,3 +77,15 @@
 
 </body>
 </html>
+
+
+
+	<!--  
+	//메서드 체이닝 (chaining): 작업대상 하나에 여러개 작업을 연달아서 쓸 수 있다. 
+	//$('p em').css('background-color','yellow'); // .css('속성','값')
+	$('p em').css('background-color','yellow')
+			 .css('border','3pt solid #f00')
+			 .each(function(){ // 각각 작업해줄 땐 each(function)-  처음만난 애는 p의 자손 em의 one, 다음엔 two, three 
+		 $('.result1').append($(this).text()); // result1 영역에 추가 하는 함수: .append() / 지금만난 그아이는 this
+			 });
+	-->

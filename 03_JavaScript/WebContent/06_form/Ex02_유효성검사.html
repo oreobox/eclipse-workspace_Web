@@ -4,29 +4,28 @@
 <meta charset="UTF-8">
 <title>Ex02_유효성검사</title>
 <script type="text/javascript">
-	function check(){
-		//alert(1); // alert 띄우고 ~~★ jsp로 넘어감
+	function check(){ // check() 함수는 
+		//alert(1); // alert 띄우고 abc.jsp로 넘어감
 		
 		//누락됐는지 유효성 검사하는 방법① 
-		/* 둘다 값이 누락되면 제일 처음 하나값만 누락된 alert이 뜸 */
+		//둘다 값이 누락되면 제일 처음 값만 누락된 alert이 뜸, 둘다 누락됐다고 alert 두번 뜨는 것 아님
 		if(window.document.myform.id.value == ""){ // document.myform에 아이디에 입력된 값이 있는지 없는지 확인 → 비교할 때는 null 입력x
 			alert("id 누락");
-			return false; //action(jsp)으로 넘어가지 못하는 설정. false 호출한 onClick="return check()"로 false가 return이 됨
+			return false; //action(jsp)으로 넘어가지 못하도록 설정. 호출한 onClick="return check()"로 false가 return이 됨
 		}
 		
 		if(myform.pw.value == ""){ // window.document. 생략가능
 			alert("pw 누락");
 			return false;
 		}
-		
 		//비번의 길이가 4글자~6글자만 입력되도록 설정
-		if(myform.pw.value.length<4 || myform.pw.value.length>6) // 입력한 값의 길이
-			alert("비번의 길이는 4글자~6글자로 입력하세요");
+		if(myform.pw.value.length<4 || myform.pw.value.length>6){ // 입력한 값의 길이
+			alert("비번의 길이가 4글자~6글자로 입력하세요");
 			return false;
-		
-		//비번은 숫자만 입력
+		}
+		//비번은 숫자만 입력 하도록 설정
 		/* NaN: Not a Number(숫자가 아니다), isNaN("a2"): true(숫자가아닐때 참), isNaN("123"): false(숫자일때 거짓) */
-		if(isNaN(myform.pw.value)){ 
+		if(isNaN(myform.pw.value)){ // 입력한 값이 숫자가 아니면 true 이기 때문에 alert창 나타나고 jsp로 안넘어감
 			alert("비번은 숫자만 입력하세요");
 			return false;
 		}
@@ -37,19 +36,18 @@
 <body>
 	<h3>아이디와 비번을 입력하세요</h3>
 	<form name="myform" action="abc.jsp">
-	
 		<span>아이디</span>
 		<input type="text" name="id" value="kim">
 		<br><br>
 		<span>비밀번호</span>
 		<input type="password" name="pw" value="1234">
 		<br><br>
-		<!-- 02.html에서 값 입력하고 등록 누르면 abc.jsp에서 출력 → return false가되면 action에 써놓은 곳으로 넘어가지 못함 -->
-		<input type="submit" value="등록" onClick="return check()"> 
+		<!--Ex02.html에서 값(id,pw) 입력하고 등록버튼(submit 타입) 누르면 action에 써놓은 곳으로 넘어가서(abc.jsp) DB table에 insert 작업함
+		*유효성 검사: 입력된 내용을 서버로 전송하기 전에 입력한 자료가 적합한지 미리 확인 후  부적합이면 jsp로 아예 넘어가지 못하게 처리. 소스 코드 노출되는 단점 있음.
+		→ return값에 false가 들어오면 action에 써놓은 곳으로 넘어가지 못함
+		→ submit과 action은 하나의 쌍임 -->
+		<input type="submit" value="등록" onClick="return check()"> <!-- 함수 호출하는 곳 앞에 return 꼭 써줘야 action 값으로 안넘어감 -->
 		<input type="reset" value="취소"> <!-- 초기 상태로 돌아감(input의 value 값 유무에 따라 초기값 달라짐) -->
-		<!-- **유효성 검사** -->
-		
 	</form>
-
 </body>
 </html>

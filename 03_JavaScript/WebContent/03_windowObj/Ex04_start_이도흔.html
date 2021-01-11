@@ -5,7 +5,8 @@
 <title>Ex04_start_이도흔.html</title>
 
 <script type="text/javascript">
-	function openWin(fileName) { //onclick 에서 openWin() 호출한 것 불러옴
+	function openWin(fileName) { //onclick 에서 openWin() 호출한 것 불러옴 : 'Ex04_end_이도흔.html' 팝업창에 띄울것
+		
 		
 		var wName="popupCal";
 		var winW = 500;
@@ -30,7 +31,7 @@
 	<form name="myform">
 		결과:
 		<input type="number" name="calResult"> <br><br>
-		<input type="button" value="열기" onclick="openWin('Ex04_end_이도흔.html')">
+		<input type="button" value="열기" onclick="openWin('Ex04_end_이도흔.html')"> <!-- openWin() 함수 호출 하고 html 파일 넘김 -->
 	</form>
 	
 </body>

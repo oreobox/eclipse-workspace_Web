@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>first.html</title>
 <style type="text/css">
+	/* 이미지 가운데 배치 */
 	body{
 	 text-align: center;
 	}
@@ -11,13 +12,19 @@
 </head>
 <body>
 	<h2>첫번째 페이지입니다.</h2>
-	<img src="./../images/01.gif">
+	<img src="./../images/01.gif"> <!-- 이미지 불러오기 -->
 	
-	<a href="second.html"><img src="./../images/02_s.gif"></a>
-	<a href="third.html"><img src="./../images/03_s.gif"></a>
+	<a href="second.html"><img src="./../images/02_s.gif"></a> <!-- 이미지에 링크 설정 -->
+	<a href="third.html"><img src="./../images/03_s.gif"></a> <!-- _s: 작은 이미지로 설정 -->
 	<a href="fourth.html"><img src="./../images/04_s.gif"></a>
 </body>
 </html>
 
 
-<!-- history 객체: 내가 지나왔던 페이지들을 기억하고 다시 되돌아갈 수 있음 -->
+<!--
+history 객체: 내가 지나왔던(거쳐왔던) 페이지들을 기억하고 다시 되돌아갈 수 있음
+메소드: 
+back(): 이전 화면으로 갈때는 history.back
+go(숫자): 상대적인 숫자를 설정하여 화면 이동 할 때는 history.go(-1) , 이전이전으로 갈때는 go(-2), 이전이전이전으로 갈때는 go(-3)
+forward(): 다음으로 갈때는 history.forward 또는 history.go(+1), 다음다음으로 갈때는 go(+2), 다음다음다음으로 갈때는 go(+3) 등
+-->

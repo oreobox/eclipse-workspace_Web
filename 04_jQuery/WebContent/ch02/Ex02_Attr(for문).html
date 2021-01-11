@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	#left_side div{
+		float : left; /* 최대한 왼쪽으로 이미지 띄우기 */
+		margin-left: 10px;
+	}
+	
+	#left_side2{ /* left_side2는 왼쪽에 떠오르지 않도록 하기 */
+		clear : left;
+	}
+</style>
+
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		//alert(1);
+		
+		$('#btn').click(function(){ // 버튼 클릭했을 때 alert이 뜨도록 설정
+			//alert(2);
+			/* 버튼 누를때마다 아래처럼 작업하도록
+			0←1 1번째 이미지를 0번째 이미지로 옮겨라(=복사 덮어쓰기)
+			1←2
+			2←0
+			}); */
+		
+			var temp = $('img').eq(0).attr('src'); // tara01.jpg / 0번째 이미지의 src 속성(tara01.jpg)을 가져와서 temp 변수에 넣어놓기
+			
+			//a = $('img').eq(1).attr('src'); // 이미지 태그를 작업대상으로 해서 1번째 이미지의 src 속성(tara02.jpg)을 가져와서 a 변수에 넣어놓기
+			//$('img').eq(0).attr('src',a); // 두줄인 것을 아래처럼 한줄로 써줌
+			//	↓
+			//$('img').eq(0).attr('src',$('img').eq(1).attr('src')); // 0←1 / 1번째 이미지의 속성을 가져와서 0번째 이미지로 넣음
+			//$('img:eq(0)').attr('src', $('img').eq(1).attr('src')); // ★
+			
+			//$('img').eq(1).attr('src', $('img').eq(2).attr('src')); // 1←2
+			
+			for(i=0;i<$('img').length-1;i++){
+				$('img').eq(i).attr('src',$('img').eq(i+1).attr('src'));
+			}
+			
+			$('img').eq($('img').length-1).attr('src',temp); // 2←0
+		
+		}); // btm
+		
+		
+		$('#btn2').click(function(){
+			
+			temp = $('img').eq(2).attr('src'); //tara03 //2번째 있던 이미지가 지워지기 때문에 잠깐 보관
+			
+			$('img').eq(2).attr('src', $('img').eq(1).attr('src')); // 2←1
+			$('img').eq(1).attr('src', $('img').eq(0).attr('src')); // 1←0
+			$('img').eq(0).attr('src',temp); // 0←2
+			
+			//★위에  두줄 반복문(for) 사용해서 해보기
+		});
+	
+	});
+</script>
+</head>
+<body>
+	<div id="left_side">
+		<div>
+			<img src="../images/tara01.jpg" width="90" height="90"> <!-- 이미지 하나가 div 영역을 차지 -->
+		</div>
+		
+		<div>
+			<img src="../images/tara02.jpg" width="90" height="90">
+		</div>
+		
+		<div>
+			<img src="../images/tara03.jpg" width="90" height="90">
+		</div>
+	</div>
+	
+	<div id="left_side2">
+		<input id="btn" type="button" value="버튼"> <!-- 버튼 누르면 이미지가 왼쪽으로 이동 -->
+		<input id="btn2" type="button" value="버튼2"> <!-- 버튼 누르면 이미지가 오른쪽으로 이동 -->
+	</div>
+</body>
+</html>

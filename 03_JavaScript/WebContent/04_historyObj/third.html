@@ -25,18 +25,17 @@
 			<input type="button" value="두 페이지 이전으로">
 		</a>
 		
-		<a href="#" onClick="javascript:history.back">
+		<a href="#" onClick="javascript:history.back()"> <!-- .go(-1)도 사용가능 -->
 			<input type="button" value="이전페이지로">
 		</a>
 		
-		<a href="#" onClick="javascript:history.forward">
+		<a href="#" onClick="javascript:history.forward()">
 			<input type="button" value="다음페이지로">
 		</a>
 		
 		<!--
-		이전으로 갈때는 history.back 또는 history.go(-1) , 이전이전으로 갈때는 go(-2), 이전이전이전으로 갈때는 go(-3)
-		다음으로 갈때는 history.forward 또는 history.go(+1), 다음다음으로 갈때는 go(+2), 다음다음다음으로 갈때는 go(+3) 등
-		
+		이전으로 갈때는 history.back() 또는 history.go(-1) , 이전이전으로 갈때는 go(-2), 이전이전이전으로 갈때는 go(-3)
+		다음으로 갈때는 history.forward() 또는 history.go(+1), 다음다음으로 갈때는 go(+2), 다음다음다음으로 갈때는 go(+3) 등
 		-->
 		
 	</form>
