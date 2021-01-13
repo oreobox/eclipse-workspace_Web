@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex02_before_after_(insert).html</title>
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		// header,footer : 시멘틱 요소
+		$('header').after($('<div> 좋아하는 과일 : 사과 </div>')); //header가 끝나고 바로 뒤에 형제로 들어옴
+		$('header').after($('<div> 좋아하는 과일 : 딸기 </div>')); // 먼저 형제로 넣은 것이 맨 밑으로 내려감
+		
+		$('<div> 좋아하는 과일 : 바나나 </div>').insertAfter($('header')); 
+		$('<div> 좋아하는 과일 : 복숭아 </div>').insertAfter($('header')); 
+		
+		
+		$('footer').before($('<div> 좋아하는 차 : 모닝 </div>')); //footer 바로앞에 배치
+		$('footer').before($('<div> 좋아하는 차 : 아반떼 </div>'));
+		
+		$('<div> 좋아하는 차 : 투싼 </div>').insertBefore($('footer')); 
+		$('<div> 좋아하는 차 : 소울 </div>').insertBefore($('footer')); 
+	});
+		
+		/*
+		after(): 바로 밑에 형제로 추가됨 - 먼저 형제로 넣은 것이 맨 밑으로 내려감
+		insertAfter(): 
+			$target.after(새로운엘리먼트) == $(새로운엘리먼트).insertAfter(target)
+		before(): 바로 앞에 형제로 추가됨 - 나중에 형제로 넣은 것이 맨 밑으로 내려감
+		insertBefore():
+			$target.before(새로운엘리먼트) == $(새로운엘리먼트).insertBefore(target)
+			
+		공통점: target의 형제로 추가함
+		*/
+
+</script>
+</head>
+<body>
+	<header>
+		<h1>과일</h1>
+	</header>
+	
+	<footer>
+		<h3> <i> jQuery 공부중.. </i> </h3>
+	</footer>
+</body>
+</html>

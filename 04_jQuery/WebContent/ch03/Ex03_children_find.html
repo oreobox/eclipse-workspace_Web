@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> Ex05_children_find.html </title>
+<style>
+	span {color: blue; background:yellow;}
+</style>
+<script src="../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(function(){ //document.ready 생략가능
+		$('button').click(function(){
+			$('div').children().css('border-bottom','3px solid red') // .children(): 자식에 접근 - div 모든 자식에 설정 적용
+			
+			$('div').children(".selected").css('color','red') // class가 selected인 자식 (하하하) 에만 적용
+		
+			$('div').find(".selected").css('color','green'); // .find(): 자손에 접근할 때 쓰는 함수
+				// 자손은 자식을 포함. 때문에 위에서 div children 글자에 red 한 것은 덮어씌워짐
+		});
+	});
+</script>
+</head>
+<body>
+	<button>엘리먼트에 스타일 입히기</button>
+	<p> 이곳은 p문장입니다. </p>
+	<div> 
+		<h1 class="selected">하하하 
+		   <span class="selected"> 이곳은 div의 차일드 span 이다.</span> 
+		</h1>
+		<h2>호호호</h2>
+	</div>
+	
+	<p>
+	그리고 <span> 여기는 p의 차일드 span </span> 문장입니다. 
+	</p>
+	
+	<div> 그리고 마지막으로 
+	   <span> 이곳은  div의 차일드 span 이고</span>
+	   이곳은 div이다. 
+	</div>
+	
+	<div> 
+		div
+	   <p> p영역
+	   		<span class="selected">span</span>
+	   </p>
+	</div>
+</body>
+</html>

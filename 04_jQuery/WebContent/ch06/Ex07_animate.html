@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	#region{
+		width: 200px;
+		height: 200px;
+		overflow: hidden; /* 넘치는 것은 숨겨라 */
+		margin: auto; /* 자동으로 가운데 배치 */
+	}
+	#images{
+		width: 600px;
+		height: 200px;
+	}
+	#images a img{
+		width: 200px;
+		height: 200px;
+	}
+	#direction{
+		width: 360px;
+		margin: auto;
+	}
+	.leftbtn{
+		margin-top: 10px;
+	}
+	.rightbtn{
+		margin-top: 10px;
+		margin-left: 290px;
+	}
+</style>
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var i = -1;
+		$('.leftbtn').bind('click',function(){
+			if(i==1){
+				alert('마지막 이미지입니다.');
+				return;
+			}
+			$('#firstimage').animate({marginLeft : '-=205px'},2000); //첫번째 이미지 왼쪽 여백을 2초에 걸쳐서 점점 줄어들고있다
+			i++; // 이미지를 하나씩 끌고 올때마다 1씩 추가해줌
+		});
+		
+		$('.rightbtn').bind('click',function(){
+			if(i==-1){
+				alert('처음 이미지입니다.');
+				return;
+			}
+			$('#firstimage').animate({marginLeft : '+=205px'},2000);
+			i--;
+		});
+	});//
+</script>
+</head>
+<body>
+	<div id="region">
+		<div id="images">
+			<a href="#"><img src="../images/b.jpg" id="firstimage"></a>
+			<a href="#"><img src="../images/c.jpg" id="secondimage"></a>
+			<a href="#"><img src="../images/d.jpg" id="thirdimage"></a>
+		</div>
+	</div>
+	
+	<div id="direction">
+		<button class="leftbtn"> &laquo; </button> <!-- << -->
+		<button class="rightbtn"> &raquo; </button> <!-- >> -->
+	</div>
+</body>
+</html>

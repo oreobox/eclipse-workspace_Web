@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex03_attr_click_img.html</title>
+<style>
+/* id가 myarea인 곳에 이미지 넣을 예정 */
+	img{ /* img 또는 #myarea img (자손) 사용 */ 
+		width: 100px;
+		height: 100px;
+	}
+</style>
+
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+		$('#makeimage').click(function(){
+			//alert(1);
+			//alert($('input:checked').length); // input 태그에서 체크된 갯수 몇개인지 확인
+			
+			var result = ""; //result 변수 밖에다 선언해놔야 밖에서도 사용가능(이미지 불러옴)
+			
+			$('input:checked').each(function(){ //.each()도 또다른 반복문의 형태이다. // input 태그 체크된 것 각각 확인해보기
+				//alert($(this).attr('id')); // 지금만난 check박스 id값(속성) 출력해봐라
+				result += "<img src='./../images/" + $(this).attr('id') + ".jpg'>" //result 변수에 체크된 갯수만큼 이미지 태그가 만들어짐
+				
+				/* 코드가 너무 길다 싶으면 변수에 넣어서 할 수도있음
+				idvalue = $(this).attr('id'); // 변수에 지금만난 check박스의 id값 담기
+				result += "<img src='./../images/" + idvalue + ".jpg'>" */
+				
+			});
+			
+			$('#myarea').html(result); // 이미지들이 myarea 영역에 출력됨 // each문 밖에다 써주면 each문 반복해서 돌면서 그동안 모아놨던 것을 한번에 출력한다. 
+			//.append() 특징: 버튼 누를때마다 계속 추가됨
+			//.html(): 기존에 있던 것은 지우고 방금 만든 이미지만 새로 출력
+		
+			/* 이미지를 클릭했을 때 클릭한 이미지의 src 속성을 alert으로 띄우기 */
+			$('#myarea img').click(function(){ // img만 써도되고 #myarea 자손 img 써도됨
+				alert($(this).attr("src"));
+			}); 
+		
+		}); // click
+	}); // ready
+</script>
+</head>
+<body>
+<!-- 내가 체크한 체크박스에 따라 이미지 다르게 불러오기 -->
+	<p>
+		<input type="checkbox" id="Koala"/>코알라 <!-- 동물 스펠링 앞글자 꼭 대문자 사용 -->
+		<input type="checkbox" id="Penguins" checked="checked"/>펭귄
+		<input type="checkbox" id="Desert" checked/>사막
+	</p>
+	
+	<p>
+		<input type="button" id="makeimage" value="그림만들기"/>
+	</p>
+	
+	<div id="myarea"></div>
+</body>
+</html>

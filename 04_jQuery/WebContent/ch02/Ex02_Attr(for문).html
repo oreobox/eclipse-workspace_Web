@@ -2,10 +2,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Ex02_Attr(for문).html</title>
 <style type="text/css">
 	#left_side div{
-		float : left; /* 최대한 왼쪽으로 이미지 띄우기 */
+		float : left; /* 이미지가 최대한 왼쪽으로 붙어 나오게 하기 */
 		margin-left: 10px;
 	}
 	
@@ -30,31 +30,39 @@
 			var temp = $('img').eq(0).attr('src'); // tara01.jpg / 0번째 이미지의 src 속성(tara01.jpg)을 가져와서 temp 변수에 넣어놓기
 			
 			//a = $('img').eq(1).attr('src'); // 이미지 태그를 작업대상으로 해서 1번째 이미지의 src 속성(tara02.jpg)을 가져와서 a 변수에 넣어놓기
-			//$('img').eq(0).attr('src',a); // 두줄인 것을 아래처럼 한줄로 써줌
+			//$('img').eq(0).attr('src',a); // 두줄인 것을 아래처럼 한줄로 써줌 / 0번째 이미지의 src 속성으로 a변수에 있는 것을 넣어라
 			//	↓
+			//$('img:eq(0)').attr('src', $('img').eq(1).attr('src')); // $('img').eq(0) = $('img:eq(0)')
 			//$('img').eq(0).attr('src',$('img').eq(1).attr('src')); // 0←1 / 1번째 이미지의 속성을 가져와서 0번째 이미지로 넣음
-			//$('img:eq(0)').attr('src', $('img').eq(1).attr('src')); // ★
-			
 			//$('img').eq(1).attr('src', $('img').eq(2).attr('src')); // 1←2
+			//$('img').eq(2).attr('src',temp); // 2←0
 			
-			for(i=0;i<$('img').length-1;i++){
+			/* 0←1, 1←2 두 줄만 배열로 만들어 for문 돌려보기 */
+			for(i=0;i<$('img').length-1;i++){ // 이미지 갯수가 몇개인가(3개) = ($('img').length), 이미지가 0번째 부터 시작하니까 -1붙여줌
 				$('img').eq(i).attr('src',$('img').eq(i+1).attr('src'));
 			}
 			
-			$('img').eq($('img').length-1).attr('src',temp); // 2←0
+			$('img').eq($('img').length-1).attr('src',temp); // 2←0 // n번째 이미지에 src를 넣어라
+			// eq(n번째) = ($('img').length-1) 이미지가 100개가있으면 마지막은 99번째이기 때문에 100-1번째
 		
 		}); // btm
 		
 		
-		$('#btn2').click(function(){
+		$('#btn2').click(function(){ // 버튼2 클릭했을 때 적용하기
 			
-			temp = $('img').eq(2).attr('src'); //tara03 //2번째 있던 이미지가 지워지기 때문에 잠깐 보관
+			temp = $('img').eq(2).attr('src'); //tara03 //2번째 있던 이미지가 지워지기 때문에 잠깐 임시변수에 보관
 			
-			$('img').eq(2).attr('src', $('img').eq(1).attr('src')); // 2←1
+			$('img').eq(2).attr('src', $('img').eq(1).attr('src')); // 2←1 / 1번째 이미지의 속성을 가져와서 2번째 이미지로 넣음
 			$('img').eq(1).attr('src', $('img').eq(0).attr('src')); // 1←0
 			$('img').eq(0).attr('src',temp); // 0←2
 			
-			//★위에  두줄 반복문(for) 사용해서 해보기
+			/* //★위에  두줄 반복문(for) 사용해서 해보기 -- 답 안나옴
+			for(i=0;i<$('img').length-1;i++){
+				$('img').eq(i+1).attr('src', $('img').eq(i).attr('src'))
+			}
+			
+			$('img').eq($('img').length-1).attr('src',temp); */
+			
 		});
 	
 	});

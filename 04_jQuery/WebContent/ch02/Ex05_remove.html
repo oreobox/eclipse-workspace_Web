@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Ex05_remove.html</title>
 <style type="text/css">
 	p{
 		margin: 5px;
@@ -21,20 +21,23 @@
 <script src="./../js/jquery.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		//p 영역에 red under 적용시키기
+		/* p 영역에 .red .under 적용시키기 */
 		//$('p').addClass('red').addClass('under'); // 방법①
 		$('p').addClass('red under'); // 방법②
 		
+		/* 짝수번째 p 영역에 under, red 지우기 */
 		$("#removeClass").click(function(){ // 콜백함수: 클릭했을 때 자동으로 호출됨
-			$('p:even').removeClass('red under'); //짝수번째(0부터시작) p 영역 지우기
+			$('p:even').removeClass('red under'); // 0부터 시작
+		});
 		
+		/* 홀수번째 p 영역 지우자마자 highlight 클래스 추가 */
 		$('#changeClass').click(function(){
 			$('p:odd').removeClass('red under').addClass('highlight');
 		});
-			
-		});
-		$('#div1').click(function(){
-			$(this).remove(); // 작업영역을 싹 삭제
+		
+		/* div영역을 클릭했을 때 작업영역 모두 삭제 */
+		$('#div1').click(function(){ // 
+			$(this).remove(); // 작업영역 자체가 (HTML 문서에서) 싹 삭제
 		});
 	});
 </script>

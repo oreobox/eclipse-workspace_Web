@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex03_slide.html</title>
+<style type="text/css">
+	#panel1,#panel2{ /* 그룹 선택자 이용-양쪽에 공통되는 스타일 적용 */
+		background-color: green;
+		padding: 5px; /* 안쪽여백 지정 */
+		border: 1px solid #c3c3c3;
+		text-align: center;
+	}
+	#panel2{
+		display: none; /* 있긴 있는데 잠깐 안보이게함 */
+	}
+</style>
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		/* panel1 누르면 toggle 슬라이드 후에, 이미지에 빨간 테두리 설정 */
+		$('#panel1').click(function(){
+			/* $('#panel2').slideToggle()
+			$('img').css('border','2px solid red'); */
+			
+			$('#panel2').slideToggle('slow',function(){
+				$('#panel2 img').css('border','2px solid red');
+			});
+		});
+	});
+</script>
+</head>
+<body>
+	<div id="panel1">Click to slidedown panel</div>
+	<div id="panel2">
+		<img src="./../images/im0.jpg">
+	</div>
+	
+</body>
+</html>

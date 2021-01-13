@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> Ex06_parent_parents.html </title>
+<style>
+	span {  color: blue; background:yellow;}
+</style>
+<script src="../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(function(){
+	   $('button').click(function(){ // 버튼클릭했을 때 span을 대상으로 작업
+		   $('span').parent().css('border-bottom','2px double red'); // parent(): 모든 부모에 두줄짜리밑줄 설정
+		   $('span').parents().css('font-style','italic'); // parents(): 모든 부모의 부모(조상)에 접근
+		   
+	   });
+	});
+</script>
+</head>
+<body>
+	<button> 엘리먼트에 스타일 입히기</button>
+	<div>div</div>
+	<p> 이곳은 p문장입니다. </p>
+	<div> 
+		<h1>하하하 
+		   <span class="selected"> 이곳은 div의 차일드 span 이다.</span> 
+		</h1>
+		<h2>호호호</h2>
+	</div>
+	
+	<p>
+	그리고 <span> 여기는 p의 차일드 span </span> 문장입니다. 
+	</p>
+	
+	<div> 그리고 마지막으로 
+	   <span> 이곳은  div의 차일드 span 이고</span>
+	   이곳은 div이다. 
+	</div>
+	
+	<div> 
+		div
+	   <p> p영역
+	   		<span class="selected">span</span>
+	   </p>
+	</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex02_sliceUp_Down_Toggle.html</title>
+<style type="text/css">
+	div{
+		background: yellow;
+		width: 80px;
+		height: 80px;
+		float: left;
+		margin: 3px;
+	}
+</style>
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#slideUp').click(function(){
+			$('div').slideUp();
+		});
+		
+		$('#slideDown').click(function(){
+			$('div').slideDown('slow',function(){ // 천천히 내려오게 한 후,
+				$(this).css('background','pink'); // 배경 pink로 설정
+			});
+		});
+		
+		$('#slideToggle').click(function(){
+			$('div').slideToggle(3000); // 초 설정
+		});
+	});
+</script>
+</head>
+<body>
+	<button id="slideUp">slideUp</button>
+	<button id="slideDown">slideDown</button>
+	<button id="slideToggle">slideToggle</button>
+	<p>
+	
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+</html>

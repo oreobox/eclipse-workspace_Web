@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Ex01_add.html</title>
 <style type="text/css">
 	div{
 		width:50px;
@@ -10,16 +10,13 @@
 		margin:10px;
 		border : 1px solid black;
 		float : left;
-	}
-	
+	}	
 	p{
 		clear : left;
-	}
-	
+	}	
 	.redBorder{
 		border: 2px solid red;
-	}
-	
+	}	
 	.yellow{
 		background: yellow;
 	}
@@ -28,9 +25,11 @@
 <script type="text/javascript"> 
 	$(document).ready(function(){
 		$('button').click(function(){
-			$('div').addClass('redBorder').add('p').addClass('yellow'); // 원래 작업하던 div에 redBorder 하고 p까지 추가해서 
-			//$('div').addClass('redBorder yellow');
-			//$('p').addClass('yellow');
+			/* 원래 작업하던 div에 redBorder 넣고, p까지 추가해서 yellow 적용 */
+			$('div').addClass('redBorder').add('p').addClass('yellow'); 
+			// 공통되는 yellow는 뒤에 한번만 사용
+			/*$('div').addClass('redBorder yellow'); // div에만 redBorder와 yellow 적용됨
+			  $('p').addClass('yellow');*/
 		});
 	});
 </script>

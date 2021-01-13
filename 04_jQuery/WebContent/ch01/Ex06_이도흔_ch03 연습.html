@@ -10,32 +10,38 @@
 <script src="./../js/jquery.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		
+		/* 한줄 전체에 색 입히기 */
 	var sum=0;
-		$('td:nth-child(2)').each(function() { // 부모인 tr 입장에서 봤을 때 두번째 td칸
-			//alert($(this).text()); // 두번째 td칸 문자 가져와서 alert
+		$('td:nth-child(2)').each(function() { // tr입장에서 봤을 때 두번째 td칸
+			//alert($(this).text());
 		
-			sum += eval($(this).text()); // 문자로 누적이 되버림 → 숫자 형태로 가져와서 비교하기(eval,Number,+,parseInt)
+			sum += eval ($(this).text()); // 문자로 누적이 되버림 → 숫자 형태로 가져와서 비교하기(eval,Number,+,parseInt)
 		
 			if($(this).text() >= 80){ // this: 지금 만난 두번째 td 칸 자체의 값을 가져오기(값 계속 바뀜)
-				$(this).css('background-color','cyan');
+				/* 그 줄 전체에 색깔 설정 해보기 */
+				$(this).parent().css('background-color','cyan');
 			}else if($(this).text() >= 30) {
-				$(this).css('background-color','yellow');
+				$(this).parent().css('background-color','yellow');
 			}else{
-				$(this).css('background-color','red');
+				$(this).parent().css('background-color','red');
+				//$(this).prev().addClass("red");
+				//$(this).next().addClass("red");
+				//$(this).siblings().css('background-color','red');
+				//$(this).css('background-color','red'); // 본인도 포함하고 형제에도 넣기
 			}
+			
 		}); // each
 		
-		
-		$('td:last-child').each(function() { // = 'td:nth-child(3)'
+		/*
+		$('td:last-child').each(function() {
 			if($(this).text() == '남') {
 				$(this).css('background-color','green');
 			}else{
 				$(this).css('background-color','orange');
 			}
 		});
-		
-		$('.result').append("총합:" + sum); // 그동안 모아놓은 sum 변수에 들어있는 값을 .result에 추가하기
+		*/
+		$('.result').append("총합:" + sum);
 	});
 	
 </script>

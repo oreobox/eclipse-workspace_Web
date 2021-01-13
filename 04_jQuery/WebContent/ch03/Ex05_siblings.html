@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex05_siblings.html</title>
+<style type="text/css">
+	div,span{
+		width : 100px;
+		height:100px;
+		margin:5px;
+		float : left;
+		border :2px solid red;
+	}
+	.pink{
+		background: pink;
+	}
+	.blue{
+		border: 3px solid blue;
+	}
+</style>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('button').click(function(){
+			//$('span').next().addClass('pink'); // prev(): 바로앞에 나오는 형제 → 1,3,4에 pink 배경
+			//$('span').prev('#fourth').addClass('blue'); // span 바로 앞에 형제가 id fourth를 가지고 있는 곳에 blue 설정 → 4에 blue 설정
+			
+			//$('span').prevAll().addClass('pink');
+			
+			$('span').siblings().css('background','yellow'); // (자기자신 빼고) 앞 뒤 모든 형제에 적용
+			
+			/*
+			.prev(): 바로 앞에 나오는 형제
+			.prevAll(): 앞에 나오는 모든 형제에 접근
+			.next(): 바로 뒤에 나오는 형제
+			.nextAll(): 뒤에 나오는 모든 형제에 접근
+			.siblings(): (자기자신 빼고) 앞 뒤 모든 형제에 적용
+			*/	
+		});
+	});
+</script>
+</head>
+<body>
+	<p>
+		<button>형제 엘리먼트에 스타일 입히기</button>
+	</p>
+	
+	<div id="first">1_first</div>
+	
+	<span id="second" class="middle"> 2_sibling
+		<div id="child">child</div>
+		<!-- 보통 큰 영역인 div안에 작은영역 span을 쓰는데 span 안에 div가 있어서 노란줄이지만 오류는 아님 -->
+	</span>
+	
+	<div id="third" class="middle">3_sibling</div>
+	<span id="fourth" class="middle">4_sibling</span>
+	<span id="fifth" class="middle">5_sibling</span>
+	
+	<div id="sixth">6_last</div>
+	
+</body>
+</html>

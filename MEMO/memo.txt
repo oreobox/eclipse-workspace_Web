@@ -194,7 +194,7 @@ target: 링크를 어디에서 열지 정한다.
 방법① 글자를 누르면 링크된 주소로 이동
 	<a href="http://www.daum.net" title="www.daum.net" target="_self">다음</a>
 document.write("<a href='http://www.melon.com'>멜론<a>&nbsp;&nbsp;"); // 멜론 글자 클릭해서 주소이동
-/* &nbsp; : 띄어쓰기 */
+/* nbsp; : 띄어쓰기 */
 방법② 그림을 누르면 링크된 주소로 이동
 	<a href="https://www.starbucks.co.kr/">
 		<img src="images/cafe2.jpg" width="100" height="100">
@@ -438,7 +438,8 @@ background: url(../images/dot.png) repeat-x bottom left;
 	background-position: top right; /* default값 : top left */
 	background-attachment: fixed; /* 배경 이미지는 멈춰있고 글만 움직임 (default값: scroll) */
 
-float: right; /* 이미지가 오른쪽 비어있는 공간으로  띄어오르게하기 */
+float: right; /* 이미지가 오른쪽 비어있는 공간으로  띄어오르게하기  */
+float: left; /* 이미지가 옆으로 붙어 나오게 하기 */
 clear : left; /* 이미지가 왼쪽에 떠오르지 않도록 하기 */
 
 → 그림자 효과
@@ -1142,7 +1143,7 @@ webkit-column-count: 6;
 	img{
 		display: block; /* 블록 요소로 형식을 변경, 블럭요소의 특징을 가져서 한칸씩 띄어짐 */
 			/* display: 원래의 속성 특징을 바꾸고 싶을 때 display 사용 (img, table 태그에서 주로 사용)
-				none: 아무 속성도 갖지 않겠다는 뜻 (해당 요소를 화면에 표시하지 않음,보이지않게함)
+				none: 아무 속성도 갖지 않겠다는 뜻 (해당 요소를 화면에 표시하지 않음,안보이게함)
 				inline: 인라인 요소로 형식을 바꿈 (default값)
 				block: 블록 요소로 형식을 변경, 블럭요소의 특징을 가져서 한칸씩 띄어짐 */
 	}
@@ -2249,11 +2250,14 @@ $: 문자열의 끝을 의미
 	});
 </script>
 
+
+./../js/jquery.js = http://code.jquery.com/jquery-3.1.1.min.js
+
 DOM(Document Object Model): document 안에 들어가는 태그들을 객체로 만들어서 document 영역을 구성하는 것
 jQurery로 여러가지 작업 가능: css, 유효성검사, 이벤트 처리 등 가능 
 
 	<!--
-	even,odd,eq(n),nth(n),lt(n),gt(n): 0부터 시작
+	even,odd,eq(n),nth(n),lt(n),gt(n),slice(n): 0부터 시작
 	nth-child: 1부터 시작 (child 붙은거 빼고는 대부분 0부터 시작)
 	
 	nth(n): 모든 span에서 n번째 시작 - 0부터 시작 
@@ -2276,23 +2280,125 @@ jQurery로 여러가지 작업 가능: css, 유효성검사, 이벤트 처리 �
 		$(document).ready(function() {
 			// DOM이 모두 로드된 후 실행할 코드 입력
 		});
+		↓ 생략가능
+		$(function(){
+		
+		});
+		
+	→ 콜백함수: function(){}; - ()괄호 안이 비어있음
+		어떤 이름을 줘서 명시적으로 호출하는 함수가 아니라,
+		어떤 이벤트가 발생했거나 특정 시점에 도달했을 때 시스템에서 자동으로 호출되는 함수
+		값 들어가지 않고 정의만 해놓음
+		함수는 원래 이름이 있어야 하지만, 이름없는 함수
+		
+	※메서드(jQuery Method)
 	.addClass(): jQuery에서 만든 함수로 적용시켜봄
 		$('span').addClass('redtext');
 	.css('속성','값'): 선택한 요소의 css 속성값을 가져오거나 style 속성을 추가 ('속성','값')을 한 쌍으로 입력
-	.append(): 추가하는 함수 (선택한 요소의 내용의 끝에 콘텐트를 추가)
-		특징: 버튼 누를때마다 계속 추가됨
-		$target.append(새로운엘리먼트) == $(새로운엘리먼트).appendTo(target)
 	.each(function(){}); : 각각 작업해주고 싶을 때 사용, 선택한 요소가 여러 개일 때 각각에 대하여 반복하여 함수를 실행시킴(배열이랑 비슷)
-	.remove(); 작업영역을 (HTML 문서에서) 싹 삭제
-		
+	.remove(); 작업영역 자체가 (HTML 문서에서) 싹 삭제
 	.removeClass(): 선택한 요소에서 클래스 값을 제거
+	.empty(): 안의 영역이 삭제됨	(선택한 요소의 내용을 지운다. 내용만 지울 뿐 태그는 남아있는 점 주의하기)
 	.attr(): 속성 설정
 		attr('속성', '값') : 속성에 값을 넣어라 
-		attr('속성') : 이 속성으로 설정된 값을 가지고 와라 
+		attr('속성') : 이 속성으로 설정된 값을 가지고 와라
+			$("img").attr({ // 여러가지 속성 값 넣기 위해 { , , } 사용
+				width: "100px", // 속성 이름에는 "" 안해도 되지만, 값 자리에는 "" 필수
+				height: "100px",
+				border:"1px solid black"
+			});
 	.removeAttr("title"); // 타이틀 속성 제거
 	.text(): 문자를 가져옴 (선택한 요소 안의 내용을 가져오거나, 다른 내용으로 바꾼다.)
-	.html(): 기존에 있던 것은 지우고 방금 만든 이미지만 불러옴 (선택한 요소 안의 내용을 가져오거나, 다른 내용으로 바꾼다.)
+	.html(): 기존에 있던 것은 지우고 방금 만든 이미지만 새로 출력 (선택한 요소 안의 내용을 가져오거나, 다른 내용으로 바꾼다.)
 	.click(); 버튼을 클릭했을 때 하고싶은 일이 뭐냐?
+	.filter(): 필요한것만 골라서 적용 (매개 변수에 전달된 셀렉터 표현식 혹은 함수에 만족하는 요소를 추출(필터링)한다.)
+		매개변수 selector: 엘리먼트를 추출하기 위한 셀렉터 표현식
+			   function: 엘리먼트를 추출하기 위한 함수
+	.not(): filter의 반대개념 (선택한 요소 중 특정 선택자를 제외한 요소를 선택)
+	.slice(시작위치 숫자,끝위치 숫자): 일치하는 요소의 일부분만 선택 - 끝위치 바로 전 숫자까지만 가져옴
+	.slice(n): n부터 끝까지 설정하기 - 0부터 시작
+	.children(): 자식에 접근 (어떤 요소의 자식 요소를 선택)
+	.parent(): 모든 부모에 접근 (어떤 요소의 부모 요소를 선택)
+	.parents(): 모든 부모의 부모(조상)에 접근
+	.find(): 자손에 접근하는 함수 (어떤 요소의 하위 요소 중 특정 요소를 찾을 때 사용)
+	.siblings(): (자기자신 빼고) 앞 뒤 모든 형제에 적용
+	.prev(): 바로 앞에 나오는 형제
+	.prevAll(): 앞에 나오는 모든 형제에 접근
+	.next(): 바로 뒤에 나오는 형제
+	.nextAll(): 뒤에 나오는 모든 형제에 접근
+	.toggle(): 클릭하면 잠깐 사졌다가(display: none;) 다시 클릭하면 다시 보임(display: block;)
+		.toggle(fast): 빨리 사라지거나 나타나게
+		.toggle(slow): 느리게 표시
+		.toggle(n): 숫자입력하면 속도 지정 가능 (5000:5초)
+		(키보드 내에 toggle 키: Insert, NumLock, CapsLock)	
+	.hasClass(): ()괄호 안에있는 이런 클래스를 가지고 있는지? 있으면 true, 없으면 false
+		if($(this).hasClass("toggleStyle")){
+			$(this).removeClass("toggleStyle"); // 클릭하면 toggleStyle 사라짐
+		}
+	/*
+	.append(): 계속 추가하는 함수 (선택한 요소의 내용의 끝에 콘텐트를 추가) / 배열 순서대로 입력됨(원래있던 자식 뒤에 추가하기)
+		$target.append(새로운엘리먼트) == $(새로운엘리먼트).appendTo(target)
+	.prepend(): 원래있던 자식 앞에 추가하기 (해당 엘리먼트에 첫자식 엘리먼트로 추가하기)
+		$target.prepend(새로운엘리먼트) == $(새로운엘리먼트).prependTo(target)				
+		공통점: target의 자식으로 추가
+		차이점: 원래있던 자식 바로 뒤에 추가하는지, 바로 앞(첫번째)에 추가하는지
+		
+	after(): 바로 밑에 형제로 추가됨 - 먼저 형제로 넣은 것이 맨 밑으로 내려감
+	insertAfter(): 
+		$target.after(새로운엘리먼트) == $(새로운엘리먼트).insertAfter(target)
+	before(): 바로 앞에 형제로 추가됨 - 나중에 형제로 넣은 것이 맨 밑으로 내려감
+	insertBefore():
+		$target.before(새로운엘리먼트) == $(새로운엘리먼트).insertBefore(target)
+	공통점: target의 형제로 추가함
+	*/
+	.val(): 값을 가져오는 함수:
+		var row = $("#row").val(); - row의 값을 가져오기
+	.bind(): target과 event 엮어주기
+		$('a').bind('click mouseover', function(){});
+	.unbind(); bind함수 해지
+		if(cnt == 5){
+			$('img').unbind();
+		}
+	.live(): 이벤트 처리를 위임할 때 사용하는 함수
+			// bind로는 새로 생성된 p 태그에는 설정 적용되지 않는다
+			// live로는 새로 생성된 p 태그에도 설정 적용시킬 수 있다.
+	.die(); live함수 해지
+		if(cnt == 5){
+			$('p').die();
+		}
+	
+	.change() : 옵션에 변화가 생겨야지만 함수 호출
+		$('#sel').change(function(){}; - 옵션에 변화가 생겼을때
+		
+	.show(): (왼쪽 위 꼭지점부터)보이게하기 
+		$('button:eq(0)').click(function(){
+			$('span:first').show();
+		});
+	.hide(): 숨기기
+		$('button:eq(1)').click(function(){
+			$('span:first').hide();
+		});
+	.slideUp(): 미끄러지듯이 올라감
+		$('#slideUp').click(function(){
+			$('div').slideUp();
+		});
+	.slideDown(): 미끄러지듯이 내려옴
+		$('#slideDown').click(function(){
+			$('div').slideDown('slow',function(){ // 천천히 내려오게 한 후,
+				$(this).css('background','pink'); // 배경 pink로 설정
+			});
+		});
+	.slideToggle(): 미끄러지듯이 toggle
+		$('#slideToggle').click(function(){
+			$('div').slideToggle(3000); // 초 설정
+		});
+	.fadeIn(): 전체가 서서히 나타내는 효과(점점 나타나는 효과)
+	.fadeOut(): 
+	.fadeToggle():
+	
+	
+		
+	
 	
 →  메서드 체이닝 (chaining): 작업대상 하나에 여러개 작업을 연달아서 쓸 수 있다.
 	$('p em').css('background-color','yellow')
@@ -2590,23 +2696,826 @@ jQurery로 여러가지 작업 가능: css, 유효성검사, 이벤트 처리 �
 </body>
 			
 ▶Ex02_Attr(for문)
+<title>Ex02_Attr(for문).html</title>
+<style type="text/css">
+	#left_side div{
+		float : left; /* 이미지가 최대한 왼쪽으로 붙어 나오게 하기 */
+		margin-left: 10px;
+	}
+	
+	#left_side2{ /* left_side2는 왼쪽에 떠오르지 않도록 하기 */
+		clear : left;
+	}
+</style>
 
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		//alert(1);
+		
+		$('#btn').click(function(){ // 버튼 클릭했을 때 alert이 뜨도록 설정
+			//alert(2);
+			/* 버튼 누를때마다 아래처럼 작업하도록
+			0←1 1번째 이미지를 0번째 이미지로 옮겨라(=복사 덮어쓰기)
+			1←2
+			2←0
+			}); */
+		
+			var temp = $('img').eq(0).attr('src'); // tara01.jpg / 0번째 이미지의 src 속성(tara01.jpg)을 가져와서 temp 변수에 넣어놓기
+			
+			//a = $('img').eq(1).attr('src'); // 이미지 태그를 작업대상으로 해서 1번째 이미지의 src 속성(tara02.jpg)을 가져와서 a 변수에 넣어놓기
+			//$('img').eq(0).attr('src',a); // 두줄인 것을 아래처럼 한줄로 써줌 / 0번째 이미지의 src 속성으로 a변수에 있는 것을 넣어라
+			//	↓
+			//$('img:eq(0)').attr('src', $('img').eq(1).attr('src')); // $('img').eq(0) = $('img:eq(0)')
+			//$('img').eq(0).attr('src',$('img').eq(1).attr('src')); // 0←1 / 1번째 이미지의 속성을 가져와서 0번째 이미지로 넣음
+			//$('img').eq(1).attr('src', $('img').eq(2).attr('src')); // 1←2
+			//$('img').eq(2).attr('src',temp); // 2←0
+			
+			/* 0←1, 1←2 두 줄만 배열로 만들어 for문 돌려보기 */
+			for(i=0;i<$('img').length-1;i++){ // 이미지 갯수가 몇개인가(3개) = ($('img').length), 이미지가 0번째 부터 시작하니까 -1붙여줌
+				$('img').eq(i).attr('src',$('img').eq(i+1).attr('src'));
+			}
+			
+			$('img').eq($('img').length-1).attr('src',temp); // 2←0 // n번째 이미지에 src를 넣어라
+			// eq(n번째) = ($('img').length-1) 이미지가 100개가있으면 마지막은 99번째이기 때문에 100-1번째
+		
+		}); // btm
+		
+		
+		$('#btn2').click(function(){ // 버튼2 클릭했을 때 적용하기
+			
+			temp = $('img').eq(2).attr('src'); //tara03 //2번째 있던 이미지가 지워지기 때문에 잠깐 임시변수에 보관
+			
+			$('img').eq(2).attr('src', $('img').eq(1).attr('src')); // 2←1 / 1번째 이미지의 속성을 가져와서 2번째 이미지로 넣음
+			$('img').eq(1).attr('src', $('img').eq(0).attr('src')); // 1←0
+			$('img').eq(0).attr('src',temp); // 0←2			
+		});
+	});
+</script>
+</head>
+<body>
+	<div id="left_side">
+		<div>
+			<img src="../images/tara01.jpg" width="90" height="90"> <!-- 이미지 하나가 div 영역을 차지 -->
+		</div>
+		
+		<div>
+			<img src="../images/tara02.jpg" width="90" height="90">
+		</div>
+		
+		<div>
+			<img src="../images/tara03.jpg" width="90" height="90">
+		</div>
+	</div>
+	
+	<div id="left_side2">
+		<input id="btn" type="button" value="버튼"> <!-- 버튼 누르면 이미지가 왼쪽으로 이동 -->
+		<input id="btn2" type="button" value="버튼2"> <!-- 버튼 누르면 이미지가 오른쪽으로 이동 -->
+	</div>
+</body>
 
 ▶Ex03
+<title>Ex03_attr_click_img.html</title>
+<style>
+/* id가 myarea인 곳에 이미지 넣을 예정 */
+	img{ /* img 또는 #myarea img (자손) 사용 */ 
+		width: 100px;
+		height: 100px;
+	}
+</style>
 
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+		$('#makeimage').click(function(){
+			//alert(1);
+			//alert($('input:checked').length); // input 태그에서 체크된 갯수 몇개인지 확인
+			
+			var result = ""; //result 변수 밖에다 선언해놔야 밖에서도 사용가능(이미지 불러옴)
+			
+			$('input:checked').each(function(){ //.each()도 또다른 반복문의 형태이다. // input 태그 체크된 것 각각 확인해보기
+				//alert($(this).attr('id')); // 지금만난 check박스 id값(속성) 출력해봐라
+				result += "<img src='./../images/" + $(this).attr('id') + ".jpg'>" //result 변수에 체크된 갯수만큼 이미지 태그가 만들어짐
+				
+				/* 코드가 너무 길다 싶으면 변수에 넣어서 할 수도있음
+				idvalue = $(this).attr('id'); // 변수에 지금만난 check박스의 id값 담기
+				result += "<img src='./../images/" + idvalue + ".jpg'>" */
+				
+			});
+			
+			$('#myarea').html(result); // 이미지들이 myarea 영역에 출력됨 // each문 밖에다 써주면 each문 반복해서 돌면서 그동안 모아놨던 것을 한번에 출력한다. 
+			//.append() 특징: 버튼 누를때마다 계속 추가됨
+			//.html(): 기존에 있던 것은 지우고 방금 만든 이미지만 새로 출력
+		
+			/* 이미지를 클릭했을 때 클릭한 이미지의 src 속성을 alert으로 띄우기 */
+			$('#myarea img').click(function(){ // img만 써도되고 #myarea 자손 img 써도됨
+				alert($(this).attr("src"));
+			}); 
+		
+		}); // click
+	}); // ready
+</script>
+</head>
+<body>
+<!-- 내가 체크한 체크박스에 따라 이미지 다르게 불러오기 -->
+	<p>
+		<input type="checkbox" id="Koala"/>코알라 <!-- 동물 스펠링 앞글자 꼭 대문자 사용 -->
+		<input type="checkbox" id="Penguins" checked="checked"/>펭귄
+		<input type="checkbox" id="Desert" checked/>사막
+	</p>
+	
+	<p>
+		<input type="button" id="makeimage" value="그림만들기"/>
+	</p>
+	
+	<div id="myarea"></div>
+</body>
 
 
 ▶Ex04_Attr
-
+<title>Ex04_Attr_image.html</title>
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		/*속성으로 이미지 설정하기*/
+		$("img").attr({
+			width: "100px", // 속성 이름에는 "" 안해도 되지만, 값 자리에는 "" 필수
+			height: "100px",
+			border:"1px solid black"
+		});
+		
+		/* 콜백함수: function(){}; - ()괄호 안이 비어있음
+			어떤 이름을 줘서 명시적으로 호출하는 함수가 아니라,
+			어떤 이벤트가 발생했거나 특정 시점에 도달했을 때 시스템에서 자동으로 호출되는 함수
+			값 들어가지 않고 정의만 해놓음
+			함수는 원래 이름이 있어야 하지만, 이름없는 함수 */
+		
+		
+		/* title 속성으로 설정되어있는 이미지를 src 속성으로 설정 바꿔서 불러오기 - 3번 써줘야해서 길어짐.
+		$('img').eq(0).attr('src',"./../images/"+$('img').eq(0).attr('title'));
+		$('img').eq(1).attr('src',"./../images/"+$('img').eq(1).attr('title'));
+		$('img').eq(2).attr('src',"./../images/"+$('img').eq(2).attr('title')); */
+				//	↓
+		/* 몇번째인지 지정하지 않고, 모든 이미지가 작업 대상인데 src 속성으로 넣으라고 하는 순간 콜백함수가 자동으로 호출됨. */
+		$('img').attr('src',function(){ // 이름이 없는 함수 : 콜백함수 (정의만 해놓음)
+			/* return "../images/" + $(this).attr("title");
+			3개 이미지가 모두 작업대상인데, 지금 만난 이미지의 title을 가져와라 - 문자열 리턴하는데 바로 위 function()함수 정의된 곳으로 리턴함 */
+			return "../images/" + this.title; // 어떤 속성에 접근할 때는 이렇게 this.title = $(this).attr("title") 써도 상관없음
+			//내가만든 문자열("../images/")과 this.title을 합친 것이 function()으로 리턴이되면서 src 자리로 들어갈 수 있음
+		});
+		
+		$('img').attr('title',function(index){ // 작업대상의 위치가 들어옴 / function 안에 아무 변수 써줌 / index에는 0,1,2 들어옴
+			return index + "번째 이미지"; // 이미지를 작업대상으로 하고있음. 처음만난 이미지를 가지고 function(){} 안에 내용 작업함 
+		});
+		
+		//버튼을 클릭했을 때 이미지 title 속성을 제거
+		$('input').click(function(){
+			//$('img').eq(0).removeAttr("title"); // 1번째 이미지만 타이틀 제거
+			$('img:nth(0)').removeAttr('title');
+			
+			//$('img').attr("title",""); // 전체 이미지 타이틀 제거 방법①
+			//$('img').removeAttr("title"); // 전체 이미지 타이틀 제거 방법②
+		});
+	});
+</script>
+</head>
+<body>
+	<img title="image1.jpg"/>
+	<img title="image2.jpg"/>
+	<img title="image3.jpg"/>
+	
+	<br>
+	
+	<input type="button" value="속성제거">
+	
+</body>
 
 
 ▶Ex05_remove
+<title>Ex05_remove.html</title>
+<style type="text/css">
+	p{
+		margin: 5px;
+	}
+	.red{
+		color:red;
+	}
+	.under{
+		text-decoration: underline;
+	}
+	.highlight{
+		background: yellow;
+	}
+</style>
 
-
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		/* p 영역에 .red .under 적용시키기 */
+		//$('p').addClass('red').addClass('under'); // 방법①
+		$('p').addClass('red under'); // 방법②
+		
+		/* 짝수번째 p 영역에 under, red 지우기 */
+		$("#removeClass").click(function(){ // 콜백함수: 클릭했을 때 자동으로 호출됨
+			$('p:even').removeClass('red under'); // 0부터 시작
+		});
+		
+		/* 홀수번째 p 영역 지우자마자 highlight 클래스 추가 */
+		$('#changeClass').click(function(){
+			$('p:odd').removeClass('red under').addClass('highlight');
+		});
+		
+		/* div영역을 클릭했을 때 작업영역 모두 삭제 */
+		$('#div1').click(function(){ // 
+			$(this).remove(); // 작업영역 자체가 (HTML 문서에서) 싹 삭제
+		});
+	});
+</script>
+</head>
+<body>
+	<button id="removeClass">removeClass</button>
+	<button id="changeClass">changeClass</button>
+	<div id="div1">
+		<p>엘리먼트로부터</p>
+		<p>클래스를</p>
+		<p>추가하고</p>
+		<p>제거하는</p>
+		<p>연습하기</p>
+	</div>
+</body>
 
 
 ▶Ex06_toggle_hasClass
+※css를 이용한 마우스 커서 모양 지정
+cursor : pointer; 마우스 손가락 설정(링크 설정된 곳)
+		 crosshair; 십자가 모양
+		 move;
+<p style="cursor:auto">Auto</p> - I 모양
+<p style="cursor:crosshair">Crosshair</p> - 십자가 모양
+<p style="cursor:default">Default</p> - 기본 마우스 모양
+<p style="cursor:pointer">Pointer</p> - 손가락 포인터 모양 (링크 설정된 곳)
+<p style="cursor:move">Move</p> - 십자가 화살표 모양
+<p style="cursor:e-resize">e-resize</p> - ↔ 모양
+<p style="cursor:ne-resize">ne-resize</p> - ↗ 모양
+<p style="cursor:nw-resize">nw-resize</p> - ↖ 모양
+<p style="cursor:n-resize">n-resize</p> - ↕ 모양
+<p style="cursor:se-resize">se-resize</p> - ↖ 모양
+<p style="cursor:sw-resize">sw-resize</p> - ↗ 모양
+<p style="cursor:s-resize">s-resize</p> - ↕ 모양
+<p style="cursor:w-resize">w-resize</p> - ↔ 모양
+<p style="cursor:text">text</p> - I 모양
+<p style="cursor:wait">wait</p> - 동그라미 무한반복 기다리는 모양
+<p style="cursor:help">help</p> - 기본형에 물음표 있는 모양
 
+<title>Ex06_toggle_hasClass.html</title>
+<style type="text/css">
+	p.a, p.c{ /* p태그 안에 클래스가 a인 곳 */ /* p .a: p태그 자손 중 클래스가 a인 곳(띄어쓰기 주의) */
+		font-weight: bold;
+		color: blue;
+		cursor: pointer; /* 마우스 손가락 설정(링크 설정된 곳) */
+			 /* crosshair: 십자가 모양
+				move: */
+	}
+	.toggleStyle{
+		color: red;
+	}
+</style>
 
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('p.a').click(function(){ // p태그 안에 클래스가 a인 곳이 작업대상
+			$('p.b').toggle(5000); //  클릭하면 잠깐 사졌다가(display: none;) 다시 클릭하면 다시 보임(display: block)
+		});
+		
+		$('p.c').click(function(){
+			$('p.d').toggle('fast'); // fast: 빨리, slow: 느리게 표시, 숫자입력하면 속도 지정 가능(5000:5초)
+			/* 키보드 내에 toggle 키: Insert, NumLock, CapsLock */
+		});
+		
+		$('div').click(function(){ // div 영역은 한 줄 전체 영역
+			/* 지금 클릭한 바로 그 영역에 toggleStyle 클래스 있다면~ 있으면 if문 true, 없으면 false */
+			if($(this).hasClass("toggleStyle")){ // if문 true
+				$(this).removeClass("toggleStyle"); // 지금 클릭한 그 영역 toggleStyle red 사라짐
+			}
+		});
+	});
+</script>
+</head>
+<body>
+	<p class="a">남자 배우 인기순위</p>
+	<p class="b">조승우</p>
+	<p class="b">하정우</p>
+	<p class="b">김수현</p>
+	<p class="b">소지섭</p>
+	<p class="b">송승헌</p>
+	<hr>
+	
+	<p class="c">여자 배우 인기순위</p>
+	<p class="d">송혜교</p>
+	<p class="d">전지현</p>
+	<p class="d">김태희</p>
+	<p class="d">공효진</p>
+	<p class="d">하지원</p>
+	<br>
+	
+	<div class="toggleStyle">div 영역입니다.</div>
+	
+</body>
 ------------------------------ 04_jQuery_ch03 ------------------------------
-▶Ex01
+▶Ex01_add.html
+<title>Ex01_add.html</title>
+<style type="text/css">
+	div{
+		width:50px;
+		height:50px;
+		margin:10px;
+		border : 1px solid black;
+		float : left;
+	}	
+	p{
+		clear : left;
+	}	
+	.redBorder{
+		border: 2px solid red;
+	}	
+	.yellow{
+		background: yellow;
+	}
+</style>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript"> 
+	$(document).ready(function(){
+		$('button').click(function(){
+			/* 원래 작업하던 div에 redBorder 넣고, p까지 추가해서 yellow 적용 */
+			$('div').addClass('redBorder').add('p').addClass('yellow'); 
+			// 공통되는 yellow는 뒤에 한번만 사용
+			/*$('div').addClass('redBorder yellow'); // div에만 redBorder와 yellow 적용됨
+			  $('p').addClass('yellow');*/
+		});
+	});
+</script>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<p>여기는 p영역</p>
+	
+	<button>클릭</button>
+</body>
+
+
+▶Ex02_filter_not_slice.html
+<title>Ex02_filter_not_slice.html</title>
+<style type="text/css">
+	div{
+		width: 60px;
+		height: 60px;
+		border: 2px solid green;
+		float: left;
+		margin: 5px;
+	}
+</style>
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('div').css('background','yellow') // div 전체 배경은 노란색으로 하고,
+				//.filter(".middle").css('border-color',"red") // class가 middle만 걸러서 css 설정하기
+				.not(".middle").css('border-color',"red"); // filter의 반대개념
+		
+		$('div').slice(2,4).css('background','pink'); // 2~4번째 앞까지 - 0부터시작
+		//$('div').slice(2).css('background','pink'); // 2 ~ 끝까지
+				
+	});
+</script>
+</head>
+<body>
+
+	<div id="first"></div>
+	<div id="second" class = "middle"></div>
+	<div id="third" class = "middle"></div>
+	<div id="fourth" class = "middle"></div>
+	<div id="fifth" class = "middle"></div>
+	<div id="sixth"></div>
+	
+	<p class="middle"></p>
+</body>
+
+
+▶Ex03_children_find.html
+<title> Ex05_children_find.html </title>
+<style>
+	span {color: blue; background:yellow;}
+</style>
+<script src="../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(function(){ //document.ready 생략가능
+		$('button').click(function(){
+			$('div').children().css('border-bottom','3px solid red') // .children(): 자식에 접근 - div 모든 자식에 설정 적용
+			
+			$('div').children(".selected").css('color','red') // class가 selected인 자식 (하하하) 에만 적용
+		
+			$('div').find(".selected").css('color','green'); // .find(): 자손에 접근할 때 쓰는 함수
+				// 자손은 자식을 포함. 때문에 위에서 div children 글자에 red 한 것은 덮어씌워짐
+		});
+	});
+</script>
+</head>
+<body>
+	<button>엘리먼트에 스타일 입히기</button>
+	<p> 이곳은 p문장입니다. </p>
+	<div> 
+		<h1 class="selected">하하하 
+		   <span class="selected"> 이곳은 div의 차일드 span 이다.</span> 
+		</h1>
+		<h2>호호호</h2>
+	</div>
+	
+	<p>
+	그리고 <span> 여기는 p의 차일드 span </span> 문장입니다. 
+	</p>
+	
+	<div> 그리고 마지막으로 
+	   <span> 이곳은  div의 차일드 span 이고</span>
+	   이곳은 div이다. 
+	</div>
+	
+	<div> 
+		div
+	   <p> p영역
+	   		<span class="selected">span</span>
+	   </p>
+	</div>
+</body>
+
+
+▶Ex04_parent_parents.html
+<title> Ex06_parent_parents.html </title>
+<style>
+	span {  color: blue; background:yellow;}
+</style>
+<script src="../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(function(){
+	   $('button').click(function(){ // 버튼클릭했을 때 span을 대상으로 작업
+		   $('span').parent().css('border-bottom','2px double red'); // parent(): 모든 부모에 두줄짜리밑줄 설정
+		   $('span').parents().css('font-style','italic'); // parents(): 모든 부모의 부모(조상)에 접근
+		   
+	   });
+	});
+</script>
+</head>
+<body>
+	<button> 엘리먼트에 스타일 입히기</button>
+	<div>div</div>
+	<p> 이곳은 p문장입니다. </p>
+	<div> 
+		<h1>하하하 
+		   <span class="selected"> 이곳은 div의 차일드 span 이다.</span> 
+		</h1>
+		<h2>호호호</h2>
+	</div>
+	
+	<p>
+	그리고 <span> 여기는 p의 차일드 span </span> 문장입니다. 
+	</p>
+	
+	<div> 그리고 마지막으로 
+	   <span> 이곳은  div의 차일드 span 이고</span>
+	   이곳은 div이다. 
+	</div>
+	
+	<div> 
+		div
+	   <p> p영역
+	   		<span class="selected">span</span>
+	   </p>
+	</div>
+</body>
+
+
+▶Ex05_siblings.html
+<title>Ex05_siblings.html</title>
+<style type="text/css">
+	div,span{
+		width : 100px;
+		height:100px;
+		margin:5px;
+		float : left;
+		border :2px solid red;
+	}
+	.pink{
+		background: pink;
+	}
+	.blue{
+		border: 3px solid blue;
+	}
+</style>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('button').click(function(){
+			//$('span').next().addClass('pink'); // prev(): 바로앞에 나오는 형제 → 1,3,4에 pink 배경
+			//$('span').prev('#fourth').addClass('blue'); // span 바로 앞에 형제가 id fourth를 가지고 있는 곳에 blue 설정 → 4에 blue 설정
+			
+			//$('span').prevAll().addClass('pink');
+			
+			$('span').siblings().css('background','yellow'); // (자기자신 빼고) 앞 뒤 모든 형제에 적용
+		});
+	});
+</script>
+</head>
+<body>
+	<p>
+		<button>형제 엘리먼트에 스타일 입히기</button>
+	</p>
+	
+	<div id="first">1_first</div>
+	
+	<span id="second" class="middle"> 2_sibling
+		<div id="child">child</div>
+		<!-- 보통 큰 영역인 div안에 작은영역 span을 쓰는데 span 안에 div가 있어서 노란줄이지만 오류는 아님 -->
+	</span>
+	
+	<div id="third" class="middle">3_sibling</div>
+	<span id="fourth" class="middle">4_sibling</span>
+	<span id="fifth" class="middle">5_sibling</span>
+	
+	<div id="sixth">6_last</div>
+	
+</body>
+
+
+------------------------------ 04_jQuery_ch04 ------------------------------
+▶Ex01_append_prepend.html
+<title>Ex01_append_prepend.html</title>
+<style type="text/css">
+	div{
+		float: left;
+		margin : 20px;
+	}
+</style>
+<script src="../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+	$(function() {
+		//과일,차 배열로 만들기
+		var fruits = ["apple","banana","orange","melon"];
+		var cars = ["sonata","grandure","genesis"];
+		
+		/* ul에 li가 없기 때문에 과일,차 배열로 li를 만들어줌 */
+		$(fruits).each(function(index,value){ // fruits가 작업대상.배열 객체 만들기 - 변수는 따옴표로 묶지 않는다. // 0~3번방에있는 것들 돌면서 자식으로 li 추가
+			$('#fruit_list').append($('<li>' + index +':'+ value + '</li>')); // id fruit_list에 자식으로 추가해라
+		});
+		/*
+		$.each(cars,function(index){ // each()함수 안에 배열의 이름을 써도됨 - 속성에 index(=방번호)만 써주고 아래에는 배열로 접근
+			$('#car_list').append($('<li>'  + index + ':' + cars[index] + '</li>'));
+		});
+		*/
+		$.each(cars,function(index){
+			//$('#car_list').append($('<li>'  + index + ':' + cars[index] + '</li>'));
+			$('<li>' + index +':' + cars[index] + '</li>').appendTo('#car_list'); //어디에다 추가할건지 뒤에 추가
+		});
+		 
+		$(fruits).each(function(index,value){
+			$('#fruit_list2').prepend($('<li>' + index +':'+ value + '</li>'));
+		});
+		 
+		$.each(cars,function(index){
+			//$('#car_list').append($('<li>' + index +':' + cars[index] +  '</li>'));
+			$('<li>' + index +':' + cars[index] +  '</li>').prependTo('#car_list2');
+			
+		});
+		 
+	});
+</script>
+</head>
+<body>
+	<div>
+		<b>내가 좋아하는 과일</b>
+		<ul id="fruit_list"></ul>
+	</div>
+	
+	<div>
+		<b>갖고 싶은 차</b>
+		<ul id="car_list"></ul>
+	</div>
+	
+	<div>
+		<b>내가 좋아하는 과일2</b>
+		<ul id="fruit_list2"></ul>
+	</div>
+	
+	<div>
+		<b>갖고 싶은 차2</b>
+		<ul id="car_list2"></ul>
+	</div>
+</body>
+
+
+▶Ex02_before_after_(insert).html
+<title>Ex02_before_after_(insert).html</title>
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		// header,footer : 시멘틱 요소
+		$('header').after($('<div> 좋아하는 과일 : 사과 </div>')); //header가 끝나고 바로 뒤에 형제로 들어옴
+		$('header').after($('<div> 좋아하는 과일 : 딸기 </div>')); // 먼저 형제로 넣은 것이 맨 밑으로 내려감
+		
+		$('<div> 좋아하는 과일 : 바나나 </div>').insertAfter($('header')); 
+		$('<div> 좋아하는 과일 : 복숭아 </div>').insertAfter($('header')); 
+		
+		
+		$('footer').before($('<div> 좋아하는 차 : 모닝 </div>')); //footer 바로앞에 배치
+		$('footer').before($('<div> 좋아하는 차 : 아반떼 </div>'));
+		
+		$('<div> 좋아하는 차 : 투싼 </div>').insertBefore($('footer')); 
+		$('<div> 좋아하는 차 : 소울 </div>').insertBefore($('footer')); 
+	});
+</script>
+</head>
+<body>
+	<header>
+		<h1>과일</h1>
+	</header>
+	
+	<footer>
+		<h3> <i> jQuery 공부중.. </i> </h3>
+	</footer>
+</body>
+
+
+▶Ex03_insertAfter_before.html
+<style type="text/css">
+	.Chapter {
+		background-color: Silver;
+	}
+	.Content {
+		height: 100px;
+		border: 1px solid red;
+	}
+</style>
+<script type="text/javascript" src="./../js/jquery.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+      //[1] 모든 (.Content) 뒤에 구분선(<hr />) 삽입
+        $('<hr size="10" color="blue"/>').insertAfter(".Content"); //insertAfter는 형제로 추가
+      //$(".Content").after('<hr size="10" color="blue"/>'); 이것도 가능
+      
+      //[2] TOP 링크를 4보다 큰 p.Chapter 앞에 추가
+      $('p.Chapter:gt(4)').before("<a href='#first'>TOP</a>"); //gt(4): 5번째 / 4보다 큰 : 6~7장 앞에 형제로 넣기
+
+      // 또는
+      //$('hr:gt(3)').after("<a href='#'>TOP</a>");    
+    });
+</script>
+</head>
+<body>
+	<p class="Chapter" id="first">1 장</p>
+	<div class="Content">내용...</div><br>
+
+	<p class="Chapter">2 장</p>
+	<div class="Content">내용...</div><br>
+
+	<p class="Chapter">3 장</p>
+	<div class="Content">내용...</div><br>
+
+	<p class="Chapter">4 장</p>
+	<div class="Content">내용...</div><br>
+
+	<p class="Chapter">5 장</p>
+	<div class="Content">내용...</div><br>
+
+	<p class="Chapter">6 장</p>
+	<div class="Content">내용...</div><br>
+
+	<p class="Chapter">7 장</p>
+	<div class="Content">내용...</div><br>
+</body>
+
+
+▶Ex04_append_not_end_filter.html
+<title>Ex04_append_not_end_filter.html</title>
+<script type="text/javascript" src="./../js/jquery.js"></script> 
+   <script type="text/javascript">
+   	//var len = 
+   	$(function(){
+   		$('.term').each(function(i){ // 첫번째 만난 .term의 i에는 0이 들어옴 (.term이 작업대상)
+   			$(this).after('<sup>'+(i+1)+'</sup>'); //after(형제에 추가), append(자식에 추가) 결과에는 차이가없음
+   			
+   			// 0번째 부터 카운팅
+   			/* 방법①
+   			$('.term:even').each(function(){
+   				$(this).css('background','yellow');
+   			});
+   			$('.term:odd').each(function(){
+   				$(this).css('background','aqua');
+   			});
+   			*/
+   			
+   			/* 방법②
+   			$('span:even').css('background','yellow');
+   			$('span:odd').css('background','skyblue');
+   			 */
+   			 
+   			/* 방법③ */
+   			$('.term').css('background','yellow')
+   					  .not(':even').css('background','lightblue'); // .not(':even') = .filter(':odd')
+   			 // 작업대상은 어차피 .term이기 때문에 :even 앞에 생략가능
+   		});
+   	});
+</script>
+</head>
+<body>
+	<h3>jQuery is a new kind of JavaScript Library.</h3>
+	<div>
+		<span class="term">jQuery</span> is a fast and concise <span class="term">JavaScript</span> Library 
+		that simplifies <span class="term">HTML</span> document traversing, 
+		<span class="term">event handling</span>, animating, and <span class="term">Ajax</span> interactions 
+		for rapid <span class="term">web</span> development. 
+		jQuery is designed to change the way that you write JavaScript.
+	</div>
+</body>
+
+
+▶Ex05_append(중요).html
+<title>Ex05_append(중요).html</title>
+<script src="./../js/jquery.js"></script>
+<script>
+	$(document).ready(function() {
+		
+		var img1 = "<img src='./../images/tara01.jpg'/>"; //사진아니고 문자열불러옴
+		var img2 = "<img src='./../images/tara02.jpg'/>";
+		var img3 = "<img src='./../images/tara03.jpg'/>";
+		
+		var h1 = "<h1>사진 감상</h1>";
+		
+		$('body').append(h1,img1,img2,img3); // 자식으로 여러개 한번에 추가할 수 있음
+		
+		/* 방법①
+		$('img').css('width','100px').css('height','100px'); */
+		
+		//방법②
+		$('img').css({
+	         width : "100",
+	         height : "100",
+	         margin: "10px"
+	     });
+	});
+</script>
+</head>
+<body>
+ <!-- <h1>사진감상</h1> = $('body').append(h1); 바디의 자식으로 넣어라 -->
+</body>
+
+
+▶Ex06_empty_remove.html
+<title>Ex06_empty_remove.html</title>
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#btnEmpty').click(function(){ // id가 btnEmpty인 곳에 접근해서 버튼을 클릭했을 때
+			$('div').empty(); // div 안의 영역이 삭제됨 - 내용만 지울 뿐 태그는 남아있는 점 주의하기
+			$('div').append("<b>hi~</b>"); // div 영역이 완전히 삭제된게 아니기 때문에 자식으로 추가하면 나타남
+		});
+			
+		$('#btnRemove').click(function(){
+			$('div').remove(); // div 영역 자체가 사라짐
+			$('div').append("<b>hi~</b>"); // div가 삭제됬기 때문에 자식이 의미가없음 - 안나옴
+			/*
+			$('').empty(): 안의 영역이 삭제됨
+			.remove(); 작업영역 자체가 (HTML 문서에서) 싹 삭제
+			.removeClass(): 선택한 요소에서 클래스 값을 제거
+			*/
+		});
+	});
+</script>
+</head>
+<body>
+	<div>
+		<p>jQuery</p>
+		<p>empty/remove</p>
+	</div>
+	
+	<input type="button" id="btnEmpty" value="영역의 내용 삭제"/>
+	<br>
+	<input type="button" id="btnRemove" value="영역 자체를 삭제"/>
+</body>
+
+
+------------------------------ 04_jQuery_ch05 ------------------------------
+▶Ex01_bind.html
+
+
+
+▶Ex02_bind_이벤트 동작.html
+
+
+
+▶Ex03_bind.html
+
+
+
+▶Ex04_toggle.html

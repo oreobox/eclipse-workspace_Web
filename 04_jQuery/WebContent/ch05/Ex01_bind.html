@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex01_bind.html</title>
+<style type="text/css">
+	div{
+		width:100px;
+		height:100px;
+	}
+</style>
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('a').bind('click mouseover', function(){ // a태그를 클릭하거나 마우스 올렸을 때 하고싶은 일은 무엇인지? - a태그와 click을 엮어줌
+			//alert(1); // click하거나 mouseover 할때 alert 뜨게 설정(둘중 하나만 써줘도됨)
+			
+			//href 속성에 있는 값을 가져와서 src 속성으로 가져오기
+			temp = $(this).attr('href'); // 지금 마우스 올린 a 태그: this
+			//alert(temp);
+			
+			$('img').attr('src',temp);
+			
+			//위에 두줄을 한줄로 만들기
+			//$('img').attr('src', $(this).attr('href') );
+			return false; // 이벤트 전파 방지 : a태그가 원래 가지고 있던 기능 실행하지 못하도록 하기
+			
+			})
+		});
+	});
+</script>
+</head>
+<body>
+	<ul>
+		<li><a href="../images/image3.jpg">강아지</a></li> <!-- a태그 자체에 페이지로 넘어가라는 기능이있음 -->
+		<li><a href="../images/image4.jpg">고양이</a></li>
+	</ul>
+	
+	<img src="../images/im7.jpg">
+	<div></div>
+</body>
+</html>

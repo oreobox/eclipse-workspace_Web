@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex06_empty_remove.html</title>
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#btnEmpty').click(function(){ // id가 btnEmpty인 곳에 접근해서 버튼을 클릭했을 때
+			$('div').empty(); // div 안의 영역이 삭제됨 - 내용만 지울 뿐 태그는 남아있는 점 주의하기
+			$('div').append("<b>hi~</b>"); // div 영역이 완전히 삭제된게 아니기 때문에 자식으로 추가하면 나타남
+		});
+			
+		$('#btnRemove').click(function(){
+			$('div').remove(); // div 영역 자체가 사라짐
+			$('div').append("<b>hi~</b>"); // div가 삭제됬기 때문에 자식이 의미가없음 - 안나옴
+
+			/*
+			$('').empty(): 안의 영역이 삭제됨
+			.remove(); 작업영역 자체가 (HTML 문서에서) 싹 삭제
+			.removeClass(): 선택한 요소에서 클래스 값을 제거
+			*/
+		});
+	});
+</script>
+</head>
+<body>
+	<div>
+		<p>jQuery</p>
+		<p>empty/remove</p>
+	</div>
+	
+	<input type="button" id="btnEmpty" value="영역의 내용 삭제"/>
+	<br>
+	<input type="button" id="btnRemove" value="영역 자체를 삭제"/>
+</body>
+</html>

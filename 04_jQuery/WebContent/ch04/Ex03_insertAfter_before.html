@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex03_insertAfter_before.html</title>
+<style type="text/css">
+	.Chapter {
+		background-color: Silver;
+	}
+	.Content {
+		height: 100px;
+		border: 1px solid red;
+	}
+</style>
+<script type="text/javascript" src="./../js/jquery.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+      //[1] 모든 (.Content) 뒤에 구분선(<hr />) 삽입
+        $('<hr size="10" color="blue"/>').insertAfter(".Content"); //insertAfter는 형제로 추가
+      //$(".Content").after('<hr size="10" color="blue"/>'); 이것도 가능
+      
+      //[2] TOP 링크를 4보다 큰 p.Chapter 앞에 추가
+      $('p.Chapter:gt(4)').before("<a href='#first'>TOP</a>"); //gt(4): 5번째 / 4보다 큰 : 6~7장 앞에 형제로 넣기
+
+      // 또는
+      //$('hr:gt(3)').after("<a href='#'>TOP</a>");    
+    });
+</script>
+</head>
+<body>
+	<p class="Chapter" id="first">1 장</p>
+	<div class="Content">내용...</div><br>
+
+	<p class="Chapter">2 장</p>
+	<div class="Content">내용...</div><br>
+
+	<p class="Chapter">3 장</p>
+	<div class="Content">내용...</div><br>
+
+	<p class="Chapter">4 장</p>
+	<div class="Content">내용...</div><br>
+
+	<p class="Chapter">5 장</p>
+	<div class="Content">내용...</div><br>
+
+	<p class="Chapter">6 장</p>
+	<div class="Content">내용...</div><br>
+
+	<p class="Chapter">7 장</p>
+	<div class="Content">내용...</div><br>
+</body>
+</html>

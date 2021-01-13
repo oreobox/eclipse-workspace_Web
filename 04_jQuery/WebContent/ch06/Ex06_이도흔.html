@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex06_이도흔.html</title>
+<style type="text/css">
+	div img{
+		width: 150px;
+		height: 150px;
+	}
+	#imgsrc{
+		width: 350px;
+		height: 350px;
+		border: 1px solid black;
+		float: right;
+		position: absolute; /* 꼭지점이동 */
+		align: top;
+		top: 65px;
+		left: 180px;
+		
+	}
+</style>
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+	});
+</script>
+</head>
+<body>
+	<div id="left_side">
+		<div><img class="small" src="../images/tara01.jpg"></div>
+		<div><img class="small" id="first" src="../images/tara02.jpg"></div>
+		<div><img class="small" src="../images/tara03.jpg"></div>	
+	</div>
+	
+	<div>
+		<img id="imgsrc">
+	</div>
+</body>
+</html>
+

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex02_bind_이벤트 동작.html</title>
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		/*
+		$('img').bind('mouseover mouseout',function(){ // 여러 작업 모두 공통으로 하기 위해서는 bind 함수로 묶어줌
+			//alert(1);
+		});
+		*/
+		cnt = 0; //횟수를 센다
+		
+		$('img').bind({ // 마우스 올렸을 때 치웠을 때 각기 다른 작업 하기 위해서 {} 사용
+					'mouseover' : function(){ // 따옴표 써도되고 안써도됨
+						$('img').attr('src',"../images/but2.gif"); // 이미지에 마우스 올렸을 때 이미지 속성 바꾸고 싶다.
+						cnt++; // 마우스 한번 올리면 횟수 올라감
+						if(cnt == 5){
+							$('img').unbind(); // 엮어주기 실행하지않음
+						}
+					}, // 콤마로 이어줌
+					mouseout : function(){
+						$('img').attr('src',"../images/but1.gif");
+						cnt++; // 마우스 치울때도 횟수 올라감
+						if(cnt == 5){
+							$('img').unbind();
+						}
+					},
+					click : function(){ // 이미지 클릭했을 때 실행되는 것
+						alert("클릭");
+					}
+					
+		});
+	});
+</script>
+</head>
+<body>
+	<img src="../images/but1.gif">
+</body>
+</html>

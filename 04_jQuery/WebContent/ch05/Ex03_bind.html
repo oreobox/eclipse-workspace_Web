@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex03_bind.html</title>
+<style type="text/css">
+	img{
+		width: 100px;
+		height: 80px;
+	}
+</style>
+
+<script src="http://code.jquery.com/jquery-3.1.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+
+	$(document).ready(function(){
+		//alert(1);
+		$('img').bind('mouseover mouseout click',function(){ // 이벤트 계속 계속 실행할경우 계속 반복됨
+			var target = $(event.target); //이벤트가 발생한 바로 그 대상 = 이미지 = $(this) = target = $(event.target)
+			//target.width(200); // target의 너비설정;
+			target.width(target.width()+30); // 현재 target의 가로 길이를 가져와서 30을 더해라 = 가로 길이 130이 됨
+			target.height(target.height()+30); // 현재 target의 높이를 가져와라, 거기에 30을 더해라 = 높이 110이됨
+			
+			if(target.width() > 400){
+				$('img').unbind('click'); // unbind() 괄호 안에 넣어주는 이벤트만 해지한다. → click에만 이벤트 해지
+			}
+				
+		});
+	});
+</script>
+</head>
+<body>
+	<img src="../images/b.jpg">
+</body>
+</html>

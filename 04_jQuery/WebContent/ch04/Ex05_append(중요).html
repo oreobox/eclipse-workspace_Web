@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex05_append(중요).html</title>
+<script src="./../js/jquery.js"></script>
+<script>
+	$(document).ready(function() {
+		
+		var img1 = "<img src='./../images/tara01.jpg'/>"; //사진아니고 문자열불러옴
+		var img2 = "<img src='./../images/tara02.jpg'/>";
+		var img3 = "<img src='./../images/tara03.jpg'/>";
+		
+		var h1 = "<h1>사진 감상</h1>";
+		
+		$('body').append(h1,img1,img2,img3); // 자식으로 여러개 한번에 추가할 수 있음
+		
+		/* 방법①
+		$('img').css('width','100px').css('height','100px'); */
+		
+		//방법②
+		$('img').css({
+	         width : "100",
+	         height : "100",
+	         margin: "10px"
+	     });
+	});
+</script>
+</head>
+<body>
+ <!-- <h1>사진감상</h1> = $('body').append(h1); 바디의 자식으로 넣어라 -->
+</body>
+</html>

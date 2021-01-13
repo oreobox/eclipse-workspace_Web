@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex01_show_hide_toggle.html</title>
+<style type="text/css">
+	span{
+		display: none;
+	}
+</style>
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		/* 첫번째 버튼 클릭했을 때 */
+		$('button:eq(0)').click(function(){
+			$('span:first').show(); // display:inline;
+		});
+		
+		$('button:eq(1)').click(function(){
+			$('span:first').hide(); // display:none;
+		});
+		
+		$('button:eq(2)').click(function(){
+			$('span:eq(1)').show(5000,function(){ // 5초에 걸쳐서 천천히 나타남
+				$(this).css('background','yellow'); // 5초에 걸쳐서 나타난 후에 배경 노란색으로 설정
+			}); 
+		});
+		$('button:eq(3)').click(function(){
+			$('span:eq(1)').hide('slow',function(){ // 서서히 사라지고 alert
+				alert(1);
+			});
+			
+		});
+		
+		$('button:eq(4)').click(function(){
+			$('span:last').toggle(); // toggle: 버튼 하나에 두가지 나타냄
+		});
+		
+		
+		
+	});
+</script>
+</head>
+<body>
+	<button>Show it</button> <button>Hide it</button>
+	<span>안녕하세요</span> <br>
+	
+	<button>Show it slow</button> <button>Hide it slow</button>
+	<span>반갑습니다</span> <br>
+	
+	<button>Show/Hide</button>
+	<span>또 만나요</span> <br>
+	
+</body>
+</html>

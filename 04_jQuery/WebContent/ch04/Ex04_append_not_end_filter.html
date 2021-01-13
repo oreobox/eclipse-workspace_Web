@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex04_append_not_end_filter.html</title>
+<script type="text/javascript" src="./../js/jquery.js"></script> 
+   <script type="text/javascript">
+   	//var len = 
+   	$(function(){
+   		$('.term').each(function(i){ // 첫번째 만난 .term의 i에는 0이 들어옴 (.term이 작업대상)
+   			$(this).after('<sup>'+(i+1)+'</sup>'); //after(형제에 추가), append(자식에 추가) 결과에는 차이가없음
+   			
+   			// 0번째 부터 카운팅
+   			/* 방법①
+   			$('.term:even').each(function(){
+   				$(this).css('background','yellow');
+   			});
+   			$('.term:odd').each(function(){
+   				$(this).css('background','aqua');
+   			});
+   			*/
+   			
+   			/* 방법②
+   			$('span:even').css('background','yellow');
+   			$('span:odd').css('background','skyblue');
+   			 */
+   			 
+   			/* 방법③ */
+   			$('.term').css('background','yellow') // 우선 전부다 노란색으로 설정하고 덮어쓰기
+   					  .not(':even').css('background','lightblue'); // .not(':even') = .filter(':odd')
+   			 // 작업대상은 어차피 .term이기 때문에 :even 앞에 생략가능
+   		});
+   	});
+</script>
+</head>
+<body>
+	<h3>jQuery is a new kind of JavaScript Library.</h3>
+	<div>
+		<span class="term">jQuery</span> is a fast and concise <span class="term">JavaScript</span> Library 
+		that simplifies <span class="term">HTML</span> document traversing, 
+		<span class="term">event handling</span>, animating, and <span class="term">Ajax</span> interactions 
+		for rapid <span class="term">web</span> development. 
+		jQuery is designed to change the way that you write JavaScript.
+	</div>
+</body>
+</html>
