@@ -2355,14 +2355,29 @@ jQurery로 여러가지 작업 가능: css, 유효성검사, 이벤트 처리 �
 		var row = $("#row").val(); - row의 값을 가져오기
 	.bind(): target과 event 엮어주기
 		$('a').bind('click mouseover', function(){});
-	.unbind(); bind함수 해지
+		→ 여러 작업 모두 공통으로 하기 위해서는 bind 함수로 묶어줌
+			$('img').bind('mouseover mouseout',function(){ // 마우스 올렸을 때, 치웠을 때 같은 작업 해줄 경우
+			//alert(1);
+			});
+		→ 마우스 올렸을 때 치웠을 때 각기 다른 작업 하기 위해서, 이벤트 마다 동작이 다를 때는 bind로 묶은 후  {}, 사용해서 동작 따로따로 실행
+			$('img').bind({
+				'mouseover' : function() {
+				
+				},
+				'mouseout' : function() {
+
+				},
+				'click' : function() {
+
+				}
+	.unbind(); bind 함수 해지
 		if(cnt == 5){
 			$('img').unbind();
 		}
 	.live(): 이벤트 처리를 위임할 때 사용하는 함수
-			// bind로는 새로 생성된 p 태그에는 설정 적용되지 않는다
-			// live로는 새로 생성된 p 태그에도 설정 적용시킬 수 있다.
-	.die(); live함수 해지
+			//bind로는 새로 생성된 p 태그에는 이벤트 설정 적용되지 않는다.
+			// live로는 새로 생성된 p 태그에도 이벤트 설정 적용시킬 수 있다.
+	.die(); live 함수 해지
 		if(cnt == 5){
 			$('p').die();
 		}
@@ -2392,14 +2407,44 @@ jQurery로 여러가지 작업 가능: css, 유효성검사, 이벤트 처리 �
 		$('#slideToggle').click(function(){
 			$('div').slideToggle(3000); // 초 설정
 		});
+	.toggle(): 선택한 요소가 보이면 보이지 않게, 보이지 않으면 보이게 설정
+		$('img').toggle( // 이미지 누를때마다 다른 설정하고 싶을 경우 사용
+				function(){
+					$(this).css('opacity', 0.6); // opacity 속성 : 투명도 설정 (1이 가장 선명, 숫자 작을수록 흐려짐)
+				},
+				function(){
+					$(event.target).css('opacity', 0.2);
+				},
+				function(){
+					$(this).css('opacity', 1.0);
+				}
+			);	
+		
 	.fadeIn(): 전체가 서서히 나타내는 효과(점점 나타나는 효과)
 	.fadeOut(): 
 	.fadeToggle():
 	
 	
+	.mouseover(): 마우스 올렸을 때
+	.mouseout(): 마우스 치웠을 때
+	
+	
+	.load(): 화면의 일부를 변화시키고 싶을 때 사용 - 꼭 html 형태만 불러옴
+		$(document).ready(function(){
+		$('#menu1').click(function(){
+			//.load(): 화면의 일부를 변화시키고 싶을 때 사용
+			$('#message1').load("menu.html"); // 불러와서 #message1 자리에 menu.html 넣고싶다
+		});
+	.ajax(): 아래처럼 쓰는 형식 정해져있음 - 형태를  html만 가져오는 것이 아니라 여러가지 원하는 형태로 불러옴
+		$.ajax({
+				url : '',
+				dataType: '',
+				success : ,
+				error :  // 필수값은 아님
+			});
 		
 	
-	
+→  opacity 속성 : 투명도 설정 (1이 가장 선명, 숫자 작을수록 흐려짐)
 →  메서드 체이닝 (chaining): 작업대상 하나에 여러개 작업을 연달아서 쓸 수 있다.
 	$('p em').css('background-color','yellow')
 			 .css('border','3pt solid #f00')
@@ -3507,15 +3552,281 @@ cursor : pointer; 마우스 손가락 설정(링크 설정된 곳)
 
 ------------------------------ 04_jQuery_ch05 ------------------------------
 ▶Ex01_bind.html
-
+<title>Ex01_bind.html</title>
+<style type="text/css">
+	div{
+		width:100px;
+		height:100px;
+	}
+</style>
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	/* 강아지, 고양이 글자 클릭하거나 마우스 올리면 원래 있던 작은 이미지가 a태그 이미지로 바뀜 */
+	$(document).ready(function(){
+		$('a').bind('click mouseover', function(){ // a태그를 클릭하거나 마우스 올렸을 때 하고싶은 일은 무엇인지 function()안에 쓰기 - a태그와 click을 엮어줌
+			//alert(1); // click하거나 mouseover 할때 alert 뜨게 설정(둘중 하나만 써줘도됨)
+			
+			//href 속성에 있는 값을 가져와서 src 속성으로 가져오기 - 마우스 올렸을 때 원래 있던 작은 이미지가 href 사진으로 바뀜
+			temp = $(this).attr('href'); // this: 지금 마우스 올린 a 태그 / 마우스를 어느곳에 올렸는지 temp 변수에 넣어놓기
+			//alert(temp); // 내가 마우스 올린 a 태그 사진을 temp에 넣어놓고 alert 띄우기
+			
+			$('img').attr('src',temp); // 작은 이미지에 temp에 있는 것을 src 속성(href 이미지)으로 넣어라 
+			return false; // 이벤트 전파 방지 : a태그가 원래 가지고 있던 기능(다음페이지로 넘어감)을 실행하지 못하도록 하기
+			
+			/*위에 두줄을 한줄로 만들기
+			→ $('img').attr('src', $(this).attr('href') ); */
+		});
+	});
+</script>
+</head>
+<body>
+	<ul>
+		<li><a href="../images/image3.jpg">강아지</a></li> <!-- a태그 자체에 페이지로 넘어가라는 기능이있음 -->
+		<li><a href="../images/image4.jpg">고양이</a></li>
+	</ul>
+	
+	<img src="../images/im7.jpg">
+	<div></div>
+</body>
 
 
 ▶Ex02_bind_이벤트 동작.html
-
-
+<title>Ex02_bind_이벤트 동작.html</title>
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		/*
+		// 여러 작업 모두 공통으로 하기 위해서는 bind 함수로 묶어줌
+		$('img').bind('mouseover mouseout',function(){ // 마우스 올렸을 때, 치웠을 때 같은 작업 해줄 경우
+			//alert(1);
+		});
+		*/
+		cnt = 0; //횟수를 세줌
+		
+		$('img').bind({ // 마우스 올렸을 때 치웠을 때 각기 다른 작업 하기 위해서 {} 사용
+					'mouseover' : function(){ // 따옴표 써도되고 안써도됨
+						$('img').attr('src',"../images/but2.gif"); // 이미지에 마우스 올렸을 때 이미지 속성 바꾸고 싶다.
+						cnt++; // 마우스 한번 올리면 횟수 올라감
+						if(cnt == 5){
+							$('img').unbind(); // 엮어주기 실행하지않음
+						}
+					}, // 콤마로 이어줌
+					mouseout : function(){
+						$('img').attr('src',"../images/but1.gif");
+						cnt++; // 마우스 치울때도 횟수 올라감
+						if(cnt == 5){
+							$('img').unbind();
+						}
+					},
+					click : function(){ // 이미지 클릭했을 때 실행되는 것
+						alert("클릭");
+					}		
+			});
+		});
+</script>
+</head>
+<body>
+	<img src="../images/but1.gif">
+</body>
+	
 
 ▶Ex03_bind.html
+<title>Ex03_bind.html</title>
+<style type="text/css">
+	img{
+		width: 100px;
+		height: 80px;
+	}
+</style>
 
+<script src="http://code.jquery.com/jquery-3.1.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+/* 이미지 마우스 올렸다 내렸다 할때마다 가로,세로 길이 30씩 더하기
+ * 만약 가로 길이가 400이 넘을 경우 이벤트 해지
+ */
+	$(document).ready(function(){
+		//alert(1);
+		$('img').bind('mouseover mouseout click',function(){ // 이벤트 계속 계속 실행할경우 계속 반복됨
+			var target = $(event.target); //이벤트가 발생한 바로 그 대상 = 이미지 = $(this) = target = $(event.target)
+			//target.width(200); // target의 너비설정;
+			target.width(target.width()+30); // 현재 target의 가로 길이를 가져와서 30을 더해라 = 가로 길이 130이 됨
+			target.height(target.height()+30); // 현재 target의 높이를 가져와라, 거기에 30을 더해라 = 높이 110이됨
+			
+			if(target.width() > 400){
+				$('img').unbind('click'); // unbind() 괄호 안에 넣어주는 이벤트만 해지한다. → click에만 이벤트 해지
+			}
+				
+		});
+	});
+</script>
+</head>
+<body>
+	<img src="../images/b.jpg">
+</body>
 
 
 ▶Ex04_toggle.html
+<title>Ex04_toggle.html</title>
+<!-- 버튼을 누를때마다 toggle 설정 다르게 하기 -->
+<style type="text/css">
+	img{
+		width: 200px;
+		height: 250px
+	}
+</style>
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	//.toggle(): 선택한 요소가 보이면 보이지 않게, 보이지 않으면 보이게 설정
+	$(document).ready(function(){
+		$('img').toggle( // 이미지 누를때마다 다른 설정하고 싶을 경우 사용
+						function(){
+							$(this).css('opacity', 0.6); // opacity 속성 : 투명도 설정 (1이 가장 선명, 숫자 작을수록 흐려짐)
+						},
+						function(){
+							$(event.target).css('opacity', 0.2);
+						},
+						function(){
+							$(this).css('opacity', 1.0);
+						}
+					);
+				});
+</script>
+</head>
+<body>
+	<img src="../images/e.jpg">
+</body>
+
+
+▶Ex05_live.html
+<title>Ex05_live.html</title>
+<style type="text/css">
+	p{
+		background: yellow;
+		font-weight: bold;
+		padding : 5px;
+	}
+</style>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript">
+	$(function(){
+		cnt = 0;
+		$('p').live('dblclick', function(){ //dblclick: 더블클릭
+			$(this).after("<p>Another paragraph!" + cnt++ + "</p>"); //p target 바로 뒤에 형제로 넣기(.after)
+			// bind로는 새로 생성된 p 태그에는 이벤트 설정 적용되지 않는다.
+			// live로는 새로 생성된 p 태그에도 이벤트 설정 적용시킬 수 있다.
+			// live: 이벤트 처리를 위임할 때 사용하는 함수
+			
+			//live 함수 끝나기 전에 작성
+			if(cnt == 5){
+				$('p').die(); // .die(): live 함수 해지
+			}	
+		});
+	});
+</script>
+</head>
+<body>
+	<p>Click me!</p>
+</body>
+
+
+▶Ex06_change_select_img.html
+<title>Ex06_change_select_img.html</title>
+<style type="text/css">
+	img{
+		width: 80px;
+		height: 80px;
+		margin-left: 50px;
+	}
+</style>
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(function(){
+		$('#sel').change(function(){ // select 옵션에 변화가 생겼을 때 이미지가 출력됨
+			//alert(1);
+			
+			var imgsrc = $(this).val(); // 지금 선택한 옵션의 value 값(strawberry.gif..) 가져오기
+			//alert(imgsrc); // 파일이름을 가져온다
+		
+			$('#img').attr('src',"../images/"+imgsrc);
+		}).change(); // 원래 옵션에 변화가 생겼을 때 이미지가 출력되지만, 창을 열자마자 사과가 뜨게 해주고 싶을 때 강제로 change() 지정
+	});
+</script>
+</head>
+<body>
+	<form name="frm">
+		<table> <!-- 한줄짜리 두칸 테이블 -->
+			<tr>
+				<td>
+					<select id="sel">
+						<option value="strawberry.gif">딸기
+						<option value="banana.gif">바나나
+						<option value="apple.gif" selected>사과
+					</select>
+				</td>
+				<td>
+					<img id="img">
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+
+
+▶Ex07_change.html
+<title>Insert title here</title>
+<!-- 클릭한 option들의 value 값을 밑에 출력하기 -->
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#coffee').change(function(){
+			//alert(1);
+			//alert($(this).text());
+			cf = $('select>option:selected').text(); // coffee에 변화가 생겼을 때 select 자식의 option에 selected된 text 가져와라
+			//alert(cf);
+			
+			$('div').html(cf); // append 쓰면 안지워지고 계속 선택한것 추가됨
+			
+			/*var src = $(this).text();
+			 $('option').attr('value',src);*/
+		}).change(); // 강제로 선택하면 기본값인 아메리카노도 밑에 text로 출력되어있음 
+	});
+<!-- 문자가져올 때는 text(), value 가져올땐는 val() -->
+</script>
+</head>
+<body>
+	<select id="coffee" multiple size="3"> <!-- 다중선택, select 박스 한번에 보이는 갯수 설정 -->
+		<option value="coffee1">아메리카노</option> <!-- 아메리카노는 text -->
+		<option value="coffee2">카페라떼</option>
+		<option value="coffee3">카푸치노</option>
+		<option value="coffee4">캬라멜마끼아또</option>
+		<option value="coffee5">고구마라떼</option>
+		<option value="coffee6">녹차라떼</option>
+	</select>
+	
+	<div></div>
+</body>
+
+
+------------------------------ 04_jQuery_ch06 ------------------------------
+▶Ex01_show_hide_toggle.html
+
+
+
+▶Ex02_sliceUp_Down_Toggle.html
+
+
+
+▶Ex03_slide.html
+
+
+
+▶Ex04_fadeIn_To_Out.html
+
+
+
+▶Ex05.html
+
+
+
+▶Ex07_animate.html

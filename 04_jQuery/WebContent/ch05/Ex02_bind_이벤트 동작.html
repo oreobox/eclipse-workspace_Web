@@ -7,11 +7,28 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		/*
-		$('img').bind('mouseover mouseout',function(){ // 여러 작업 모두 공통으로 하기 위해서는 bind 함수로 묶어줌
+		// 여러 작업 모두 공통으로 하기 위해서는 bind 함수로 묶어줌
+		$('img').bind('mouseover mouseout',function(){ // 마우스 올렸을 때, 치웠을 때 같은 작업 해줄 경우
 			//alert(1);
 		});
 		*/
-		cnt = 0; //횟수를 센다
+		
+		/*
+		// 마우스 올렸을 때 치웠을 때 각기 다른 작업 하기 위해서, 이벤트 마다 동작이 다를 때는 bind로 묶은 후  {}, 사용해서 동작 따로따로 실행
+		$('img').bind({
+			'mouseover' : function() {
+			
+			},
+			'mouseout' : function() {
+			
+			},
+			'click' : function() {
+				
+			}
+		*/
+		
+		/* 마우스 올리고 내렸을 때 작업이 총 5회 이상일 경우 이미지가 더이상 바뀌지 않도록 설정 */
+		cnt = 0; //횟수를 세줌
 		
 		$('img').bind({ // 마우스 올렸을 때 치웠을 때 각기 다른 작업 하기 위해서 {} 사용
 					'mouseover' : function(){ // 따옴표 써도되고 안써도됨
@@ -30,10 +47,9 @@
 					},
 					click : function(){ // 이미지 클릭했을 때 실행되는 것
 						alert("클릭");
-					}
-					
+					}		
+			});
 		});
-	});
 </script>
 </head>
 <body>

@@ -4,39 +4,55 @@
 <meta charset="UTF-8">
 <title>Ex06_이도흔.html</title>
 <style type="text/css">
-	div img{
+	.small{
 		width: 150px;
 		height: 150px;
+		margin: 5px;
 	}
 	#imgsrc{
+		/*border: 1px solid black;*/
 		width: 350px;
 		height: 350px;
-		border: 1px solid black;
-		float: right;
 		position: absolute; /* 꼭지점이동 */
-		align: top;
-		top: 65px;
-		left: 180px;
-		
+		top: 80px;
+		left: 200px;	
 	}
 </style>
 <script src="./../js/jquery.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		
-	});
+		$('.small').bind({
+				/* 마우스 올리면 이미지 흐려지고, 오른쪽에 이미지 서서히 크게 나타남 */
+				'mouseover' : function(){
+					$('#area #imgsrc').css('display','none'); // 이미지 관련해서는 fadeIn 할 때  우선 (초기화)없앴다가 서서히 추가해야 나옴
+					/*var temp = $(this).attr('src');
+					$('#imgsrc').attr('src',temp).fadeIn(3000);*/
+					$('#imgsrc').attr('src',$(this).attr('src')).fadeIn(2000);
+					$(this).fadeTo('slow', 0.5);
+				},
+				/* 마우스 떼면 이미지 선명해짐 */
+				'mouseout' : function(){
+					$(this).css('opacity',1.0);
+				}
+		});
+	}); // ready()
 </script>
 </head>
 <body>
 	<div id="left_side">
 		<div><img class="small" src="../images/tara01.jpg"></div>
 		<div><img class="small" id="first" src="../images/tara02.jpg"></div>
-		<div><img class="small" src="../images/tara03.jpg"></div>	
+		<div><img class="small" src="../images/tara03.jpg"></div>
 	</div>
 	
-	<div>
+	<div id="area">
 		<img id="imgsrc">
 	</div>
 </body>
 </html>
 
+<!-- 
+*사진 오른쪽에 크게 뜨도록 배치
+*작은 이미지에 마우스 올리면 그 이미지가 오른쪽에 서서히 크게 나타나고,
+ 작은이미지는 마우스 올릴때 흐려지고, 마우스 떼면 선명해짐
+ -->

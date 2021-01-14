@@ -3,26 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- 클릭한 option들의 value 값을 밑에 출력하기 -->
 <script src="./../js/jquery.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#coffee').change(function(){
 			//alert(1);
 			//alert($(this).text());
-			cf = $('select>option:selected').text(); // coffee에 변화가 생겼을 때 option에 selected된 text 가져와라
+			cf = $('select>option:selected').text(); // coffee에 변화가 생겼을 때 select 자식의 option에 selected된 text 가져와라
 			//alert(cf);
 			
-			$('div').html(cf);
+			$('div').html(cf); // append 쓰면 안지워지고 계속 선택한것 추가됨
 			
 			/*var src = $(this).text();
 			 $('option').attr('value',src);*/
 		}).change(); // 강제로 선택하면 기본값인 아메리카노도 밑에 text로 출력되어있음 
 	});
-<!-- 문자가져올 때는 text, value 가져올땐는 val -->
+<!-- 문자가져올 때는 text(), value 가져올땐는 val() -->
 </script>
 </head>
 <body>
-	<select id="coffee" multiple size="3">
+	<select id="coffee" multiple size="3"> <!-- 다중선택, select 박스 한번에 보이는 갯수 설정 -->
 		<option value="coffee1">아메리카노</option> <!-- 아메리카노는 text -->
 		<option value="coffee2">카페라떼</option>
 		<option value="coffee3">카푸치노</option>

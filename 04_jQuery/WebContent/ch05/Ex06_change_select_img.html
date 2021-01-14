@@ -16,7 +16,7 @@
 		$('#sel').change(function(){ // select 옵션에 변화가 생겼을 때 이미지가 출력됨
 			//alert(1);
 			
-			var imgsrc = $(this).val();
+			var imgsrc = $(this).val(); // 지금 선택한 옵션의 value 값(strawberry.gif..) 가져오기
 			//alert(imgsrc); // 파일이름을 가져온다
 		
 			$('#img').attr('src',"../images/"+imgsrc);
@@ -26,7 +26,7 @@
 </head>
 <body>
 	<form name="frm">
-		<table>
+		<table> <!-- 한줄짜리 두칸 테이블 -->
 			<tr>
 				<td>
 					<select id="sel">

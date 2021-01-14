@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex04_ajax.html</title>
+<style type="text/css">
+	div{
+		float: left;
+		width: 180px;
+		height: 300px;
+		margin: 3px;
+	}
+</style>
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#menu1').click(function(){
+			$.ajax({
+				url : 'menu.html', // 요청 url
+				dataType : 'html', // 서버에서 응답의 결과로 보내온 반환타입 
+				// 자동으로 응답하는 콜백함수
+				success : function(data){ // 괄호안에 변수 아무거나 씀. 서버가 보내오는 결과를 해당 변수가 받음
+					$('#message1').html("성공:" + data);
+				},
+				error : function(){ // 실패했을 때 실행되는 것은 꼭 안써도됨
+					alert("실패"); // 요청 실패
+				} 
+			});
+		});
+
+		$('#menu2').click(function(){
+			$.ajax({
+				url : 'menu.html',
+				dataType : 'html',
+				success : function(data){
+					$('#message2').html($(data).children('li')); // 대상은 객체로 만들어야함 / 변수에는 따옴표 붙이지 않음
+					//.children(): 자식, .find(): 자손
+				},
+				error : function(){
+					alert("실패");
+				}
+							
+			});
+		});
+	});//	
+	
+</script>
+</head>
+<body>
+	<div>
+		<a href="#" id="menu1">메뉴보기1</a>
+		<p></p>
+		<span id="message1"></span>
+	</div>
+	
+	<div>
+		<a href="#" id="menu2">메뉴보기2</a>
+		<p></p>
+		<span id="message2"></span>
+	</div>
+	
+	<div style= "clear: left"> <!-- style="float: none;" -->
+		<h3>load 예제입니다.</h3>
+	</div>
+</body>
+</html>

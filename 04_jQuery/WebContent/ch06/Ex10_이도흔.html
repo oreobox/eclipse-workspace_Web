@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex10_이도흔.html</title>
+<style type="text/css">
+	table {
+		width: 500px;
+		height: 500px;
+		border: 1;
+		border-collapse: collapse;
+	}
+</style>
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(function(){
+		$('input[id="name"]').focus();
+		//alert(1);
+	});
+	
+	duplicate = false;
+	
+	function idCheck(){
+		//alert(2);
+		duplicate = true;
+		/* 예약자가 홍길동일 경우 중복됨 */
+		if( $('input[id="name"]').val() == "홍길동"){
+			alert("중복되는 이름입니다.");
+			$('input[id="name"]').val('');
+			$('input[id="name"]').focus();
+		}
+		else{
+			alert("예약 가능한 이름입니다.");
+		}
+	} // idCheck()
+	
+	function checkk(){
+		//alert(3);
+		
+		str = "<선택한 값>\n";
+		
+		if(duplicate == false){
+			alert("예약자명 중복체크는 필수입니다.");
+			return false;
+		}
+		
+		if($('input[id="name"]').val() == ""){
+			alert("예약자명은 필수입니다.");
+			$('input[id="name"]').focus();
+			return false;
+		}	
+		
+		if($('input[name="password"]').val() == ""){
+			alert("비번을 입력하세요");
+			$('input[name="password"]').focus();
+			return false;
+		}	
+		
+		if($('input[name="repassword"]').val() ==""){
+			alert("비번 확인을 입력하세요");
+			$('input[name="repassword"]').focus();
+			return false;
+		}
+		
+		if($('input[name="password"]').val() != $('input[name="repassword"]').val()){
+			alert("비밀번호가 일치하지 않습니다.");
+			$('input[name="repassword"]').val('');
+			return false;
+		}
+		
+		if($('select option:selected').val() == ""){
+			alert("핸드폰번호를 입력하세요");
+			return false;
+		}
+		
+		if($('input[name="phone1"]').val() == "" ||
+		   $('input[name="phone2"]').val() == ""){
+			alert("핸드폰번호를 입력하세요.");
+			return false;
+		}
+		
+		if(isNaN($('input[name="phone1"]').val()) ||
+		   isNaN($('input[name="phone2"]').val())){
+			alert("핸드폰번호는 숫자로 입력하세요");
+			return false;
+		}
+		
+		if($('input[name="email"]').val() == ""){
+			alert("email을 입력하세요.");
+			$('input[name="email"]').focus();
+			return false;
+		}
+		
+		if($('input[name="email"]').val().indexOf('@') == -1){
+			alert("@을 포함하세요.");
+			$('input[name="email"]').focus();
+			return false;
+		}
+		
+		str += $('input[id="name"]').val() + "\n";
+		str += $('input[name="password"]').val() + "\n";
+		str += $('select option:selected').val() +"-";
+		str += $('input[name="phone1"]').val() +"-";
+		str += $('input[name="phone2"]').val() +"\n";
+		str += $('input[name="email"]').val() +"\n";
+		
+		if( !$('input[name="seat"]').is(":checked") ){
+			alert("좌석선택이 누락되었습니다.");
+			return false;
+		}
+		str += $('input[name="seat"]:checked').val() +"\n";
+		
+		if( !$('input[name="payment"]').is(":checked") ){
+			alert("결제수단이 누락되었습니다.");
+			return false;
+		}
+		str += $('input[name="payment"]:checked').val() +"\n";
+		
+		if($('input[type="checkbox"]:checked').size() == 0){ // .length
+			alert("체크박스 최소 1개는 선택해야 합니다.");
+			return false;
+		}
+		$('input[type="checkbox"]:checked').each(function(){
+			str += $(this).val()+" ";
+		});
+		
+		str += "\n";
+		
+		if($('textarea[name="textbox"]').val() == ""){
+			alert("문의사항을 입력해주세요.");
+			return false;
+		}
+		str += $('textarea[name="textbox"]').val() +"\n";
+		
+		alert(str);
+		
+	} // check()
+
+</script>
+</head>
+<body>
+	<form action="result.jsp" name="myform">
+	<table border=1>
+		<tr>
+			<td>예약자명</td>
+			<td><input type="text" id="name" size="20" maxlength="10"
+				value="예약자 이름 입력" > 
+				<input type="button" value="예약 중복확인" onClick="idCheck()"></td>
+		</tr>
+		<tr>
+			<td>비밀번호</td>
+			<td><input type="password" name="password" size="20"
+				maxlength="10"></td>
+		</tr>
+		<tr>
+			<td>비밀번호 확인</td>
+			<td><input type="password" name="repassword" size="20"
+				maxlength="10"></td>
+		</tr>
+		<tr>
+			<td>핸드폰번호</td>
+			<td><select name="phone">
+					<option value="">선택</option>
+					<option value="010">010</option>
+					<option value="011">011</option>
+					<option value="019">019</option>
+				</select> &nbsp;-&nbsp; 
+				<input type="text" name="phone1" size="4" maxlength="4"> &nbsp;-&nbsp; 
+				<input type="text" name="phone2" size="4" maxlength="4"></td>
+		</tr>
+		<tr>
+			<td>email</td>
+			<td><input type="text" name="email" size="30" maxlength="30"></td>
+		</tr>
+		<tr>
+			<td>좌석선택</td>
+			<td><input type="radio" name="seat" value="VIP석">VIP석
+				<input type="radio" name="seat" value="R석">R석
+				<input type="radio" name="seat" value="S석">S석
+				<input type="radio" name="seat" value="A석">A석
+			</td>
+		</tr>
+		<tr>
+			<td>결제수단</td>
+			<td><input type="radio" name="payment" value="현금결제">현금결제
+				<input	type="radio" name="payment" value="카드결제">카드결제
+			</td>
+		</tr>
+		<tr>
+			<td>선택옵션</td>
+			<td>
+				<input type="checkbox" name="check" value="오페라글라스대여">오페라글라스대여
+				<input type="checkbox" name="check" value="물품보관">물품보관
+				<input type="checkbox" name="check" value="주차쿠폰">주차쿠폰
+			</td>
+		</tr>
+		<tr>
+			<td>문의사항</td>
+			<td><textarea name="textbox" id="textbox" rows="5" cols="30"></textarea></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<input type="submit" value="예약완료" onClick="return checkk()"> &nbsp;&nbsp;&nbsp;
+				<input type="reset" value="예약취소"></td>
+		</tr>
+	</table>
+	</form>
+</body>
+</html>
+
+
+<!-- 주제는 알아서 정하기
+이름
+나이: 숫자만 입력가능하게
+체크박스
+라디오
+풀다운박스 (select 박스) : 반드시 선택하게 하도록
+
+항목별로 최소 하나씩 넣고 유효성검사 만들기
+name: 꼭 넣기(jsp로 넘기려면 name에 반드시 값을 넣어 넘어감 꼭 넣기), id는 없어도됨
+-->

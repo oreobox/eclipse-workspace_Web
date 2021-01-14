@@ -15,14 +15,15 @@
 	$(function(){
 		cnt = 0;
 		$('p').live('dblclick', function(){ //dblclick: 더블클릭
-			$(this).after("<p>Another paragraph!" + cnt++ + "</p>"); //p target 뒤에 형제로 넣기
-			// bind로는 새로 생성된 p 태그에는 설정 적용되지 않는다
-			// live로는 새로 생성된 p 태그에도 설정 적용시킬 수 있다.
+			$(this).after("<p>Another paragraph!" + cnt++ + "</p>"); //p target 바로 뒤에 형제로 넣기(.after)
+			// bind로는 새로 생성된 p 태그에는 이벤트 설정 적용되지 않는다.
+			// live로는 새로 생성된 p 태그에도 이벤트 설정 적용시킬 수 있다.
 			// live: 이벤트 처리를 위임할 때 사용하는 함수
-			if(cnt == 5){
-				$('p').die();
-			}
 			
+			//live 함수 끝나기 전에 작성
+			if(cnt == 5){
+				$('p').die(); // .die(): live 함수 해지
+			}	
 		});
 	});
 </script>

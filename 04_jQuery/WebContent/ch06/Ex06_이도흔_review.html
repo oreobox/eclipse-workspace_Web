@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	#left_side{
+		float: left;
+	}
+	.small{
+		width: 90px;
+		height: 90px;
+	}
+	div{
+		margin-bottom: 20px;
+	}
+	#imgsrc{
+		width: 300px;
+		height: 300px;
+		/* border: 1px solid red; */
+		left: 150px;
+		position: fixed; /* default값 static은 좌표 움직이지않음 */ 
+	}
+</style>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript">
+	$(function(){
+		/* fadeIn
+		fadeTo
+		mouseover
+		mouseout */
+		
+		$('img.small').mouseover(function(){
+			$(this).fadeTo('slow',0.3);
+			
+			$('#area #imgsrc').css('display','none'); // 이미지 관련해서는 fadeIn 할 때  우선 (초기화)없앴다가 서서히 추가해야 나옴
+			$('#area #imgsrc').attr('src', $(this).attr('src')).fadeIn(2000);
+			
+		});
+		$('img.small').mouseout(function(){
+			$('img.small').fadeTo('fast',1); // 모든 이미지 선명하게 해도 상관없음
+		});
+		
+		
+		
+	});
+</script>
+</head>
+<body>
+	<div id="left_side">
+		<div><img class="small" src="../images/tara01.jpg"></div>
+		<div><img class="small" id="first" src="../images/tara02.jpg"></div>
+		<div><img class="small" src="../images/tara03.jpg"></div>
+	</div>
+	
+	<div id="area">
+		<img id="imgsrc">
+	</div>
+</body>
+</html>
