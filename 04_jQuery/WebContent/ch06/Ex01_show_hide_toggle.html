@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Ex01_show_hide_toggle.html</title>
+<!-- 크롬으로 검사 들어가서 어떻게 적용되는지 확인해보기 -->
 <style type="text/css">
 	span{
 		display: none;
@@ -25,20 +26,18 @@
 				$(this).css('background','yellow'); // 5초에 걸쳐서 나타난 후에 배경 노란색으로 설정
 			}); 
 		});
+		
 		$('button:eq(3)').click(function(){
 			$('span:eq(1)').hide('slow',function(){ // 서서히 사라지고 alert
 				alert(1);
-			});
-			
+			});	
 		});
 		
-		$('button:eq(4)').click(function(){
+		$('button:eq(4)').click(function(){ // eq(4) = last
 			$('span:last').toggle(); // toggle: 버튼 하나에 두가지 나타냄
 		});
-		
-		
-		
-	});
+			
+	}); // ready
 </script>
 </head>
 <body>
@@ -50,6 +49,5 @@
 	
 	<button>Show/Hide</button>
 	<span>또 만나요</span> <br>
-	
 </body>
 </html>

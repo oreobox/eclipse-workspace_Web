@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script src="./../js/jquery.magnify-1.0.2.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#big').magnify(); // .magnify()함수는 jquery.magnify-1.0.2.js 위치에 들어가있다.
+	});
+</script>
+</head>
+<body>
+	<!-- 작은 이미지를 클릭하면 큰 이미지로 가도록 링크 설정 -->
+	<a href="../images/tara01.jpg" id="big">
+		<img src="../images/smallimg0.jpg" border="3">
+	</a>
+</body>
+</html>

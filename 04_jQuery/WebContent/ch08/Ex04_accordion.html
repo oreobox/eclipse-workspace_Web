@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>헤더는 보이고 클릭했을때 내용이 보이도록 하는 아코디언 컨트롤</title>
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script src="./../js/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#accordion').accordion({event: 'mouseover'}); // 마우스 올리는 이벤트를 줬을 때 아코디언 효과  
+	});
+</script>
+</head> 
+<body>
+<div id="accordion">
+	 
+	<h3><a href="#">First header</a></h3>
+	<div>
+		<div>First-1 content</div>
+		<div>First-2 content</div>
+		<div>First-3 content</div>
+		<div>First-4 content</div>
+	</div>
+	
+	<h3>
+		<a href="#">Second header</a>
+	</h3>
+	<div>
+		<div>Second-1 content</div>
+		<div>Second-2 content</div>
+	</div>
+	
+	<h3>
+		<a href="#">Third header</a>
+	</h3>
+	<div>Third-1 content</div>
+
+</div>
+</body> 
+</HTML>

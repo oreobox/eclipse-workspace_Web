@@ -8,10 +8,10 @@
 		background-color: green;
 		padding: 5px; /* 안쪽여백 지정 */
 		border: 1px solid #c3c3c3;
-		text-align: center;
+		text-align: center; /* 글자 가운데 정렬 */
 	}
 	#panel2{
-		display: none; /* 있긴 있는데 잠깐 안보이게함 */
+		display: none; /* 글자 있긴 있는데 잠깐 안보이게함 */
 	}
 </style>
 <script src="./../js/jquery.js" type="text/javascript"></script>
@@ -19,14 +19,11 @@
 	$(document).ready(function(){
 		/* panel1 누르면 toggle 슬라이드 후에, 이미지에 빨간 테두리 설정 */
 		$('#panel1').click(function(){
-			/* $('#panel2').slideToggle()
-			$('img').css('border','2px solid red'); */
-			
-			$('#panel2').slideToggle('slow',function(){
-				$('#panel2 img').css('border','2px solid red');
+			$('#panel2').slideToggle('slow',function(){ // slow 또는 시간
+				$('#panel2 img').css('border','2px solid red'); // #panel2 img 또는 img 사용 가능
 			});
 		});
-	});
+	}); //ready()
 </script>
 </head>
 <body>
@@ -34,6 +31,5 @@
 	<div id="panel2">
 		<img src="./../images/im0.jpg">
 	</div>
-	
 </body>
 </html>

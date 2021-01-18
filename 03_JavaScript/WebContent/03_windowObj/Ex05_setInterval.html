@@ -5,49 +5,51 @@
 <title>Ex05_setInterval</title>
 <script type="text/javascript">
 	/* body영역이 로드가 됬을 때 호출되는 것을 script 사용해서 함수 만드는 방법 */
-	window.onload = function() {
+	window.onload = function(){
 		//alert(1);
-		//window.setInterval(해야할일,시간);
-		setInterval(abc, 1000); // 1초: 1000 / 함수 호출할때는 ()로 써서 호출하면 안된다. // 이 시간(1000)마다 계속 반복됨
-	}
 		
-		/* 시간 간격(정한 시간)마다 자동으로 img가 바뀌는 설정 방법②*/
+		
+		//window.setInterval(해야할일,시간);
+	
+		/* 시간 간격(정한 시간)마다 자동으로 img가 바뀌는 설정 방법② */
 		var arrimage = ['pic1.jpg','pic2.jpg','pic3.jpg','pic4.jpg'];
 		var cnt = 0;
 		
-		window.setInterval(function() {
+		 var image = window.setInterval(function() { // 1초마다 img가 바뀌는 기능을 변수에 담기
 			var area = document.getElementById("myimg"); // myimg 영역에 이미지를 출력할 예정
 			if(cnt == 4)
-				cnt = 0; // 4까지 갔다가 다시 1로 되돌아오게 설정
-			var result = "<img src='./../images/" + arrimage[cnt++] + "'/>"; // 다음번에 abc를 입력하면 cnt가 ++되서 다른사진으로 불러옴
+				cnt = 0; // 4까지 갔다가 다시 1로 되돌아오게 초기화 설정
+			var result = "<img src='./../images/" + arrimage[cnt++] + "'/>"; // 다음번에 abc를 호출하면 cnt가 ++(증가)되서 다른사진으로 불러옴
 			area.innerHTML = result;
 			
 		}, 1000);
+
 		
-		/* 시간 간격(정한 시간)마다 자동으로 img가 바뀌는 설정 방법①*/
+		/* 시간 간격(정한 시간)마다 자동으로 img가 바뀌는 설정 방법① */
+		/* window.setInterval(abc, 1000); // 1초: 1000 마다 img 계속 반복됨 / 함수 호출할때는 abc()로 써서 호출하면 안된다.
+		
 		function abc() { //함수 정의
-			var area = document.getElementById("myimg"); // myimg 영역에~~★
+			var area = document.getElementById("myimg"); // myimg 영역에 이미지 출력 예정
 			if(cnt == 4)
 				cnt = 0; // 4까지 갔다가 다시 1로 되돌아오게 설정
 			var result = "<img src='./../images/" + arrimage[cnt++] + "'/>"; // 다음번에 abc를 입력하면 cnt가 ++되서 다른사진으로 불러옴
-			area.innerHTML = result;
-		}
+			area.innerHTML = result; // result 변수에 써놓은 것 myimg 자리에 출력해라
+		} // abc() */
+
 		
 		//setTimeout(해야할일, 시간); - 이미지 그만 멈추게 하는 방법
-		setTimeout(function() {
-			clearInterval(image);
+		setTimeout(function() { // 딱 한번만 실행됨
+			clearInterval(image); // 이미지에 저장되어있는 기능 그만하기
 			var area = document.getElementById("myimg");
-			area.innerHTML = "중지합니다.";
-			
+			area.innerHTML = "중지합니다.";	
 		}, 5000); // 10000: 10초, 5000: 5초
+		
+	} // onload()
 </script>
-
 </head>
 <body> <!-- <body onload="alert(1)"> 이렇게 써도됨 -->
 	
-	<div id="myimg">
-	
-	</div>
-	
+	<div id="myimg"></div>
+
 </body>
 </html>

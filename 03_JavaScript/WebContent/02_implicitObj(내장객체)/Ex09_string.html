@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex09_string.html</title>
+<script type="text/javascript">
+	function onlyNumber() {
+		//alert(1); //확인했으면 주석
+		
+		// e: 이벤트가 발생한 요소의 정보 들어옴
+		var e = event.srcElement; //input 하나하나를 객체 처리 할 수 있음
+		//alert('e:' + e + "," + e.name); //확인했으면 주석
+		
+		var num = "0123456789"; // 숫자와 입력한 글자 맞는지 비교하면서 확인하기
+		//alert(e.value); // value: 이벤트가 발생된 곳의 입력된 값은 무엇인지? 
+		i = e.value.length-1; // 지금 입력한 값 갯수가 몇개냐? 한글자 넣으면 길이는 1, 가장 최근에 넣은 글자에 접근하고 싶을때, i번째 위치
+		// i: 내가 입력한 마지막 글자의 위치가 들어온다. 
+		
+		/* 입력받은것중에 0~9사이 숫자 있는지 찾아보기 */
+		//"0123456789".indexOf("a".charAt(0)) // charAt(0) 자리가 a로 바뀐다
+		ch = e.value.charAt(i);
+		if(num.indexOf(e.value.charAt(i)) == -1){ // 입력한 값중 가장 마지막 값이 "0123456789" 중 하나와 일치하지 않으면
+			// i: 마지막 문자의 위치, charAt(i): 입력한 글자에서 마지막 위치에 있는 숫자 확인하기, 못찾으면 -1 음수발생
+			alert("숫자가 아님"); // 마지막 위치의 문자만 비교 후 alert
+			
+			e.value = e.value.replace(e.value.charAt(i),""); // 바꿀 문자,바뀔 문자 -- 숫자 아닌 문자 넣으면 원래 있던 값 알아서 지워줌
+			// 입력한 값중 가장 마지막 값을 ""으로 변경해라.
+		}
+	} // onlyNumber()
+</script>
+</head>
+<body>
+	전화번호 입력:
+	
+	<input type="text" onKeyUp="onlyNumber()" name="tel1" size="3"> - <!-- on으로 시작하면 이벤트 관련 동작 실행 -->
+	<!-- size를 3으로 지정했다고 해서 절대적으로 3자리만 들어가는 것은 아님 -->
+	<!-- onKeyUp: 키보드에서 손 뗐을 때 나타남 -->
+	<input type="number" name="tel1" size="4"> -
+	<input type="text" name="tel1" size="4">
+</body>
+</html>

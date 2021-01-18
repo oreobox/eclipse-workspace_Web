@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- xml: 내가 만들어 쓰는 태그(e'x'tensible ml) -->
+
+
+<family>
+	<father age = '50'>
+		<name>홍길동</name>
+	</father>
+	
+	<mother>
+	
+	</mother>
+	
+	<son>
+	
+	</son>
+	
+	
+</family>

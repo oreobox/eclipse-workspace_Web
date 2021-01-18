@@ -10,7 +10,7 @@
 		height: 80px;
 		float: left;
 		margin: 3px;
-		display: none; /* 잠깐 안보이게 설정 */
+		display: none; /* 글씨 잠깐 안보이게 설정 */
 	}
 	div#red{background: red} /* div의 red인 곳 설정  */
 	div#green{background: green}
@@ -21,7 +21,7 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		/* 아무데나 클릭했을 때 : document */
-		$(document).click(function(){
+		$(document).click(function(){ // 전체 공간 아무데가 클릭했을 때 / document에 ''따옴표 사용X
 			//alert(1);
 			$('div:hidden:first').fadeIn(3000).fadeTo('slow',0.3).fadeOut(5000); // 차례대로 실행됨
 			/* fadeIn: 전체가 서서히 나타내는 효과(점점 나타나는 효과)

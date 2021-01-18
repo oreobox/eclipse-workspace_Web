@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex08_animate.html</title>
+<style type="text/css">
+	div{
+		left: 150px;
+		position: absolute; /* static(default값)은 좌표 움직이지않음 */
+	}
+</style>
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('button').click(function(){
+			$('div').animate({left : '+=300px', // 왼쪽으로 300px만큼 이동
+								opacity : '0.4' // 투명도 설정
+								},"slow");
+			$('div').animate({
+								width: '300px',
+								opacity: '0.8'
+								},'slow');
+			$('div').animate({
+								height: '200px',
+								opacity: '0.1'
+								},'slow');
+		});
+	}); // ready()
+</script>
+</head>
+<body>
+	<button>Start Animation</button>
+	<p>상, 하, 좌, 우로 움직이는 애니메이션</p>
+	<br><br>
+	
+	<div style="background:green; height:100px; width:100px;"></div>
+</body>
+</html>

@@ -5,37 +5,44 @@
 <title>Ex07_Math함수.html</title>
 <script type="text/javascript">
 	var maxNum = Math.max(30,70,2,123); // java는 2개만 쓸수있지만, javaScript는 인자 여러개 넣을 수 있음
-	document.write("maxNum:" + maxNum + "<br>") // 대/소문자 구분함
-	
+	document.write("maxNum:" + maxNum + "<br>") // 대소문자 구분함
+		// 출력값 → maxNum:123
+		
 	var minNum = Math.min(30,70,2,123); // java는 2개만 쓸수있지만, javaScript는 인자 여러개 넣을 수 있음
-	document.write("minNum:" + minNum + "<br>") // 대/소문자 구분함
-	
+	document.write("minNum:" + minNum + "<br>") // 대소문자 구분함
+		// 출력값 → minNum:2
+		
 	var roundNum = Math.round(3.5); // 소수점 아래 첫번째 자리를 보고 반올림 결정함
 	document.write("roundNum:" + roundNum + "<br>")
-	
+		// 출력값 → roundNum:4
+		
 	var ceilNum = Math.ceil(3.1); // 무조건 올림하는 함수
 	document.write("ceilNum:" + ceilNum + "<br>");
+		// 출력값 → ceilNum:4
 	
 	var floorNum = Math.floor(3.7); // 무조건 소수점 버리는 함수
 	document.write("floorNum:" + floorNum + "<br>");
+		// 출력값 → floorNum:3
 	
 	var parseIntNum = parseInt(3.7); // 소수점 밑에 무조건 버리는 함수 (Math. 붙이지 않음)
 	document.write("parseIntNum:" + parseIntNum + "<br>");
+		// 출력값 → parseIntNum:3
 	
-	var randomNum = Math.random(); // 난수 발생시키는 함수 // 0<=x<1, 난수의 범위 지정 가능
+	var randomNum = Math.random(); // 난수 발생시키는 함수 // 0<=x<1, 0보다 크고 1보다 작은 실수 난수의 범위 지정 가능
 	document.write("randomNum:" + randomNum + "<br>");
+		// 출력값 → randomNum:0.208408059666284 (출력할 때 마다 랜덤으로 출력)
 	
-	// 4이상~7미만(4,5,6)의  정수 난수 1개 발생시키기
+	/* 4이상~7미만(4,5,6)의  정수 난수 1개 발생시키기 */
 	var randomNum2 = Math.floor((Math.random()*3)+4); // 4부터 시작이니까 +4, 맨 뒷 숫자에서 첫번째 숫자 빼고 +1 한것 *뒤에쓰기
+	//var randomNum2 = parseInt((Math.random()*3)+4); // parseInt = Math.floor
 	document.write('randomNum2: ' + randomNum2 + "<br>");
+		// 출력값 → 4~6 사이 숫자 (출력할 때 마다 랜덤으로 출력)
 	
-	// 0~2정수 난수 이미지 불러오기
+	/* 0~2정수 난수 이미지 불러오기 */
 	var image = new Array('./../images/pic1.jpg','./../images/pic2.jpg',
-			'./../images/pic3.jpg'); // 이미지 0,1,2번방에 들어옴
+			'./../images/pic3.jpg'); // 발생된 난수가 0,1,2 중 하나일 때 각각 0,1,2번방에 들어옴
 	num = parseInt(Math.random()*3);
 	document.write("<img src='" + image[num] + "'/>");
-	
-	
 </script>
 </head>
 <body>

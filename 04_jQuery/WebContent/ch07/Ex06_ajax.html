@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex06_ajax.html</title>
+<style type="text/css">
+	td{ /* table에 넣으면 전체가 테두리 생김 */
+		border : 1px solid gray;
+	}
+</style>
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$.ajax({
+			url : 'item.json',
+			dataType : "json",
+			success : function(data){
+				
+				$('#fruitData').append(
+						"<tr>" +	//<table></table> 사이에 넣기
+							"<td>id</td>" + 
+							"<td>name</td>" + 
+							"<td>price</td>" + 
+							"<td>description</td>" + 
+						"</tr>"
+					);   //append
+					
+					$.each(data,function(){ // each를 써서 data 안에있는 것을 반복해서 한줄한줄 tr로 만드는 작업 해줌
+						$('#fruitData').append(
+							"<tr>"+
+								"<td>" + this.id + "</td>" + 
+								"<td>" + this.name + "</td>" + 
+								"<td>" + this.price + "</td>" + 
+								"<td>" + this.description + "</td>" + 
+							"</tr>"
+						); //append
+					}); //each
+			} // success
+		)}; //.ajax
+	}); // ready
+</script>
+</head>
+<body>
+	<h3>과일의 특성 조사 자료</h3>
+	<table id="fruitData"></table>
+</body>
+</html>

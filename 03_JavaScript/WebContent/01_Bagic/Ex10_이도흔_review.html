@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex10_내이름.html</title>
+<script type="text/javascript">
+	
+	var kor = Number(prompt("국어점수는?","77")); // Number("77");
+	var eng = prompt("영어점수는?","89");
+	var math = prompt("수학점수는?","100");
+	
+	document.write("국어:" + kor+"<br>");
+	document.write("영어:" + eng+"<br>");
+	document.write("수학:" + math+"<br>");
+	
+	var sum = +kor+Number(eng)+eval(math); // "77"+"89"+"100"
+	document.write("합계:" + sum+"<br>");
+	document.write("평균:" + sum/3+"<br>");
+	document.write("평균2:" + Math.round(sum/3)+"<br>"); //Math.round :
+	var avg = sum/3;
+	document.write("평균3:" + avg.toFixed(2) +"<br>");//avg.toFixed(2) : 
+		
+	if(avg >= 90){
+		document.write("A학점");
+	} else if(avg >= 80){ // 80~89
+		document.write("B학점");
+	} else if(avg >= 70){ // 70~79
+		document.write("C학점");
+	} else if(avg >= 60){
+		document.write("D학점");
+	} else {
+		document.write("F학점");
+	}
+
+	document.write("<br>");
+	
+	document.write(avg/10 + "<br>");
+	document.write(parseInt(avg/10) + "<br>");
+	
+	switch(parseInt(avg/10)){
+	case 10: 
+	case 9: document.write("A학점");break;
+	case 8: document.write("B학점");break;
+	case 7: document.write("C학점");break;
+	case 6: document.write("D학점");break;
+	default : document.write("F학점");break;
+	}
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>
+
+<!-- 
+국영수 입력받아 합계 평균구하고
+학점 if, switch~case로 구하기
+국어:77
+영어:89
+수학:100
+
+합계:266
+평균:88.66666666666667
+
+B학점
+B학점
+-->

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex08_get함수.html</title>
+<!-- xml: 내가 만들어 쓰는 태그(e'x'tensible ml) -->
+<style type="text/css">
+	td{
+		border : 1px solid gray;
+	}
+</style>
+<script src="./../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$.get('item.xml',function(data){
+			//alert("data:" + data);
+			
+			$('#fruitData').append(
+						"<tr>" +	//<table></table> 사이에 넣기
+							"<td>id</td>" + 
+							"<td>name</td>" + 
+							"<td>price</td>" + 
+							"<td>description</td>" + 
+						"</tr>"
+					);   //append
+					
+			$(data).find('item').each(function(){ // item.xml에 있는 <item>에 접근해서 각각 볼 것이다.
+				$('#fruitData').append(
+						"<tr>" +
+							"<td>" + $(this).attr("id") + "</td>" + //item.xml에서 id(속성) 가져오기 
+							"<td>" + $(this).attr("name") + "</td>" + 
+							"<td>" + $(this).find("price").text() + "</td>" + // <price> 태그(자손:find) 문자 가져와라  
+							"<td>" + $(this).find("description").text() + "</td>" + 						
+						"</tr>"
+						);			
+			});
+		}); //.get()
+	}); // ready()
+</script>
+</head>
+<body>
+	<h3>과일의 특성 조사 자료</h3>
+	<table id="fruitData"></table>
+</body>
+</html>
+
+<!-- 
+[형식]
+$.get(url,콜백함수) : xml 파일 가져올 때 쓰는 함수
+ -->

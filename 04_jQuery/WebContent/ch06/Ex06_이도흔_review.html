@@ -33,7 +33,7 @@
 		$('img.small').mouseover(function(){
 			$(this).fadeTo('slow',0.3);
 			
-			$('#area #imgsrc').css('display','none'); // 이미지 관련해서는 fadeIn 할 때  우선 (초기화)없앴다가 서서히 추가해야 나옴
+			$('#area #imgsrc').css('display','none'); // 중요☆이미지 관련해서는 fadeIn 할 때  우선(초기화)안보이게 했다가 서서히 추가해야 나옴
 			$('#area #imgsrc').attr('src', $(this).attr('src')).fadeIn(2000);
 			
 		});

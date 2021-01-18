@@ -3,36 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <title>Ex04_start_이도흔.html</title>
-
 <script type="text/javascript">
-	function openWin(fileName) { //onclick 에서 openWin() 호출한 것 불러옴 : 'Ex04_end_이도흔.html' 팝업창에 띄울것
-		
-		
+	function openWin(fileName) { //onclick 에서 openWin() 호출한 것 불러옴 : 'Ex04_end_이도흔.html' 내용 팝업창에 띄울것
+		/* 팝업창 크기, 이름 지정 */
 		var wName="popupCal";
 		var winW = 500;
 		var winH = 300;
-		
-		//팝업창 화면 정 중앙에 띄우기
+		/* 팝업창 화면 정 중앙에 띄우기 */
 		var winLeft = (screen.width - winW)/2;
 		var winTop = (screen.height - winH)/2;
 		
-		var options = "width=" + winW +	",height=" + winH +
-						//",left=" + winLeft + ",top=" + winTop; (생략해도됨)
-		
-		window.open(fileName,wName,options);
+		var options = "width="+winW+",height="+winH; //",left=" + winLeft + ",top=" + winTop; (생략해도됨)
+		window.open(fileName,'pop',options);
 	}
-
 </script>
-
 </head>
 <body>
-
-	<h3>열기 버튼을 클릭하세요(start.html)</h3>
-	<form name="myform">
-		결과:
-		<input type="number" name="calResult"> <br><br>
-		<input type="button" value="열기" onclick="openWin('Ex04_end_이도흔.html')"> <!-- openWin() 함수 호출 하고 html 파일 넘김 -->
+	<h3>열기 버튼을 클릭하세요</h3>
+	<form name="parentForm">
+		결과 : <input type="text" name="result"> <br><br>
+		<input type="button" value="열기" onClick="openWin('Ex04_end_이도흔.html')"> <!-- openWin() 함수 호출 하고 html 파일 넘김 -->
 	</form>
-	
 </body>
 </html>

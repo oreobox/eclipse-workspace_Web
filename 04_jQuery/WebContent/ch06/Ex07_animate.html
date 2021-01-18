@@ -2,23 +2,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Ex07_animate.html</title>
 <style type="text/css">
 	#region{
-		width: 200px;
+		width: 200px; /* 이미지를 감싸는 region 영역이 이미지 보다 작음 */
 		height: 200px;
-		overflow: hidden; /* 넘치는 것은 숨겨라 */
+		overflow: hidden; /* 이미지 넘치는 것은 숨겨라 */
 		margin: auto; /* 자동으로 가운데 배치 */
 	}
 	#images{
 		width: 600px;
 		height: 200px;
 	}
-	#images a img{
+	#images a img{ /* 가로 200짜리 이미지 3개 */
 		width: 200px;
 		height: 200px;
 	}
-	#direction{
+	#direction{ /* 버튼 영역 가운데로 설정 */
 		width: 360px;
 		margin: auto;
 	}
@@ -37,9 +37,9 @@
 		$('.leftbtn').bind('click',function(){
 			if(i==1){
 				alert('마지막 이미지입니다.');
-				return;
+				return; // 사진 계속 끌고오지 못하도록 설정
 			}
-			$('#firstimage').animate({marginLeft : '-=205px'},2000); //첫번째 이미지 왼쪽 여백을 2초에 걸쳐서 점점 줄어들고있다
+			$('#firstimage').animate({marginLeft : '-=205px'},2000); // 첫번째 이미지 왼쪽 여백을 2초에 걸쳐서 점점 줄이기
 			i++; // 이미지를 하나씩 끌고 올때마다 1씩 추가해줌
 		});
 		
@@ -51,7 +51,7 @@
 			$('#firstimage').animate({marginLeft : '+=205px'},2000);
 			i--;
 		});
-	});//
+	}); // ready()
 </script>
 </head>
 <body>

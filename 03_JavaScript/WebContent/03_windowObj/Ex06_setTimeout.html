@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Ex06_Ex06_setTimeout.html</title>
+<!-- 1초마다 새로운 날짜와 시간을 출력하고 10초가 지나면 중지 -->
 <style type="text/css">
 	body{
 		text-align: center;
@@ -10,19 +11,19 @@
 </style>
 
 <script type="text/javascript">
-	window.onload = function(){
+	window.onload = function(){ // <body>영역 로드 되자마자 하고싶은 일
 		//alert(1);
 		
-		var time = setInterval(function () {
-			var now = new Date();
-			//document.write(now);
+		var time = setInterval(function () { // 1초에 한번씩 출력되는 기능을  time 변수에 담음
+			var now = new Date(); // 날짜 가져오는 객체 생성
+			//document.write(now); //→ 출력값: Mon Jan 18 2021 23:37:54 GMT+0900 (대한민국 표준시)
 			
 			hours = now.getHours();
 			//alert(hours);
-			if(hours>=12){
+			if(hours>=12){ // 12시가 넘었을 경우: 오후
 				str = "오후" + (hours-12) + "시";
 			}
-			else{
+			else{ // 12시가 넘지 않았을 경우: 오전
 				str = "오전" + hours + "시";
 			}
 			
@@ -45,21 +46,19 @@
 			}
 			
 			var area = document.getElementById("myarea");
-			area.innerHTML = str
+			area.innerHTML = str // area 자리에 HTML코드로 str 변수에 누적했던 것들 모아서 출력
 			
-		},1000);
-		
+		},1000); // 1초에 한번씩 출력
 		
 		
 		setTimeout(function(){
-			clearInterval(time);
+			clearInterval(time); // time 변수로 설정한 것 그만하기
 			var area = document.getElementById("myarea");
 			area.innerHTML = "중지합니다.";
-		},10000);
+		},10000); // 10초 후에 딱 한번 실행됨
 		
-	}
-					
-					
+	} // onload()
+			
 			/* var hour = now.getHours();
 			var ampm;
 			if(hour >= 12){
